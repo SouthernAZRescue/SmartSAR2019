@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SSar.BC.Common.Domain.ValueTypes
 {
-    public class Person
+    public class PersonName
     {
         public string First { get; }
         public string Middle { get; }
@@ -12,7 +12,7 @@ namespace SSar.BC.Common.Domain.ValueTypes
         public string Nickname { get; }
         public string Full => Nickname + " " + Last;
 
-        public Person(string first, string middle, string last, string nickname)
+        public PersonName(string first, string middle, string last, string nickname)
         {
             First = first;
             Middle = middle;
