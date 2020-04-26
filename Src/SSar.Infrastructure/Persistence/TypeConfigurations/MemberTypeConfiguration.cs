@@ -22,7 +22,7 @@ namespace SSar.Infrastructure.Persistence.TypeConfigurations
                     name.Property(x => x.First).HasColumnName("First");
                     name.Property(x => x.Middle).HasColumnName("Middle");
                     name.Property(x => x.Last).HasColumnName("Last");
-                    name.Property(x => x.Nickname).HasColumnName("Middle");
+                    name.Property(x => x.Nickname).HasColumnName("Nickname");
                 });
         }
     }
