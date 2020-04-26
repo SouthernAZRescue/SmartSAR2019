@@ -1,14 +1,10 @@
-﻿using SSar.Server.Models;
-using IdentityServer4.EntityFramework.Options;
+﻿using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SSar.Presentation.API.Models;
 
-namespace SSar.Server.Data
+namespace SSar.Presentation.API.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {

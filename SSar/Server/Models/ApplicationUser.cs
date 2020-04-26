@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SSar.Server.Models
+namespace SSar.Presentation.API.Models
 {
     public class ApplicationUser : IdentityUser
     {

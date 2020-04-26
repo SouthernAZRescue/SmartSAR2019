@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SSar.Shared
+namespace SSar.Presentation.Common
 {
     public class WeatherForecast
     {

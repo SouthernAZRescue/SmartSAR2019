@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>SSar.Server-1B980D22-0757-4242-8254-27FA2B38AF49</UserSecretsId>
+    <UserSecretsId>SSar.Presentation.API-1B980D22-0757-4242-8254-27FA2B38AF49</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\SSar.Client.csproj" />
-    <ProjectReference Include="..\Shared\SSar.Shared.csproj" />
+    <ProjectReference Include="..\Client\SSar.Presentation.BlazorSpaUI.csproj" />
+    <ProjectReference Include="..\Shared\SSar.Presentation.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,5 +22,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
