@@ -10,7 +10,6 @@ using Microsoft.Extensions.Hosting;
 using SSar.BC.MemberMgmt.Application;
 using SSar.Infrastructure.Identity;
 using SSar.Infrastructure.Persistence;
-using SSar.Presentation.API.Data;
 
 namespace SSar.Presentation.API
 {
