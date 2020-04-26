@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SSar.Infrastructure.Persistence;
 
 namespace SSar.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200426170912_Initial")]
-    partial class Initial
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,6 +236,17 @@ namespace SSar.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("SSar.BC.MemberMgmt.Domain.Aggregates.Member", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Members");
+                });
+
             modelBuilder.Entity("SSar.Infrastructure.Identity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -352,6 +361,22 @@ namespace SSar.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SSar.BC.MemberMgmt.Domain.Aggregates.Member", b =>
+                {
+                    b.OwnsOne("SSar.BC.Common.Domain.ValueTypes.PersonName", "Name", b1 =>
+                        {
+                            b1.Property<Guid>("MemberId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.HasKey("MemberId");
+
+                            b1.ToTable("Members");
+
+                            b1.WithOwner()
+                                .HasForeignKey("MemberId");
+                        });
                 });
 #pragma warning restore 612, 618
         }

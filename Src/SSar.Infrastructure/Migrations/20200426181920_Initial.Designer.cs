@@ -10,8 +10,8 @@ using SSar.Infrastructure.Persistence;
 namespace SSar.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200426175859_MemberPrototype")]
-    partial class MemberPrototype
+    [Migration("20200426181920_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
