@@ -4,13 +4,14 @@ using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Domain.Aggregates;
 using SSar.Infrastructure.Identity;
 using SSar.Infrastructure.Persistence.TypeConfigurations;
 
 namespace SSar.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext(
             DbContextOptions options,

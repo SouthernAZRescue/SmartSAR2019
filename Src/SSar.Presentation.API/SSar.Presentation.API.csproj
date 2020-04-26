@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SSar.BC.Common.Application\SSar.BC.Common.Application.csproj" />
     <ProjectReference Include="..\SSar.BC.MemberMgmt.Application\SSar.BC.MemberMgmt.Application.csproj" />
     <ProjectReference Include="..\SSar.Infrastructure\SSar.Infrastructure.csproj" />
     <ProjectReference Include="..\SSar.Presentation.BlazorSpaUI\SSar.Presentation.BlazorSpaUI.csproj" />

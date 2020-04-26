@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
 using SSar.Infrastructure.Identity;
 using SSar.Infrastructure.Persistence;
@@ -38,6 +39,8 @@ namespace SSar.Presentation.API
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
+
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
             services.AddControllersWithViews();
             services.AddRazorPages();

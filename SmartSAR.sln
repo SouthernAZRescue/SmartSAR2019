@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.MemberMgmt.Applicat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E9878E70-0BE3-4D56-98DC-5225D2DA8388}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.Infrastructure", "Src\SSar.Infrastructure\SSar.Infrastructure.csproj", "{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.Infrastructure", "Src\SSar.Infrastructure\SSar.Infrastructure.csproj", "{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.Common.Application", "Src\SSar.BC.Common.Application\SSar.BC.Common.Application.csproj", "{B11D0729-6664-4523-BC4F-B3E5BCE57335}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11D0729-6664-4523-BC4F-B3E5BCE57335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11D0729-6664-4523-BC4F-B3E5BCE57335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11D0729-6664-4523-BC4F-B3E5BCE57335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11D0729-6664-4523-BC4F-B3E5BCE57335}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{0B783EF6-EBF6-4598-BEAE-426B1C8C7B8A} = {0B441764-8D0E-4D13-A228-3068AC4C193B}
 		{E9878E70-0BE3-4D56-98DC-5225D2DA8388} = {FE7252A9-89EC-4F18-BE8C-4D58C65525AB}
 		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0} = {E9878E70-0BE3-4D56-98DC-5225D2DA8388}
+		{B11D0729-6664-4523-BC4F-B3E5BCE57335} = {0B441764-8D0E-4D13-A228-3068AC4C193B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10111335-23BD-46AB-9BA0-DFB886C44F68}
