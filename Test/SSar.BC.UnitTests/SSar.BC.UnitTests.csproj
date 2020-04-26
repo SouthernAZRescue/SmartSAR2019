@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Src\SSar.BC.Common.Domain\SSar.BC.Common.Domain.csproj" />
+    <ProjectReference Include="..\..\Src\SSar.BC.MemberMgmt.Domain\SSar.BC.MemberMgmt.Domain.csproj" />
   </ItemGroup>
 
 </Project>
