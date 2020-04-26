@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30014.187
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.Presentation.API", "SSar\SSar.Presentation.API\SSar.Presentation.API.csproj", "{313F0928-FBE3-4383-8A6D-52D05927FFF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.Presentation.API", "Src\SSar.Presentation.API\SSar.Presentation.API.csproj", "{313F0928-FBE3-4383-8A6D-52D05927FFF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.Presentation.BlazorSpaUI", "SSar\SSar.Presentation.BlazorSpaUI\SSar.Presentation.BlazorSpaUI.csproj", "{59B069BE-B7DB-48A8-B690-3D49244C3034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.Presentation.BlazorSpaUI", "Src\SSar.Presentation.BlazorSpaUI\SSar.Presentation.BlazorSpaUI.csproj", "{59B069BE-B7DB-48A8-B690-3D49244C3034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.Presentation.Common", "SSar\SSar.Presentation.Common\SSar.Presentation.Common.csproj", "{031CB2AD-B7B1-46D8-9ABF-4AD864402DFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.Presentation.Common", "Src\SSar.Presentation.Common\SSar.Presentation.Common.csproj", "{031CB2AD-B7B1-46D8-9ABF-4AD864402DFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6FAAEEC5-2D07-4E34-B348-7ECF3E38233B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{FE7252A9-89EC-4F18-BE8C-4D58C65525AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,7 @@ Global
 		{313F0928-FBE3-4383-8A6D-52D05927FFF1} = {6FAAEEC5-2D07-4E34-B348-7ECF3E38233B}
 		{59B069BE-B7DB-48A8-B690-3D49244C3034} = {6FAAEEC5-2D07-4E34-B348-7ECF3E38233B}
 		{031CB2AD-B7B1-46D8-9ABF-4AD864402DFB} = {6FAAEEC5-2D07-4E34-B348-7ECF3E38233B}
+		{6FAAEEC5-2D07-4E34-B348-7ECF3E38233B} = {FE7252A9-89EC-4F18-BE8C-4D58C65525AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10111335-23BD-46AB-9BA0-DFB886C44F68}
