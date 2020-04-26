@@ -8,8 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SSar.BC.MemberMgmt.Application;
+using SSar.Infrastructure.Identity;
 using SSar.Presentation.API.Data;
-using SSar.Presentation.API.Models;
 
 namespace SSar.Presentation.API
 {

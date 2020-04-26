@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using SSar.Presentation.API.Models;
+using SSar.Infrastructure.Identity;
 
 namespace SSar.Presentation.API.Data
 {
