@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Src\SSar.BC.Common.Domain\SSar.BC.Common.Domain.csproj" />
+    <ProjectReference Include="..\..\Src\SSar.BC.MemberMgmt.Application\SSar.BC.MemberMgmt.Application.csproj" />
     <ProjectReference Include="..\..\Src\SSar.BC.MemberMgmt.Domain\SSar.BC.MemberMgmt.Domain.csproj" />
   </ItemGroup>
 

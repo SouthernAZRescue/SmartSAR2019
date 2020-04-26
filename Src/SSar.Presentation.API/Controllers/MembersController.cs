@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SSar.BC.MemberMgmt.Application;
+using SSar.BC.MemberMgmt.Domain.Aggregates;
 using SSar.Presentation.Common;
 
 namespace SSar.Presentation.API.Controllers
@@ -13,17 +17,19 @@ namespace SSar.Presentation.API.Controllers
     [Route("[controller]")]
     public class MembersController : ControllerBase
     {
-        [HttpGet]
-        public MemberRow Get()
+        private readonly IMediator _mediator;
+
+        public MembersController(IMediator mediator)
         {
-            return 
-                new MemberRow()
-                {
-                    FirstName = "Frodo", 
-                    MiddleName = "Alfred", 
-                    LastName = "Baggins", 
-                    Nickname = "Fro"
-                };
+            _mediator = mediator;
+        }
+
+
+        [HttpGet]
+        public async Task<MemberRow> Get()
+        { 
+            var member = await _mediator.Send(new GetMemberByIdCommand(Guid.NewGuid()));
+            return new MemberRow(member.Name.First, member.Name.Middle, member.Name.Last, member.Name.Nickname);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Dynamic;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SSar.BC.MemberMgmt.Application;
 using SSar.Presentation.API.Data;
 using SSar.Presentation.API.Models;
 
@@ -40,7 +42,7 @@ namespace SSar.Presentation.API
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddMediatR();
+            services.AddMediatR(typeof(Startup), typeof(GetMemberByIdCommand));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
