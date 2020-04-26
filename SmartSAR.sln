@@ -15,17 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{FE7252A9-89E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E5A9BCB5-E4E6-471B-8D57-92CBBFE45513}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.Presentation.UnitTests", "Test\SSar.Presentation.UnitTests\SSar.Presentation.UnitTests.csproj", "{72E9FB24-7470-4E43-BFC8-6B41A554D5D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.Presentation.UnitTests", "Test\SSar.Presentation.UnitTests\SSar.Presentation.UnitTests.csproj", "{72E9FB24-7470-4E43-BFC8-6B41A554D5D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.UnitTests", "Test\SSar.BC.UnitTests\SSar.BC.UnitTests.csproj", "{E97CD201-231E-4AAE-BC08-92C12685DD11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.UnitTests", "Test\SSar.BC.UnitTests\SSar.BC.UnitTests.csproj", "{E97CD201-231E-4AAE-BC08-92C12685DD11}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BoundedContexts", "BoundedContexts", "{0B441764-8D0E-4D13-A228-3068AC4C193B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.Common.Domain", "Src\SSar.BC.Common.Domain\SSar.BC.Common.Domain.csproj", "{AB9C6402-3058-46D0-BD51-18D29F16DE43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.Common.Domain", "Src\SSar.BC.Common.Domain\SSar.BC.Common.Domain.csproj", "{AB9C6402-3058-46D0-BD51-18D29F16DE43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.MemberMgmt.Domain", "Src\SSar.BC.MemberMgmt.Domain\SSar.BC.MemberMgmt.Domain.csproj", "{0563367C-D054-463B-8F37-99F27C0CDC65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.MemberMgmt.Domain", "Src\SSar.BC.MemberMgmt.Domain\SSar.BC.MemberMgmt.Domain.csproj", "{0563367C-D054-463B-8F37-99F27C0CDC65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.MemberMgmt.Application", "Src\SSar.BC.MemberMgmt.Application\SSar.BC.MemberMgmt.Application.csproj", "{0B783EF6-EBF6-4598-BEAE-426B1C8C7B8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.MemberMgmt.Application", "Src\SSar.BC.MemberMgmt.Application\SSar.BC.MemberMgmt.Application.csproj", "{0B783EF6-EBF6-4598-BEAE-426B1C8C7B8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E9878E70-0BE3-4D56-98DC-5225D2DA8388}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.Infrastructure", "Src\SSar.Infrastructure\SSar.Infrastructure.csproj", "{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +69,10 @@ Global
 		{0B783EF6-EBF6-4598-BEAE-426B1C8C7B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B783EF6-EBF6-4598-BEAE-426B1C8C7B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B783EF6-EBF6-4598-BEAE-426B1C8C7B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +88,8 @@ Global
 		{AB9C6402-3058-46D0-BD51-18D29F16DE43} = {0B441764-8D0E-4D13-A228-3068AC4C193B}
 		{0563367C-D054-463B-8F37-99F27C0CDC65} = {0B441764-8D0E-4D13-A228-3068AC4C193B}
 		{0B783EF6-EBF6-4598-BEAE-426B1C8C7B8A} = {0B441764-8D0E-4D13-A228-3068AC4C193B}
+		{E9878E70-0BE3-4D56-98DC-5225D2DA8388} = {FE7252A9-89EC-4F18-BE8C-4D58C65525AB}
+		{40B0DC66-5B80-4B51-B8D3-68189F53D4F0} = {E9878E70-0BE3-4D56-98DC-5225D2DA8388}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10111335-23BD-46AB-9BA0-DFB886C44F68}
