@@ -8,8 +8,50 @@
 
 <h1>Members</h1>
 
-Members protype page coming soon.
+Test of Member retrieval API
+
+@if (member == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>First</th>
+            <th>Middle</th>
+            <th>Last</th>
+            <th>Nickname</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@member.FirstName</td>
+                <td>@member.MiddleName</td>
+                <td>@member.LastName</td>
+                <td>@member.Nickname</td>
+            </tr>
+        </tbody>
+    </table>
+}
 
 @code {
+    private MemberRow member;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var httpClient = new HttpClient();
+        httpClient.BaseAddress = new Uri(Navigation.BaseUri);
+
+        var tokenResult = await AuthenticationService.RequestAccessToken();
+
+        if (tokenResult.TryGetToken(out var token, redirect: true))
+        {
+            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
+            member = await httpClient.GetFromJsonAsync<MemberRow>("Members");
+        }
+
+    }
 
 }
