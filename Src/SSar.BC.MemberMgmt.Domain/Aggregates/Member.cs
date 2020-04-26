@@ -10,6 +10,13 @@ namespace SSar.BC.MemberMgmt.Domain.Aggregates
         private Guid _id;
         private PersonName _name;
 
+        /// <summary>
+        /// For Entity Framework
+        /// </summary>
+        public Member()
+        {
+        }
+
         public Member(PersonName name)
         {
             _id = Guid.NewGuid();

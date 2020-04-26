@@ -12,6 +12,13 @@ namespace SSar.BC.Common.Domain.ValueTypes
         public string Nickname { get; }
         public string Full => Nickname + " " + Last;
 
+        /// <summary>
+        /// For Entity Framework
+        /// </summary>
+        public PersonName()
+        {
+        }
+
         public PersonName(string first, string middle, string last, string nickname)
         {
             First = first;

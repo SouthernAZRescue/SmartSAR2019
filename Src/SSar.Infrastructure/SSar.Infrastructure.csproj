@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SSar.BC.MemberMgmt.Domain\SSar.BC.MemberMgmt.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
