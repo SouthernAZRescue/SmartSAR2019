@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\SSar.Presentation.BlazorSpaUI.csproj" />
-    <ProjectReference Include="..\Shared\SSar.Presentation.Common.csproj" />
+    <ProjectReference Include="..\SSar.Presentation.BlazorSpaUI\SSar.Presentation.BlazorSpaUI.csproj" />
+    <ProjectReference Include="..\SSar.Presentation.Common\SSar.Presentation.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
