@@ -15,7 +15,15 @@ namespace SSar.Infrastructure.Persistence.TypeConfigurations
             builder.Property(b => b.Id).HasField("_id");
             //builder.Property(b => b.Name).HasField("_name");
 
-            builder.OwnsOne<PersonName>(b => b.Name);
+            builder.OwnsOne(
+                b => b.Name,
+                name =>
+                {
+                    name.Property(x => x.First).HasColumnName("First");
+                    name.Property(x => x.Middle).HasColumnName("Middle");
+                    name.Property(x => x.Last).HasColumnName("Last");
+                    name.Property(x => x.Nickname).HasColumnName("Middle");
+                });
         }
     }
 }
