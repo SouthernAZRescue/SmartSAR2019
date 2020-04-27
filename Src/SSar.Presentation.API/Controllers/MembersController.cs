@@ -25,8 +25,7 @@ namespace SSar.Presentation.API.Controllers
         [HttpGet]
         public async Task<MemberDto> Get()
         { 
-            var member = await _mediator.Send(new GetMemberByIdQuery(Guid.NewGuid()));
-            return new MemberDto(member.Name.First, member.Name.Middle, member.Name.Last, member.Name.Nickname);
+            return await _mediator.Send(new GetMemberByIdQuery(Guid.NewGuid()));
         }
     }
 }

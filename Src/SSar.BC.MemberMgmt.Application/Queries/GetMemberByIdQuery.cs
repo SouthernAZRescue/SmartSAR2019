@@ -4,7 +4,7 @@ using SSar.BC.MemberMgmt.Domain.Entities;
 
 namespace SSar.BC.MemberMgmt.Application.Queries
 {
-    public class GetMemberByIdQuery : IRequest<Member>
+    public class GetMemberByIdQuery : IRequest<MemberDto>
     {
         public GetMemberByIdQuery(Guid id)
         {
