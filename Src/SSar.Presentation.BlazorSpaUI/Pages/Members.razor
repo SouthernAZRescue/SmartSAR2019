@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @using SSar.Presentation.Common
+@using SSar.BC.MemberMgmt.Application.Queries
 @inject IAccessTokenProvider AuthenticationService
 @inject NavigationManager Navigation
 @attribute [Authorize]
@@ -37,7 +38,7 @@ else
 }
 
 @code {
-    private MemberRow member;
+    private MemberDto member;
 
     protected override async Task OnInitializedAsync()
     {
@@ -49,7 +50,7 @@ else
         if (tokenResult.TryGetToken(out var token, redirect: true))
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
-            member = await httpClient.GetFromJsonAsync<MemberRow>("Members");
+            member = await httpClient.GetFromJsonAsync<MemberDto>("Members");
         }
 
     }

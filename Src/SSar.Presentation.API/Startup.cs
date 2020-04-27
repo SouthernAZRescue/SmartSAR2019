@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
+using SSar.BC.MemberMgmt.Application.Queries;
 using SSar.Infrastructure.Identity;
 using SSar.Infrastructure.Persistence;
 
@@ -45,7 +46,7 @@ namespace SSar.Presentation.API
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddMediatR(typeof(Startup), typeof(GetMemberByIdCommand));
+            services.AddMediatR(typeof(Startup), typeof(GetMemberByIdQuery));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

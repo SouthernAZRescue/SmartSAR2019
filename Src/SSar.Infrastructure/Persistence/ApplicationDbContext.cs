@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SSar.BC.Common.Application.Interfaces;
-using SSar.BC.MemberMgmt.Domain.Aggregates;
+using SSar.BC.MemberMgmt.Domain.Entities;
 using SSar.Infrastructure.Identity;
 using SSar.Infrastructure.Persistence.TypeConfigurations;
 

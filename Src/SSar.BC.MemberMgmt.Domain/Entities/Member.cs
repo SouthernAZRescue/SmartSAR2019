@@ -1,9 +1,7 @@
-﻿using SSar.BC.Common.Domain.ValueTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using SSar.BC.Common.Domain.ValueTypes;
 
-namespace SSar.BC.MemberMgmt.Domain.Aggregates
+namespace SSar.BC.MemberMgmt.Domain.Entities
 {
     public class Member
     {

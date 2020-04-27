@@ -4,7 +4,7 @@ using System.Text;
 using Shouldly;
 using Shouldly.Configuration;
 using SSar.BC.Common.Domain.ValueTypes;
-using SSar.BC.MemberMgmt.Domain.Aggregates;
+using SSar.BC.MemberMgmt.Domain.Entities;
 using Xunit;
 
 namespace SSar.BC.UnitTests.MemberMgmt.Domain

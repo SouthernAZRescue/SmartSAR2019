@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SSar.Presentation.Common
+﻿namespace SSar.BC.MemberMgmt.Application.Queries
 {
-    public class MemberRow
+    public class MemberDto
     {
         /// <summary>
         /// Parameterless constructor required for deserialization
         /// </summary>
-        public MemberRow()
+        public MemberDto()
         {
         }
 
-        public MemberRow(string firstName, string middleName, string lastName, string nickname)
+        public MemberDto(string firstName, string middleName, string lastName, string nickname)
         {
             FirstName = firstName;
             MiddleName = middleName;

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using SSar.BC.MemberMgmt.Application;
-using SSar.BC.MemberMgmt.Domain.Aggregates;
+using SSar.BC.MemberMgmt.Application.Queries;
 using SSar.Presentation.Common;
 
 namespace SSar.Presentation.API.Controllers
@@ -26,10 +23,10 @@ namespace SSar.Presentation.API.Controllers
 
 
         [HttpGet]
-        public async Task<MemberRow> Get()
+        public async Task<MemberDto> Get()
         { 
-            var member = await _mediator.Send(new GetMemberByIdCommand(Guid.NewGuid()));
-            return new MemberRow(member.Name.First, member.Name.Middle, member.Name.Last, member.Name.Nickname);
+            var member = await _mediator.Send(new GetMemberByIdQuery(Guid.NewGuid()));
+            return new MemberDto(member.Name.First, member.Name.Middle, member.Name.Last, member.Name.Nickname);
         }
     }
 }

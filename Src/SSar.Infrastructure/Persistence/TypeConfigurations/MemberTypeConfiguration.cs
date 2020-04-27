@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SSar.BC.Common.Domain.ValueTypes;
-using SSar.BC.MemberMgmt.Domain.Aggregates;
+using SSar.BC.MemberMgmt.Domain.Entities;
 
 namespace SSar.Infrastructure.Persistence.TypeConfigurations
 {
