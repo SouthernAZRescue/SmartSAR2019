@@ -25,8 +25,6 @@ namespace SSar.Infrastructure.Persistence
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            builder.ApplyConfiguration(new MemberTypeConfiguration());
-
             base.OnModelCreating(builder);
         }
     }
