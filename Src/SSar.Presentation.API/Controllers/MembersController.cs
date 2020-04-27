@@ -1,11 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SSar.BC.MemberMgmt.Application;
 using SSar.BC.MemberMgmt.Application.Queries;
-using SSar.Presentation.Common;
 
 namespace SSar.Presentation.API.Controllers
 {
@@ -21,12 +18,10 @@ namespace SSar.Presentation.API.Controllers
             _mediator = mediator;
         }
 
-
         [HttpGet]
-        public async Task<MemberDto> Get()
+        public async Task<MembersVm> Get()
         { 
-            // TODO: Convert prototype to get ID from HTTP request
-            return await _mediator.Send(new GetMemberByIdQuery(1));
+            return await _mediator.Send(new GetMembersQuery());
         }
     }
 }

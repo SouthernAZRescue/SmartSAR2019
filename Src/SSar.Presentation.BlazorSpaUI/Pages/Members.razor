@@ -11,7 +11,7 @@
 
 Test of Member retrieval API
 
-@if (member == null)
+@if (membersVm == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -27,18 +27,21 @@ else
         </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>@member.FirstName</td>
-                <td>@member.MiddleName</td>
-                <td>@member.LastName</td>
-                <td>@member.Nickname</td>
-            </tr>
+            @foreach (var member in membersVm.Members)
+            {
+                <tr>
+                    <td>@member.FirstName</td>
+                    <td>@member.MiddleName</td>
+                    <td>@member.LastName</td>
+                    <td>@member.Nickname</td>
+                </tr>
+            }
         </tbody>
     </table>
 }
 
 @code {
-    private MemberDto member;
+    private MembersVm membersVm;
 
     protected override async Task OnInitializedAsync()
     {
@@ -50,9 +53,7 @@ else
         if (tokenResult.TryGetToken(out var token, redirect: true))
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
-            member = await httpClient.GetFromJsonAsync<MemberDto>("Members");
+            membersVm = await httpClient.GetFromJsonAsync<MembersVm>("Members");
         }
-
     }
-
 }
