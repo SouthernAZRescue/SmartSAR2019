@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\SSar.Presentation.Common\SSar.Presentation.Common.csproj" />
+    <ProjectReference Include="..\..\Src\SSar.BC.MemberMgmt.Application\SSar.BC.MemberMgmt.Application.csproj" />
   </ItemGroup>
 
 </Project>

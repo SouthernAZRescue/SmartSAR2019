@@ -4,7 +4,6 @@ using System.Text;
 using Shouldly;
 using SSar.BC.MemberMgmt.Application.Queries;
 using Xunit;
-using SSar.Presentation.Common;
 
 namespace SSar.Presentation.UnitTests.Common
 {
