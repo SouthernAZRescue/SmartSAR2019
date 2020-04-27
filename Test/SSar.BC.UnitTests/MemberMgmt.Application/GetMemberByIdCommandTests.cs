@@ -13,9 +13,9 @@ namespace SSar.BC.UnitTests.MemberMgmt.Application
         [Fact]
         public void Ctor_ShouldSetProperties()
         {
-            var id = Guid.NewGuid();
+            var id = 7;
             var sut = new GetMemberByIdQuery(id);
-            sut.Id.ShouldBe(id);
+            sut.EntityId.ShouldBe(id);
         }
     }
 }

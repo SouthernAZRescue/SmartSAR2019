@@ -6,11 +6,11 @@ namespace SSar.BC.MemberMgmt.Application.Queries
 {
     public class GetMemberByIdQuery : IRequest<MemberDto>
     {
-        public GetMemberByIdQuery(Guid id)
+        public GetMemberByIdQuery(int entityId)
         {
-            Id = id;
+            EntityId = entityId;
         }
 
-        public Guid Id { get; }
+        public int EntityId { get; }
     }
 }

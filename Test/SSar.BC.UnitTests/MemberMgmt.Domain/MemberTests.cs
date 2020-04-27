@@ -17,7 +17,7 @@ namespace SSar.BC.UnitTests.MemberMgmt.Domain
             var name = new PersonName("Bill", "Bob", "Stevens", "BillyBob");
             var sut = new Member(name);
             sut.Name.ShouldBe(name);
-            sut.Id.ShouldNotBe(Guid.Empty);
+            sut.EntityId.ShouldNotBe(default(int));
         }
     }
 }

@@ -25,7 +25,8 @@ namespace SSar.Presentation.API.Controllers
         [HttpGet]
         public async Task<MemberDto> Get()
         { 
-            return await _mediator.Send(new GetMemberByIdQuery(Guid.NewGuid()));
+            // TODO: Convert prototype to get ID from HTTP request
+            return await _mediator.Send(new GetMemberByIdQuery(1));
         }
     }
 }

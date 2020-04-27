@@ -13,16 +13,16 @@ namespace SSar.Presentation.UnitTests.Common
         [Fact]
         public void Ctor_ShouldSetProperties()
         {
-            var id = Guid.NewGuid();
             var sut = new MemberDto
             {
-                MemberId = id,
+                EntityId = 353117,
                 FirstName = "Donald",
                 MiddleName = "Lucrecius",
                 LastName = "Duck",
                 Nickname = "Fuzzy"
             };
             sut.ShouldSatisfyAllConditions(
+                () => sut.EntityId.ShouldBe(353117),
                 () => sut.FirstName.ShouldBe("Donald"),
                 () => sut.MiddleName.ShouldBe("Lucrecius"),
                 () => sut.LastName.ShouldBe("Duck"),

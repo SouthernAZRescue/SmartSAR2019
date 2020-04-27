@@ -25,7 +25,7 @@ namespace SSar.BC.MemberMgmt.Application.Queries
 
             var memberDto = new MemberDto
             {
-                MemberId = member.Id,
+                EntityId = member.EntityId,
                 FirstName = member.Name.First,
                 MiddleName = member.Name.Middle,
                 LastName = member.Name.Last,

@@ -1,11 +1,12 @@
 ﻿using System;
+using SSar.BC.Common.Domain.Interfaces;
 using SSar.BC.Common.Domain.ValueTypes;
 
 namespace SSar.BC.MemberMgmt.Domain.Entities
 {
-    public class Member
+    public class Member : IEntity
     {
-        private Guid _id;
+        private int _entityId;
         private PersonName _name;
 
         /// <summary>
@@ -17,11 +18,10 @@ namespace SSar.BC.MemberMgmt.Domain.Entities
 
         public Member(PersonName name)
         {
-            _id = Guid.NewGuid();
             _name = name;
         }
 
-        public Guid Id => _id;
+        public int EntityId => _entityId;
         public PersonName Name => _name;
     }
 }
