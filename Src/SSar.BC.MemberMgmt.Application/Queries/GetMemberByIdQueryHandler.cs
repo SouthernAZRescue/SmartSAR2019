@@ -19,7 +19,7 @@ namespace SSar.BC.MemberMgmt.Application.Queries
 
         public async Task<MemberDto> Handle(GetMemberByIdQuery request, CancellationToken cancellationToken)
         {
-            // TODO: This is a stub and so far only returns the first member in the table
+            // TODO: FINISH PROTOTYPE - This is a stub and only returns the first member in the table
 
             var member = await _dbContext.Members.FirstOrDefaultAsync();
 
