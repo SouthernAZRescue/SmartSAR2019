@@ -6,9 +6,9 @@ namespace SSar.BC.Common.Application.Dtos
 {
     public class PersonNameDto
     {
-        public string First { get; private set; }
-        public string Middle { get; private set; }
-        public string Last { get; private set; }
-        public string Nickname { get; private set; }
+        public string First { get; set; }
+        public string Middle { get; set; }
+        public string Last { get; set; }
+        public string Nickname { get; set; }
     }
 }

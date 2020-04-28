@@ -14,7 +14,13 @@ namespace SSar.BC.UnitTests.MemberMgmt.Domain
         [Fact]
         public void Ctor_ShouldSetProperties()
         {
-            var name = new PersonName("Bill", "Bob", "Stevens", "BillyBob");
+            var name = new PersonName
+            {
+                First = "Bill",
+                Middle = "Bob",
+                Last = "Stevens",
+                Nickname = "BillyBob"
+            };
             var sut = new Member(name);
             sut.Name.ShouldBe(name);
             sut.EntityId.ShouldNotBe(default(int));

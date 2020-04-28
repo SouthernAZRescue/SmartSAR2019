@@ -12,7 +12,13 @@ namespace SSar.BC.UnitTests.Common.Domain
         [Fact]
         public void Ctor_ShouldSetProperties()
         {
-            var sut = new PersonName("Bill", "Bob", "Stevens", "BillyBob");
+            var sut = new PersonName
+            {
+                First = "Bill",
+                Middle = "Bob",
+                Last = "Stevens",
+                Nickname = "BillyBob"
+            };
             sut.ShouldSatisfyAllConditions(
                 () => sut.First.ShouldBe("Bill"),
                 () => sut.Middle.ShouldBe("Bob"),
@@ -24,7 +30,13 @@ namespace SSar.BC.UnitTests.Common.Domain
         [Fact]
         public void Full_ShouldReturnNicknameAndLast()
         {
-            var sut = new PersonName("Bill", "Bob", "Stevens", "BillyBob");
+            var sut = new PersonName
+            {
+                First = "Bill",
+                Middle = "Bob",
+                Last = "Stevens",
+                Nickname = "BillyBob"
+            };
             sut.Full.ShouldBe("BillyBob Stevens");
         }
     }
