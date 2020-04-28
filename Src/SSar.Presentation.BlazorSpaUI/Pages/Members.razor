@@ -15,7 +15,10 @@
 }
 else
 {
-    <SfGrid DataSource="@membersVm.Members"></SfGrid>
+    <SfGrid DataSource="@membersVm.Members" AllowPaging="true" AllowSorting="true" AllowFiltering="true">
+        <GridPageSettings PageSize="50"></GridPageSettings>
+        <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+    </SfGrid>
 }
 
 
