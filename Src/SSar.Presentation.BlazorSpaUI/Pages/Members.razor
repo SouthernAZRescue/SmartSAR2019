@@ -15,9 +15,16 @@
 }
 else
 {
-    <SfGrid DataSource="@membersVm.Members" AllowPaging="true" AllowSorting="true" AllowFiltering="true">
+    <SfGrid DataSource="@membersVm.Members" AllowPaging="true" AllowSorting="true" AllowFiltering="true"Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height ="315">
         <GridPageSettings PageSize="50"></GridPageSettings>
         <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+        <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+        <GridColumns>
+            <GridColumn Field=@nameof(MemberDto.FirstName) HeaderText="First" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+            <GridColumn Field=@nameof(MemberDto.MiddleName) HeaderText="Middle" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+            <GridColumn Field=@nameof(MemberDto.LastName) HeaderText="Last" TextAlign="TextAlign.Left" Width="80"></GridColumn>
+            <GridColumn Field=@nameof(MemberDto.Nickname) HeaderText="Nickname" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+        </GridColumns>
     </SfGrid>
 }
 
@@ -25,6 +32,7 @@ else
 
 @code {
     private MembersVm membersVm = new MembersVm();
+    private IEnumerable<MemberDto> members;
 
     protected override async Task OnInitializedAsync()
     {
@@ -38,5 +46,7 @@ else
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
             membersVm = await httpClient.GetFromJsonAsync<MembersVm>("Members");
         }
+
+        members = membersVm.Members.ToList();
     }
 }
