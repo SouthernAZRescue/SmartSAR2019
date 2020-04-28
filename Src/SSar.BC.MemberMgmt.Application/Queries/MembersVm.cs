@@ -4,6 +4,7 @@ namespace SSar.BC.MemberMgmt.Application.Queries
 {
     public class MembersVm
     {
-        public IEnumerable<MemberDto> Members { get; set; }
+        public IEnumerable<MemberDto> Members { get; set; } 
+            = new List<MemberDto>();
     }
 }

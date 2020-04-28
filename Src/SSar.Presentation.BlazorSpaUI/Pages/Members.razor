@@ -1,4 +1,5 @@
 ﻿@page "/members"
+@using System.Runtime.CompilerServices
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @using SSar.BC.MemberMgmt.Application.Queries
@@ -8,39 +9,19 @@
 
 <h1>Members</h1>
 
-Test of Member retrieval API
-
 @if (membersVm == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <table class="table">
-        <thead>
-        <tr>
-            <th>First</th>
-            <th>Middle</th>
-            <th>Last</th>
-            <th>Nickname</th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach (var member in membersVm.Members)
-            {
-                <tr>
-                    <td>@member.FirstName</td>
-                    <td>@member.MiddleName</td>
-                    <td>@member.LastName</td>
-                    <td>@member.Nickname</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <SfGrid DataSource="@membersVm.Members"></SfGrid>
 }
 
+
+
 @code {
-    private MembersVm membersVm;
+    private MembersVm membersVm = new MembersVm();
 
     protected override async Task OnInitializedAsync()
     {

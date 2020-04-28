@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Syncfusion.Blazor;
 
 namespace SSar.Presentation.BlazorSpaUI
 {
@@ -16,6 +17,7 @@ namespace SSar.Presentation.BlazorSpaUI
             builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddApiAuthorization();
 
+            builder.Services.AddSyncfusionBlazor();
             await builder.Build().RunAsync();
         }
     }

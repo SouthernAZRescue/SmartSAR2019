@@ -10,6 +10,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0-preview4.20210.8" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0-preview4.20210.8" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="3.2.0-preview4.20210.8" />
+    <PackageReference Include="Syncfusion.Blazor" Version="18.1.0.45" />
     <PackageReference Include="System.Net.Http.Json" Version="3.2.0-preview5.20210.3" />
   </ItemGroup>
 
