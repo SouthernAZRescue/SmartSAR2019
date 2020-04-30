@@ -14,8 +14,6 @@ namespace SSar.Infrastructure.Persistence.TypeConfigurations
         {
             builder.HasKey(b => b.EntityId);
 
-            builder.Property(b => b.EntityId).HasField("_entityId");
-
             builder.OwnsOne(
                 b => b.Name,
                 name =>

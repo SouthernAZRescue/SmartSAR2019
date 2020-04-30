@@ -27,7 +27,8 @@ namespace SSar.Presentation.API.Controllers
         [HttpGet]
         public async Task<IQueryable<MemberDto>> Get()
         {
-            return await _mediator.Send(new GetMembersQuery());
+            var memberDtos = await _mediator.Send(new GetMembersQuery());
+            return memberDtos;
         }
 
         [HttpGet("{id}")]
