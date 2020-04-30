@@ -13,8 +13,4 @@
     <ProjectReference Include="..\SSar.BC.MemberMgmt.Domain\SSar.BC.MemberMgmt.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
-
 </Project>

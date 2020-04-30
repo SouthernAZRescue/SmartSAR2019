@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SSar.BC.MemberMgmt.Application;
+using SSar.BC.MemberMgmt.Application.Commands;
 using SSar.BC.MemberMgmt.Application.Queries;
 
 namespace SSar.Presentation.API.Controllers
@@ -37,19 +39,19 @@ namespace SSar.Presentation.API.Controllers
         [HttpPost]
         public async Task<int> Post([FromBody] MemberDto member)
         {
-            return await _mediator.Send(new AddMemberQuery(member));
+            return await _mediator.Send(new AddMemberCommand(){MemberDto = member});
         }
 
         [HttpPut]
         public async Task Put([FromBody] MemberDto member)
         {
-            return await _mediator.Send(new UpdateMemberQuery(member));
+            await _mediator.Send(new UpdateMemberCommand(){MemberDto = member});
         }
 
         [HttpDelete]
         public async Task Delete(int id)
         {
-            return await _mediator.Send(new DeleteMemberQuery(id));
+            await _mediator.Send(new DeleteMemberCommand(){EntityId = id});
         }
     }
 }

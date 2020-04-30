@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Shouldly;
+using SSar.BC.MemberMgmt.Application;
 using SSar.BC.MemberMgmt.Application.Queries;
 using Xunit;
 

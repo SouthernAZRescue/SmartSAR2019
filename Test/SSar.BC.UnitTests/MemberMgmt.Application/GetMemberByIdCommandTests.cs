@@ -14,7 +14,7 @@ namespace SSar.BC.UnitTests.MemberMgmt.Application
         public void Ctor_ShouldSetProperties()
         {
             var id = 7;
-            var sut = new GetMemberByIdQuery(id);
+            var sut = new GetMemberByIdQuery(){EntityId = id};
             sut.EntityId.ShouldBe(id);
         }
     }

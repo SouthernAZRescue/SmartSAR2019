@@ -21,7 +21,7 @@ namespace SSar.BC.UnitTests.MemberMgmt.Domain
                 Last = "Stevens",
                 Nickname = "BillyBob"
             };
-            var sut = new Member(name);
+            var sut = new Member(){Name = name};
             sut.Name.ShouldBe(name);
             sut.EntityId.ShouldNotBe(default(int));
         }

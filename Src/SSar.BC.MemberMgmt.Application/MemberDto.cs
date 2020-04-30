@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SSar.BC.MemberMgmt.Application.Queries
+﻿namespace SSar.BC.MemberMgmt.Application
 {
     public class MemberDto
     {
