@@ -15,17 +15,27 @@
 }
 else
 {
-    <SfGrid DataSource="@membersVm.Members" AllowPaging="true" AllowSorting="true" AllowFiltering="true"Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height ="315">
-        <GridPageSettings PageSize="50"></GridPageSettings>
-        <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
-        <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
-        <GridColumns>
-            <GridColumn Field=@nameof(MemberDto.FirstName) HeaderText="First" TextAlign="TextAlign.Left" Width="40"></GridColumn>
-            <GridColumn Field=@nameof(MemberDto.MiddleName) HeaderText="Middle" TextAlign="TextAlign.Left" Width="40"></GridColumn>
-            <GridColumn Field=@nameof(MemberDto.LastName) HeaderText="Last" TextAlign="TextAlign.Left" Width="80"></GridColumn>
-            <GridColumn Field=@nameof(MemberDto.Nickname) HeaderText="Nickname" TextAlign="TextAlign.Left" Width="40"></GridColumn>
-        </GridColumns>
-    </SfGrid>
+<SfGrid DataSource="@membersVm.Members" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height="315">
+    <GridPageSettings PageSize="50"></GridPageSettings>
+    <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+    <GridEvents 
+                RowSelected="RowSelectedHandler" 
+                OnCellSave="OnCellSaveHandler" 
+                CommandClicked="OnCommandClickedHandler"
+                OnToolbarClick="OnToolbarClickHandler"
+                TValue="MemberDto">
+    </GridEvents>
+    <GridColumns>
+        <GridColumn Field=@nameof(MemberDto.FirstName) HeaderText="First" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+        <GridColumn Field=@nameof(MemberDto.MiddleName) HeaderText="Middle" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+        <GridColumn Field=@nameof(MemberDto.LastName) HeaderText="Last" TextAlign="TextAlign.Left" Width="80"></GridColumn>
+        <GridColumn Field=@nameof(MemberDto.Nickname) HeaderText="Nickname" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+    </GridColumns>
+</SfGrid>
+    <div>
+        Status: @statusMessage
+    </div>
 }
 
 
@@ -33,6 +43,8 @@ else
 @code {
     private MembersVm membersVm = new MembersVm();
     private IEnumerable<MemberDto> members;
+    private string statusMessage = "Ready";
+    private int eventCount;
 
     protected override async Task OnInitializedAsync()
     {
@@ -48,5 +60,29 @@ else
         }
 
         members = membersVm.Members.ToList();
+    }
+
+    protected void OnCommandClickedHandler(CommandClickEventArgs<MemberDto> args)
+    {
+        eventCount++;
+        statusMessage = $"OnCommandClicked ({eventCount})";
+    }
+
+    protected void OnCellSaveHandler(CellSaveArgs<MemberDto> args)
+    {
+        eventCount++;
+        statusMessage = $"OnCellSave fired ({eventCount})";
+    }
+
+    protected void RowSelectedHandler(RowSelectEventArgs<MemberDto> args)
+    {
+        eventCount++;
+        statusMessage = $"RowSelected fired ({eventCount})";
+    }
+
+    protected void OnToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        eventCount++;
+        statusMessage = $"OnToolbarClick fired ({eventCount})";
     }
 }
