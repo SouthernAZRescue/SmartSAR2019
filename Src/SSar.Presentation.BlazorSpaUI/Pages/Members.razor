@@ -9,13 +9,13 @@
 
 <h1>Members</h1>
 
-@if (membersVm == null)
+@if (memberMgmtVm == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-<SfGrid DataSource="@membersVm.Members" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height="315">
+<SfGrid DataSource="@memberMgmtVm.Members" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height="315">
     <GridPageSettings PageSize="50"></GridPageSettings>
     <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
     <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
@@ -41,7 +41,7 @@ else
 
 
 @code {
-    private MembersVm membersVm = new MembersVm();
+    private MemberMgmtVm memberMgmtVm = new MemberMgmtVm();
     private IEnumerable<MemberDto> members;
     private string statusMessage = "Ready";
     private int eventCount;
@@ -56,10 +56,10 @@ else
         if (tokenResult.TryGetToken(out var token, redirect: true))
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
-            membersVm = await httpClient.GetFromJsonAsync<MembersVm>("Members");
+            memberMgmtVm = await httpClient.GetFromJsonAsync<MemberMgmtVm>("Members");
         }
 
-        members = membersVm.Members.ToList();
+        members = memberMgmtVm.Members.ToList();
     }
 
     protected void OnCommandClickedHandler(CommandClickEventArgs<MemberDto> args)

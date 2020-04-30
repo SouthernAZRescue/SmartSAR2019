@@ -9,19 +9,19 @@ namespace SSar.Presentation.API.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class MembersController : ControllerBase
+    public class MemberMgmtController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public MembersController(IMediator mediator)
+        public MemberMgmtController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<MembersVm> Get()
+        public async Task<MemberMgmtVm> Get()
         { 
-            return await _mediator.Send(new GetMembersQuery());
+            return await _mediator.Send(new GetMemberMgmtVmQuery());
         }
     }
 }

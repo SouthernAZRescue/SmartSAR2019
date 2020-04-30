@@ -9,9 +9,9 @@ using SSar.BC.Common.Application.Interfaces;
 
 namespace SSar.BC.MemberMgmt.Application.Queries
 {
-    public class GetMembersQuery : IRequest<MembersVm>
+    public class GetMemberMgmtVmQuery : IRequest<MemberMgmtVm>
     {
-        public class GetMembersQueryHandler : IRequestHandler<GetMembersQuery, MembersVm>
+        public class GetMembersQueryHandler : IRequestHandler<GetMemberMgmtVmQuery, MemberMgmtVm>
         {
             private readonly IApplicationDbContext _dbContext;
 
@@ -19,7 +19,7 @@ namespace SSar.BC.MemberMgmt.Application.Queries
             {
                 _dbContext = dbContext;
             }
-            public async Task<MembersVm> Handle(GetMembersQuery request, CancellationToken cancellationToken)
+            public async Task<MemberMgmtVm> Handle(GetMemberMgmtVmQuery request, CancellationToken cancellationToken)
             {
                 var members = await _dbContext.Members.ToListAsync();
                 List<MemberDto> memberDtos = new List<MemberDto>();
@@ -36,7 +36,7 @@ namespace SSar.BC.MemberMgmt.Application.Queries
                     });
                 }
 
-                return new MembersVm {Members = memberDtos};
+                return new MemberMgmtVm {Members = memberDtos};
             }
         }
     }
