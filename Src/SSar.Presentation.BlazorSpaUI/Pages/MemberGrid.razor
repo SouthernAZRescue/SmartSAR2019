@@ -1,0 +1,21 @@
+﻿@using SSar.Presentation.BlazorSpaUI.Adapters
+@using SSar.BC.MemberMgmt.Application
+
+<SfGrid TValue="MemberDto" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height="315">
+    <SfDataManager Adaptor="Adaptors.CustomAdaptor">
+        <MemberGridCustomDataAdaptor></MemberGridCustomDataAdaptor>
+    </SfDataManager>
+    <GridPageSettings PageSize="50"></GridPageSettings>
+    <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+    <GridColumns>
+        <GridColumn Field="FirstName" HeaderText="First" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+        <GridColumn Field="MiddleName" HeaderText="Middle" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+        <GridColumn Field="LastName" HeaderText="Last" TextAlign="TextAlign.Left" Width="80"></GridColumn>
+        <GridColumn Field="Nickname" HeaderText="Nickname" TextAlign="TextAlign.Left" Width="40"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+
+}

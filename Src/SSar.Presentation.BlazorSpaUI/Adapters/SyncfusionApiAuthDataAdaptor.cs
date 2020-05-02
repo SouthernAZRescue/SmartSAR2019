@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Syncfusion.Blazor;
 
 namespace SSar.Presentation.BlazorSpaUI.Adapters
 {
     public class SyncfusionApiAuthDataAdaptor : DataAdaptor
     {
+        private readonly IAccessTokenProvider _authenticationProvider;
+
+        public SyncfusionApiAuthDataAdaptor(IAccessTokenProvider authenticationProvider)
+        {
+            _authenticationProvider = authenticationProvider;
+        }
+
         /// <summary>
         /// Performs data Read operation synchronously.
         /// </summary>

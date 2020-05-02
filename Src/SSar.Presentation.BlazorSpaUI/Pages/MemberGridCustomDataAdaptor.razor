@@ -1,0 +1,23 @@
+﻿
+@using System.Data
+@using Newtonsoft.Json
+@using SSar.BC.MemberMgmt.Application
+@using SSar.Presentation.BlazorSpaUI.Adapters
+@using Syncfusion.Blazor;
+@using Syncfusion.Blazor.Data;
+@inject ApiClient apiClient
+
+@inherits DataAdaptor<MemberDto>
+
+@code {
+    [Parameter]
+    [JsonIgnore]
+    public RenderFragment ChildContent { get; set; }
+
+    public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
+    {
+        var memberList = await apiClient.GetAll();
+
+        return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = memberList.Count} : (object) memberList;
+    }
+}
