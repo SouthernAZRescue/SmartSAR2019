@@ -29,7 +29,7 @@ namespace SSar.Presentation.BlazorSpaUI
             var navigationManager = host.Services.GetService<NavigationManager>();
             var authenticationService = host.Services.GetService<IAccessTokenProvider>();
             var apiService = host.Services.GetRequiredService<ApiClient>();
-            apiService.Initialize(navigationManager, authenticationService, httpClient);
+            await apiService.InitializeAsync(navigationManager, authenticationService, httpClient);
 
             await host.RunAsync();
         }

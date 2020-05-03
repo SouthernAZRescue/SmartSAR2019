@@ -12,37 +12,22 @@ namespace SSar.Presentation.BlazorSpaUI.Services
 {
     public class ApiClient
     {
-        private NavigationManager _navigationManager;
-        private IAccessTokenProvider _authenticationService;
         private HttpClient _httpClient;
         private bool _initialized = false;
-
-        public ApiClient()
-        {
-        }
-
-        public ApiClient(NavigationManager navigationManager, 
+        
+        public async Task InitializeAsync(NavigationManager navigationManager, 
             IAccessTokenProvider authenticationService, HttpClient httpClient)
         {
-            Initialize(navigationManager, authenticationService, httpClient);
-        }
-
-        public void Initialize(NavigationManager navigationManager, 
-            IAccessTokenProvider authenticationService, HttpClient httpClient)
-        {
-            _navigationManager = navigationManager;
-            _authenticationService = authenticationService;
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri(_navigationManager.BaseUri);
+            _httpClient.BaseAddress = new Uri(navigationManager.BaseUri);
+            await AddAccessTokenToHeaders(authenticationService, httpClient);
+
             _initialized = true;
         }
 
-        public async Task<List<MemberDto>> GetAll()
+        private async Task AddAccessTokenToHeaders(IAccessTokenProvider authenticationService, HttpClient httpClient)
         {
-            VerifyInitialized();
-
-            var tokenResult = await _authenticationService.RequestAccessToken();
-            var memberList = new List<MemberDto>();
+            var tokenResult = await authenticationService.RequestAccessToken();
 
             if (tokenResult.TryGetToken(out var token, redirect: true))
             {
@@ -50,19 +35,22 @@ namespace SSar.Presentation.BlazorSpaUI.Services
                 {
                     _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
                 }
-
-                memberList = await _httpClient.GetFromJsonAsync<List<MemberDto>>("Members");
             }
-
-            return memberList;
         }
 
         private void VerifyInitialized()
         {
             if (!_initialized)
             {
-                throw new ApiClientNotInitializedException(); 
+                throw new ApiClientNotInitializedException();
             }
+        }
+
+        public async Task<List<MemberDto>> GetAll()
+        {
+            VerifyInitialized();
+
+            return await _httpClient.GetFromJsonAsync<List<MemberDto>>("Members");
         }
     }
 }
