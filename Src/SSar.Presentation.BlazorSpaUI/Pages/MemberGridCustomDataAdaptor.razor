@@ -24,6 +24,12 @@
             memberList = DataOperations.PerformSearching(memberList, dm.Search);
         }
 
+        // Sorting
+        if (dm.Sorted != null && dm.Sorted.Count > 0)
+        {
+            memberList = DataOperations.PerformSorting(memberList, dm.Sorted);
+        }
+
         return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = memberList.Count()} : (object) memberList;
     }
 }
