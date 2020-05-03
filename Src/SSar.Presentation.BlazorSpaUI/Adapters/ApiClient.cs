@@ -50,7 +50,11 @@ namespace SSar.Presentation.BlazorSpaUI.Adapters
 
             if (tokenResult.TryGetToken(out var token, redirect: true))
             {
-                _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}"); 
+                if (!_httpClient.DefaultRequestHeaders.Contains("Authorization"))
+                {
+                    _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
+                }
+
                 memberList = await _httpClient.GetFromJsonAsync<List<MemberDto>>("Members");
             }
 
