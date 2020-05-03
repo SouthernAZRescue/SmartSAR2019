@@ -1,5 +1,4 @@
-﻿@using SSar.Presentation.BlazorSpaUI.Adapters
-@using SSar.BC.MemberMgmt.Application
+﻿@using SSar.BC.MemberMgmt.Application
 
 <SfGrid TValue="MemberDto" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height="315">
     <SfDataManager Adaptor="Adaptors.CustomAdaptor">

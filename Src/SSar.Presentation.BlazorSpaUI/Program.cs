@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using SSar.Presentation.BlazorSpaUI.Adapters;
+using SSar.Presentation.BlazorSpaUI.Services;
 using Syncfusion.Blazor;
 
 namespace SSar.Presentation.BlazorSpaUI

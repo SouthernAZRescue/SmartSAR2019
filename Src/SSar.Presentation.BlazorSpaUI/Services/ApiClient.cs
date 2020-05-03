@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.DependencyInjection;
 using SSar.BC.MemberMgmt.Application;
-using SSar.BC.MemberMgmt.Application.Queries;
 using SSar.Presentation.BlazorSpaUI.Exceptions;
 
-namespace SSar.Presentation.BlazorSpaUI.Adapters
+namespace SSar.Presentation.BlazorSpaUI.Services
 {
     public class ApiClient
     {
