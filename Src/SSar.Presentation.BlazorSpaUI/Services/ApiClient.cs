@@ -46,11 +46,44 @@ namespace SSar.Presentation.BlazorSpaUI.Services
             }
         }
 
-        public async Task<IEnumerable<MemberDto>> GetAll()
+        // Create
+        public async Task<int> AddAsync(MemberDto memberDto)
+        {
+            var httpResponse = await _httpClient.PostAsJsonAsync("Members", memberDto);
+            // TODO: Add handler to display error message to user if request fails
+            httpResponse.EnsureSuccessStatusCode();
+
+            // Return EntityId assigned to saved Member entity
+            return await httpResponse.Content.ReadFromJsonAsync<int>();
+
+        }
+
+        // Read
+        public async Task<IEnumerable<MemberDto>> GetAsync()  // TODO: Rename to GetAllAsync
         {
             VerifyInitialized();
 
             return await _httpClient.GetFromJsonAsync<IEnumerable<MemberDto>>("Members");
+        }
+
+        // Update
+        public async Task UpdateAsync(MemberDto memberDto)
+        {
+            VerifyInitialized();
+
+            var httpResponse = await _httpClient.PutAsJsonAsync("Members", memberDto);
+            // TODO: Add handler to display error message to user if request fails
+            httpResponse.EnsureSuccessStatusCode();
+        }
+
+        // Delete
+        public async Task DeleteAsync(int entityId)
+        {
+            VerifyInitialized();
+            
+            var httpResponse = await _httpClient.DeleteAsync($"Members/{entityId}");
+            // TODO: Add handler to display error message to user if request fails
+            httpResponse.EnsureSuccessStatusCode();
         }
     }
 }

@@ -5,7 +5,7 @@
 @using SSar.Presentation.BlazorSpaUI.Services
 @using Syncfusion.Blazor;
 @using Syncfusion.Blazor.Data;
-@inject ApiClient apiClient
+@inject ApiClient ApiClient
 
 @inherits DataAdaptor<MemberDto>
 
@@ -14,9 +14,20 @@
     [JsonIgnore]
     public RenderFragment ChildContent { get; set; }
 
+    // Create
+    public override async Task<object> InsertAsync(DataManager dataManager, object data, string key)
+    {
+        var memberDto = (MemberDto) data;
+        int insertedId = await ApiClient.AddAsync(memberDto);
+        memberDto.EntityId = insertedId;
+
+        return memberDto;
+    }
+
+    // Read
     public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
     {
-        IEnumerable<MemberDto> memberList = await apiClient.GetAll();
+        IEnumerable<MemberDto> memberList = await ApiClient.GetAsync();
 
         // Searching
         if (dm.Search != null && dm.Search.Count > 0)
@@ -51,4 +62,26 @@
 
         return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = count} : (object) memberList;
     }
+
+    // Update
+    public override async Task<object> UpdateAsync(DataManager dm, object value, string keyField, string key)
+    {
+        // TODO: Test case where update fails and see what happens
+        var memberDto = (MemberDto) value;
+        await ApiClient.UpdateAsync(memberDto);
+
+        return value;
+    }
+
+    // Delete
+    public override async Task<object> RemoveAsync(DataManager dm, object value, string keyField, string key)
+    {
+        int id = int.Parse(value.ToString());
+        // TODO: Test case where delete fails or throws and see what happens
+        await ApiClient.DeleteAsync(id);
+
+        return value;
+    }
+
+    // TODO: Batch update
 }

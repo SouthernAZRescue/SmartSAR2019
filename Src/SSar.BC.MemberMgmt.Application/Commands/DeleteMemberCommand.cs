@@ -28,6 +28,7 @@ namespace SSar.BC.MemberMgmt.Application.Commands
                 var member = await  _applicationDbContext.Members.Where(m => m.EntityId == request.EntityId)
                     .FirstOrDefaultAsync();
                 _applicationDbContext.Members.Remove(member);
+                await _applicationDbContext.SaveChangesAsync(CancellationToken.None);
 
                 return Unit.Value;
             }
