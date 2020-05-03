@@ -16,8 +16,14 @@
 
     public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
     {
-        var memberList = await apiClient.GetAll();
+        IEnumerable<MemberDto> memberList = await apiClient.GetAll();
 
-        return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = memberList.Count} : (object) memberList;
+        //Searching
+        if (dm.Search != null && dm.Search.Count > 0)
+        {
+            memberList = DataOperations.PerformSearching(memberList, dm.Search);
+        }
+
+        return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = memberList.Count()} : (object) memberList;
     }
 }

@@ -46,11 +46,11 @@ namespace SSar.Presentation.BlazorSpaUI.Services
             }
         }
 
-        public async Task<List<MemberDto>> GetAll()
+        public async Task<IEnumerable<MemberDto>> GetAll()
         {
             VerifyInitialized();
 
-            return await _httpClient.GetFromJsonAsync<List<MemberDto>>("Members");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<MemberDto>>("Members");
         }
     }
 }
