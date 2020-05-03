@@ -5,7 +5,7 @@
     <SfDataManager Adaptor="Adaptors.CustomAdaptor">
         <MemberGridCustomDataAdaptor></MemberGridCustomDataAdaptor>
     </SfDataManager>
-    <GridPageSettings PageSize="50"></GridPageSettings>
+    <GridPageSettings PageSize="50" PageSizes="@(new string[]{"20", "50", "100", "200", "All"})"></GridPageSettings>
     <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
     <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
     <GridColumns>

@@ -18,7 +18,7 @@
     {
         IEnumerable<MemberDto> memberList = await apiClient.GetAll();
 
-        //Searching
+        // Searching
         if (dm.Search != null && dm.Search.Count > 0)
         {
             memberList = DataOperations.PerformSearching(memberList, dm.Search);
@@ -30,6 +30,25 @@
             memberList = DataOperations.PerformSorting(memberList, dm.Sorted);
         }
 
-        return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = memberList.Count()} : (object) memberList;
+        // Filtering
+        if (dm.Where != null && dm.Where.Count > 0)
+        {
+            memberList = DataOperations.PerformFiltering(memberList, dm.Where, dm.Where[0].Operator);
+        }
+
+        // Paging
+        int count = memberList.Cast<MemberDto>().Count();
+
+        if (dm.Skip != 0)
+        {
+            memberList = DataOperations.PerformSkip(memberList, dm.Skip);
+        }
+
+        if (dm.Take != 0)
+        {
+            memberList = DataOperations.PerformTake(memberList, dm.Take);
+        }
+
+        return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = count} : (object) memberList;
     }
 }
