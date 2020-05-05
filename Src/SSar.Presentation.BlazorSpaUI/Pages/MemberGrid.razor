@@ -6,12 +6,15 @@
 
 <SfGrid TValue="MemberDto" AllowPaging="true" AllowSorting="true" AllowFiltering="true" 
         Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update", "Search" })">
+
     <SfDataManager Adaptor="Adaptors.CustomAdaptor">
         <MemberGridCustomDataAdaptor></MemberGridCustomDataAdaptor>
     </SfDataManager>
+
     <GridPageSettings PageSize="50" PageSizes="@(new string[]{"20", "50", "100", "200", "All"})"></GridPageSettings>
     <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
     <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true"></GridEditSettings>
+
     <GridColumns>
         <GridColumn Field="EntityId" HeaderText="EntityId" TextAlign ="TextAlign.Left" Width="20" 
                     IsPrimaryKey="true" AllowEditing="false"></GridColumn>
@@ -20,6 +23,7 @@
         <GridColumn Field="LastName" HeaderText="Last" TextAlign="TextAlign.Left" Width="80"></GridColumn>
         <GridColumn Field="Nickname" HeaderText="Nickname" TextAlign="TextAlign.Left" Width="40"></GridColumn>
     </GridColumns>
+
 </SfGrid>
 
 @code {
