@@ -24,12 +24,12 @@ namespace SSar.Presentation.BlazorSpaUI
             builder.Services.AddSyncfusionBlazor();
             var host = builder.Build();
 
-            // Setup API Client service
-            var httpClient = host.Services.GetService<HttpClient>();
-            var navigationManager = host.Services.GetService<NavigationManager>();
-            var authenticationService = host.Services.GetService<IAccessTokenProvider>();
+            // Setup API Client serviceB
             var apiService = host.Services.GetRequiredService<ApiClient>();
-            await apiService.InitializeAsync(navigationManager, authenticationService, httpClient);
+            await apiService.InitializeAsync(
+                host.Services.GetService<NavigationManager>(),
+                host.Services.GetService<IAccessTokenProvider>(),
+                host.Services.GetService<HttpClient>());
 
             await host.RunAsync();
         }
