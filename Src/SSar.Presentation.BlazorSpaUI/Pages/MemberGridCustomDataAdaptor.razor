@@ -1,13 +1,11 @@
-﻿
-@using System.Data
-@using Newtonsoft.Json
+﻿@using System.Text.Json.Serialization
 @using SSar.BC.MemberMgmt.Application
 @using SSar.Presentation.BlazorSpaUI.Services
-@using Syncfusion.Blazor;
-@using Syncfusion.Blazor.Data;
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
 @inject ApiClient ApiClient
 
-@inherits DataAdaptor<MemberDto>
+@inherits Syncfusion.Blazor.DataAdaptor<MemberDto>
 
 @code {
     [Parameter]
