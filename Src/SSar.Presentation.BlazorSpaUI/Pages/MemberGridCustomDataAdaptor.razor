@@ -1,4 +1,5 @@
 ﻿@using System.Text.Json.Serialization
+@using System.Linq
 @using SSar.BC.MemberMgmt.Application
 @using SSar.Presentation.BlazorSpaUI.Services
 @using Syncfusion.Blazor
@@ -25,37 +26,37 @@
     // Read
     public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
     {
-        IEnumerable<MemberDto> memberList = await ApiClient.GetAsync();
+        IEnumerable<MemberDto> memberList = (await ApiClient.GetAsync()).ToList();
 
         // Searching
         if (dm.Search != null && dm.Search.Count > 0)
         {
-            memberList = DataOperations.PerformSearching(memberList, dm.Search);
+            memberList = DataOperations.PerformSearching(memberList, dm.Search).ToList();
         }
 
         // Sorting
         if (dm.Sorted != null && dm.Sorted.Count > 0)
         {
-            memberList = DataOperations.PerformSorting(memberList, dm.Sorted);
+            memberList = DataOperations.PerformSorting(memberList, dm.Sorted).ToList();
         }
 
         // Filtering
         if (dm.Where != null && dm.Where.Count > 0)
         {
-            memberList = DataOperations.PerformFiltering(memberList, dm.Where, dm.Where[0].Operator);
+            memberList = DataOperations.PerformFiltering(memberList, dm.Where, dm.Where[0].Operator).ToList();
         }
 
         // Paging
-        int count = memberList.Cast<MemberDto>().Count();
+        int count = memberList.Cast<MemberDto>().Count(); // Get number of rows before taking
 
         if (dm.Skip != 0)
         {
-            memberList = DataOperations.PerformSkip(memberList, dm.Skip);
+            memberList = DataOperations.PerformSkip(memberList, dm.Skip).ToList();
         }
 
         if (dm.Take != 0)
         {
-            memberList = DataOperations.PerformTake(memberList, dm.Take);
+            memberList = DataOperations.PerformTake(memberList, dm.Take).ToList();
         }
 
         return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = count} : (object) memberList;
