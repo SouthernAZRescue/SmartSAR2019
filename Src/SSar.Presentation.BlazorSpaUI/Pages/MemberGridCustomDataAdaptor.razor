@@ -1,0 +1,87 @@
+﻿@using System.Text.Json.Serialization
+@using System.Linq
+@using SSar.BC.MemberMgmt.Application
+@using SSar.Presentation.BlazorSpaUI.Services
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@inject ApiClient ApiClient
+
+@inherits Syncfusion.Blazor.DataAdaptor<MemberDto>
+
+@code {
+    [Parameter]
+    [JsonIgnore]
+    public RenderFragment ChildContent { get; set; }
+
+    // Create
+    public override async Task<object> InsertAsync(DataManager dataManager, object data, string key)
+    {
+        var memberDto = (MemberDto) data;
+        int insertedId = await ApiClient.AddAsync(memberDto);
+        memberDto.EntityId = insertedId;
+
+        return memberDto;
+    }
+
+    // Read
+    public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
+    {
+        IEnumerable<MemberDto> memberList = (await ApiClient.GetAsync()).ToList();
+
+        // Searching
+        if (dm.Search != null && dm.Search.Count > 0)
+        {
+            memberList = DataOperations.PerformSearching(memberList, dm.Search).ToList();
+        }
+
+        // Sorting
+        if (dm.Sorted != null && dm.Sorted.Count > 0)
+        {
+            memberList = DataOperations.PerformSorting(memberList, dm.Sorted).ToList();
+        }
+
+        // Filtering
+        if (dm.Where != null && dm.Where.Count > 0)
+        {
+            memberList = DataOperations.PerformFiltering(memberList, dm.Where, dm.Where[0].Operator).ToList();
+        }
+
+        // Paging
+        int count = memberList.Cast<MemberDto>().Count(); // Get number of rows before taking
+
+        if (dm.Skip != 0)
+        {
+            memberList = DataOperations.PerformSkip(memberList, dm.Skip).ToList();
+        }
+
+        if (dm.Take != 0)
+        {
+            memberList = DataOperations.PerformTake(memberList, dm.Take).ToList();
+        }
+
+        return dm.RequiresCounts ? new DataResult() {Result = memberList, Count = count} : (object) memberList;
+    }
+
+    // Update
+    public override async Task<object> UpdateAsync(DataManager dm, object value, string keyField, string key)
+    {
+        // TODO: Test case where update fails and see what happens
+        var memberDto = (MemberDto) value;
+        await ApiClient.UpdateAsync(memberDto);
+
+        return value;
+    }
+
+    // Delete
+    public override async Task<object> RemoveAsync(DataManager dm, object value, string keyField, string key)
+    {
+        int id = int.Parse(value.ToString());
+        // TODO: Test case where delete fails or throws and see what happens
+        await ApiClient.DeleteAsync(id);
+
+        return value;
+    }
+
+    // Batch update: Not implemented for this application. See https://blazor.syncfusion.com/documentation/datagrid/custom-binding/#crud-operation
+    // for an example of how to implement
+}

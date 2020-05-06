@@ -49,7 +49,7 @@ namespace SSar.Presentation.API.Controllers
             await _mediator.Send(new UpdateMemberCommand(){MemberDto = member});
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
             await _mediator.Send(new DeleteMemberCommand(){EntityId = id});

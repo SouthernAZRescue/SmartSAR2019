@@ -10,70 +10,8 @@
 
 <h1>Members</h1>
 
-
-<SfGrid TValue="MemberDto" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" Height="315">
-    <SfDataManager Url="Members" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
-    <GridPageSettings PageSize="50"></GridPageSettings>
-    <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
-    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
-    <GridColumns>
-        <GridColumn Field="FirstName" HeaderText="First" TextAlign="TextAlign.Left" Width="40"></GridColumn>
-        <GridColumn Field="MiddleName" HeaderText="Middle" TextAlign="TextAlign.Left" Width="40"></GridColumn>
-        <GridColumn Field="LastName" HeaderText="Last" TextAlign="TextAlign.Left" Width="80"></GridColumn>
-        <GridColumn Field="Nickname" HeaderText="Nickname" TextAlign="TextAlign.Left" Width="40"></GridColumn>
-    </GridColumns>
-</SfGrid>
-
-    <div>
-        Status: @statusMessage
-    </div>
-
-
-
+<MemberGrid></MemberGrid>
 
 @code {
-    // private MemberMgmtVm memberMgmtVm = new MemberMgmtVm();
-    // private IEnumerable<MemberDto> members;
-    private string statusMessage = "Ready";
-    private int eventCount;
 
-    protected override async Task OnInitializedAsync()
-    {
-        //var httpClient = new HttpClient();
-        //httpClient.BaseAddress = new Uri(Navigation.BaseUri);
-
-        //var tokenResult = await AuthenticationService.RequestAccessToken();
-
-        //if (tokenResult.TryGetToken(out var token, redirect: true))
-        //{
-        //    httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
-        //    memberMgmtVm = await httpClient.GetFromJsonAsync<MemberMgmtVm>("Members");
-        //}
-
-        //members = memberMgmtVm.Members.ToList();
-    }
-
-    protected void OnCommandClickedHandler(CommandClickEventArgs<MemberDto> args)
-    {
-        eventCount++;
-        statusMessage = $"OnCommandClicked ({eventCount})";
-    }
-
-    protected void OnCellSaveHandler(CellSaveArgs<MemberDto> args)
-    {
-        eventCount++;
-        statusMessage = $"OnCellSave fired ({eventCount})";
-    }
-
-    protected void RowSelectedHandler(RowSelectEventArgs<MemberDto> args)
-    {
-        eventCount++;
-        statusMessage = $"RowSelected fired ({eventCount})";
-    }
-
-    protected void OnToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
-    {
-        eventCount++;
-        statusMessage = $"OnToolbarClick fired ({eventCount})";
-    }
 }
