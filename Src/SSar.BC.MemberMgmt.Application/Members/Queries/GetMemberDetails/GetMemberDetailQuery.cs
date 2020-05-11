@@ -1,20 +1,17 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SSar.BC.Common.Application.Interfaces;
-using SSar.BC.MemberMgmt.Domain.Entities;
+using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList;
 
-namespace SSar.BC.MemberMgmt.Application.Queries
+namespace SSar.BC.MemberMgmt.Application.Members.Queries.GetMemberDetails
 {
-    public class GetMemberByIdQuery : IRequest<MemberDto>
+    public class GetMemberDetailQuery : IRequest<MemberLookupDto>
     {
         public int EntityId { get; set; }
 
-
-        // TODO: Write tests after this is not longer just a fake prototype
-        public class GetMemberByIdQueryHandler : IRequestHandler<GetMemberByIdQuery, MemberDto>
+        public class GetMemberByIdQueryHandler : IRequestHandler<GetMemberDetailQuery, MemberLookupDto>
         {
             private readonly IApplicationDbContext _dbContext;
 
@@ -23,13 +20,11 @@ namespace SSar.BC.MemberMgmt.Application.Queries
                 _dbContext = dbContext;
             }
 
-            public async Task<MemberDto> Handle(GetMemberByIdQuery request, CancellationToken cancellationToken)
+            public async Task<MemberLookupDto> Handle(GetMemberDetailQuery request, CancellationToken cancellationToken)
             {
-                // TODO: FINISH PROTOTYPE - This is a stub and only returns the first member in the table
-
                 var member = await _dbContext.Members.FirstOrDefaultAsync();
 
-                var memberDto = new MemberDto
+                var memberDto = new MemberLookupDto
                 {
                     EntityId = member.EntityId,
                     FirstName = member.Name.First,

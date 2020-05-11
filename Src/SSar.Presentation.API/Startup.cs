@@ -1,17 +1,17 @@
-using System.Dynamic;
-using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SSar.BC.Common.Application;
 using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
-using SSar.BC.MemberMgmt.Application.Queries;
 using SSar.Infrastructure.Identity;
 using SSar.Infrastructure.Persistence;
+using SSar.Presentation.API.Filters;
 
 namespace SSar.Presentation.API
 {
@@ -25,14 +25,17 @@ namespace SSar.Presentation.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        // For more information on how to configure your application,
+        // visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // TODO: Move most of these startup methods to their appropriate projects
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => 
+                    options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
@@ -43,10 +46,16 @@ namespace SSar.Presentation.API
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews( options =>
+                options.Filters.Add(new ApiExceptionFilter()));
+            services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
+
+
             services.AddRazorPages();
 
-            services.AddMediatR(typeof(Startup), typeof(GetMemberByIdQuery));
+            // Add dependency injection from individual projects
+            services.AddBCCommonApplication();
+            services.AddBCMemberMgmtApplication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +70,8 @@ namespace SSar.Presentation.API
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // The default HSTS value is 30 days. You may want to change this for production scenarios,
+                // see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

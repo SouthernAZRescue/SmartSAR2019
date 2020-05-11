@@ -6,15 +6,18 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SSar.BC.MemberMgmt.Application;
-using SSar.BC.MemberMgmt.Application.Commands;
-using SSar.BC.MemberMgmt.Application.Queries;
+using SSar.BC.MemberMgmt.Application.Members.Commands.CreateMemberCommand;
+using SSar.BC.MemberMgmt.Application.Members.Commands.DeleteMemberCommand;
+using SSar.BC.MemberMgmt.Application.Members.Commands.UpdateMemberCommand;
+using SSar.BC.MemberMgmt.Application.Members.Queries.GetMemberDetails;
+using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList;
 
 namespace SSar.Presentation.API.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class MembersController
+    public class MembersController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -25,34 +28,42 @@ namespace SSar.Presentation.API.Controllers
 
 
         [HttpGet]
-        public async Task<IQueryable<MemberDto>> Get()
+        public async Task<MembersListVm> GetAll()
         {
-            var memberDtos = await _mediator.Send(new GetMembersQuery());
-            return memberDtos;
+            return await _mediator.Send(new GetMembersListQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<MemberDto> Get(int id)
+        public async Task<MemberLookupDto> Get(int id)
         {
-            return await _mediator.Send(new GetMemberByIdQuery() {EntityId = id});
+            return await _mediator.Send(new GetMemberDetailQuery() {EntityId = id});
         }
 
         [HttpPost]
-        public async Task<int> Post([FromBody] MemberDto member)
+        public async Task<ActionResult<int>> Post([FromBody] CreateMemberCommand command)
         {
-            return await _mediator.Send(new AddMemberCommand(){MemberDto = member});
+            return await _mediator.Send(command);
         }
 
-        [HttpPut]
-        public async Task Put([FromBody] MemberDto member)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, [FromBody] UpdateMemberCommand command)
         {
-            await _mediator.Send(new UpdateMemberCommand(){MemberDto = member});
+            if (id != command.EntityId)
+            {
+                return BadRequest();
+            }
+            
+            await _mediator.Send(command);
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteMemberCommand(){EntityId = id});
+
+            return NoContent();
         }
     }
 }

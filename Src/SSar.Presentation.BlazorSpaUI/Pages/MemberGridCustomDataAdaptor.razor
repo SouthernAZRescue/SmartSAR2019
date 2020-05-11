@@ -1,12 +1,14 @@
 ﻿@using System.Text.Json.Serialization
 @using System.Linq
 @using SSar.BC.MemberMgmt.Application
+@using SSar.BC.MemberMgmt.Application.Members.Queries.GetMemberDetails
+@using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList
 @using SSar.Presentation.BlazorSpaUI.Services
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Data
 @inject ApiClient ApiClient
 
-@inherits Syncfusion.Blazor.DataAdaptor<MemberDto>
+@inherits Syncfusion.Blazor.DataAdaptor<SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList.MemberLookupDto>
 
 @code {
     [Parameter]
@@ -16,8 +18,8 @@
     // Create
     public override async Task<object> InsertAsync(DataManager dataManager, object data, string key)
     {
-        var memberDto = (MemberDto) data;
-        int insertedId = await ApiClient.AddAsync(memberDto);
+        var memberDto = (MemberLookupDto) data;
+        int insertedId = await ApiClient.CreateAsync(memberDto);
         memberDto.EntityId = insertedId;
 
         return memberDto;
@@ -26,7 +28,8 @@
     // Read
     public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
     {
-        IEnumerable<MemberDto> memberList = (await ApiClient.GetAsync()).ToList();
+        var membersListVm = (await ApiClient.GetAllAsync());
+        var memberList = membersListVm.Members;
 
         // Searching
         if (dm.Search != null && dm.Search.Count > 0)
@@ -47,7 +50,7 @@
         }
 
         // Paging
-        int count = memberList.Cast<MemberDto>().Count(); // Get number of rows before taking
+        int count = memberList.Cast<MemberLookupDto>().Count(); // Get number of rows before taking
 
         if (dm.Skip != 0)
         {
@@ -66,7 +69,7 @@
     public override async Task<object> UpdateAsync(DataManager dm, object value, string keyField, string key)
     {
         // TODO: Test case where update fails and see what happens
-        var memberDto = (MemberDto) value;
+        var memberDto = (MemberLookupDto) value;
         await ApiClient.UpdateAsync(memberDto);
 
         return value;

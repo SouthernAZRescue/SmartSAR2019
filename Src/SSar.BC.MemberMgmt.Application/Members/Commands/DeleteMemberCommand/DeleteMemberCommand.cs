@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SSar.BC.Common.Application.Interfaces;
 
-namespace SSar.BC.MemberMgmt.Application.Commands
+namespace SSar.BC.MemberMgmt.Application.Members.Commands.DeleteMemberCommand
 {
     public class DeleteMemberCommand : IRequest
     {

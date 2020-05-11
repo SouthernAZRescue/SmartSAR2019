@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Shouldly;
 using SSar.BC.MemberMgmt.Application;
-using SSar.BC.MemberMgmt.Application.Queries;
+using SSar.BC.MemberMgmt.Application.Members.Queries.GetMemberDetails;
+using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList;
 using Xunit;
 
 namespace SSar.Presentation.UnitTests.Common
@@ -13,7 +14,7 @@ namespace SSar.Presentation.UnitTests.Common
         [Fact]
         public void Ctor_ShouldSetProperties()
         {
-            var sut = new MemberDto
+            var sut = new MemberLookupDto
             {
                 EntityId = 353117,
                 FirstName = "Donald",

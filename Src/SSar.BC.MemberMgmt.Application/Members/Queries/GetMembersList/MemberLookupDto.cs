@@ -1,6 +1,6 @@
-﻿namespace SSar.BC.MemberMgmt.Application
+﻿namespace SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList
 {
-    public class MemberDto
+    public class MemberLookupDto
     {
         public int EntityId { get; set; }
         public string FirstName { get; set; }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using SSar.BC.MemberMgmt.Application;
+using SSar.BC.MemberMgmt.Application.Members.Queries.GetMemberDetails;
+using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList;
 using SSar.Presentation.BlazorSpaUI.Exceptions;
 
 namespace SSar.Presentation.BlazorSpaUI.Services
@@ -40,49 +42,49 @@ namespace SSar.Presentation.BlazorSpaUI.Services
 
         private void VerifyInitialized()
         {
+            // TODO: See if there is a better way to handle DI into the constructor to avoid this initializer
+            // Unable to use a factory because the services aren't yet available?
             if (!_initialized)
             {
                 throw new ApiClientNotInitializedException();
             }
         }
 
-        // Create
-        public async Task<int> AddAsync(MemberDto memberDto)
+        public async Task<int> CreateAsync(MemberLookupDto memberLookupDto) // TODO: BREAK THIS DEPENDENCY WITH THE APPLICATION LAYER
         {
-            var httpResponse = await _httpClient.PostAsJsonAsync("Members", memberDto);
+            VerifyInitialized();
+
+            var httpResponse = await _httpClient.PostAsJsonAsync("Members", memberLookupDto);
             // TODO: Add handler to display error message to user if request fails
             httpResponse.EnsureSuccessStatusCode();
 
-            // Return EntityId assigned to saved Member entity
+            // Return new EntityId assigned to the saved Member entity
             return await httpResponse.Content.ReadFromJsonAsync<int>();
 
         }
 
-        // Read
-        public async Task<IEnumerable<MemberDto>> GetAsync()  // TODO: Rename to GetAllAsync
+        public async Task<MembersListVm> GetAllAsync()
         {
             VerifyInitialized();
 
-            return await _httpClient.GetFromJsonAsync<IEnumerable<MemberDto>>("Members");
+            return await _httpClient.GetFromJsonAsync<MembersListVm>("Members");
         }
 
-        // Update
-        public async Task UpdateAsync(MemberDto memberDto)
+        public async Task UpdateAsync(MemberLookupDto memberLookupDto) // TODO: BREAK THIS DEPENDENCY WITH THE APPLICATION LAYER
         {
             VerifyInitialized();
 
-            var httpResponse = await _httpClient.PutAsJsonAsync("Members", memberDto);
-            // TODO: Add handler to display error message to user if request fails
+            var httpResponse = await _httpClient.PutAsJsonAsync($"Members/{memberLookupDto.EntityId}", memberLookupDto);
+
             httpResponse.EnsureSuccessStatusCode();
         }
 
-        // Delete
         public async Task DeleteAsync(int entityId)
         {
             VerifyInitialized();
             
             var httpResponse = await _httpClient.DeleteAsync($"Members/{entityId}");
-            // TODO: Add handler to display error message to user if request fails
+
             httpResponse.EnsureSuccessStatusCode();
         }
     }
