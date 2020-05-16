@@ -31,6 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.Infrastructure", "Src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.Common.Application", "Src\SSar.BC.Common.Application\SSar.BC.Common.Application.csproj", "{B11D0729-6664-4523-BC4F-B3E5BCE57335}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{03B698EE-03AE-4334-8986-7D54DB403E1D}"
+	ProjectSection(SolutionItems) = preProject
+		Credits.txt = Credits.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

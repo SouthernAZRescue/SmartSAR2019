@@ -1,0 +1,30 @@
+Jimmy Bogard
+MediatR, vertical slice architecture examples and blog
+https://jimmybogard.com/
+- Jimmy Bogard has been one of the top three influencers of my programming style, introducing me to the
+     concept of vertical slice architecture and simple UI controllers that rely on the mediator and
+     CQRS patterns for extreme cleanliness. Short snippets of his MediatR code samples are reused and
+     adapted throughout this application.
+
+Chris Sainty
+Blog: Creating a Reusable Java-Script-Free Blazor Modal
+https://www.telerik.com/blogs/creating-a-reusable-javascript-free-blazor-modal
+- This is an extremely useful post detailing how to work within Blazor's currently-limited feature
+    set and create easy-to-generate and full featured modal dialogs.
+
+Jason Taylor
+Clean Architecture video series and Github examples
+https://github.com/jasontaylordev
+- Another top influencer of my programming style, you'll find pieces of his code througout including
+    the time service, and AuditableEntity and other base classes.
+
+Syncfusion
+Component Framework for Blazor
+https://Syncfusion.com
+- Thank you to Syncfusion for offering a free license to small companies and dev teams. It saved
+    a great deal of time. I look forward to watching your Blazor library mature.
+
+--------
+John P. Smith
+Entity Framework videos
+- Thinking about it... TBD.
