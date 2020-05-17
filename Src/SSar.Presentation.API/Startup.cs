@@ -1,17 +1,14 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SSar.BC.Common.Application;
-using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
-using SSar.Infrastructure.Identity;
-using SSar.Infrastructure.Persistence;
+using SSar.Infrastructure;
 using SSar.Presentation.API.Filters;
+using SSar.Presentation.BlazorSpaUI;
 
 namespace SSar.Presentation.API
 {
@@ -29,33 +26,20 @@ namespace SSar.Presentation.API
         // visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            // TODO: Move most of these startup methods to their appropriate projects
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            // Add DI and init from individual bounded contexts and other projects
 
-            services.AddDefaultIdentity<ApplicationUser>(options => 
-                    options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddInfrastructure(Configuration);
+            services.AddBoundedContextCommonFeatures();
+            services.AddMemberManagement();
+            services.AddBlazorSpaUI();
 
-            services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
-
-            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+            // API/web host setup
 
             services.AddControllersWithViews( options =>
                 options.Filters.Add(new ApiExceptionFilter()));
             services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 
-
             services.AddRazorPages();
-
-            // Add dependency injection from individual projects
-            services.AddBCCommonApplication();
-            services.AddBCMemberMgmtApplication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

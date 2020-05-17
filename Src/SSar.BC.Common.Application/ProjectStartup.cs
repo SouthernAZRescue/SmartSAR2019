@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using SSar.BC.Common.Application.Behaviors;
-using FluentValidation;
 
 namespace SSar.BC.Common.Application
 {
-    public static class DependencyInjection
+    public static class ProjectStartup
     {
-        public static IServiceCollection AddBCCommonApplication(this IServiceCollection services)
+        public static IServiceCollection AddBoundedContextCommonFeatures(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
