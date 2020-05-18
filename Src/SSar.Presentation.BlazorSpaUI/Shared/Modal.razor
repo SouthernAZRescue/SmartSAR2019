@@ -1,0 +1,65 @@
+﻿@using SSar.Presentation.BlazorSpaUI.Services
+@using Syncfusion.Blazor.Popups
+@inherits ComponentBase
+@implements IDisposable
+@inject ModalService ModalService
+
+<div class="bm-container @(IsVisible ? "bm-active" : string.Empty)">
+
+    <div class="bm-overlay" @onclick="CloseModal"></div>
+
+    <div class="blazor-modal">
+        <div class="bm-header">
+            <h3 class="bm-title">@Title</h3>
+            <button type="button" class="bm-close" @onclick="CloseModal">
+                <span>&times;</span>
+            </button>
+        </div>
+        <div class="bm-content">
+            @Content
+        </div>
+    </div>
+
+</div>
+
+@code {
+
+    protected bool IsVisible { get; set; }
+    protected string Title { get; set; }
+    protected RenderFragment Content { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ModalService.OnShow += ShowModal;
+        ModalService.OnClose += CloseModal;
+
+        base.OnInitialized();
+    }
+
+    public void ShowModal(string title, RenderFragment content)
+    {
+        Title = title;
+        Content = content;
+        IsVisible = true;
+
+        StateHasChanged();
+    }
+
+    public void CloseModal()
+    {
+        IsVisible = false;
+        Title = "";
+        Content = null;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ModalService.OnShow -= ShowModal;
+        ModalService.OnClose -= CloseModal;
+    }
+
+}
+
+// Credit: Chris Sainty, Creating a Reusable Javascript-Free Blazor Modal
+// https://www.telerik.com/blogs/creating-a-reusable-javascript-free-blazor-modal

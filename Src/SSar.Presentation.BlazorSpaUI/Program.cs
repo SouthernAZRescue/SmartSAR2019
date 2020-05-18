@@ -19,6 +19,7 @@ namespace SSar.Presentation.BlazorSpaUI
 
             builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddScoped<ApiClient>();
+            builder.Services.AddScoped<ModalService>();
             builder.Services.AddApiAuthorization();
 
             builder.Services.AddSyncfusionBlazor();
