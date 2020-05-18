@@ -31,7 +31,6 @@ namespace SSar.Presentation.API
             services.AddInfrastructure(Configuration);
             services.AddBoundedContextCommonFeatures();
             services.AddMemberManagement();
-            services.AddBlazorSpaUI();
 
             // API/web host setup
 
