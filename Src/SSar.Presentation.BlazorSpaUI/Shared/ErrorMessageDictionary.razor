@@ -1,0 +1,31 @@
+﻿@if (Model != null)
+{
+    <ul>
+
+        @foreach(var field in Model)
+        {
+            <li>
+                @field.Key
+            </li>
+
+            if (field.Value != null)
+            {
+                <ul>
+                    @foreach (var message in field.Value)
+                    {
+                        <li>
+                            @message
+                        </li>
+                    }
+                </ul>
+            }
+        }
+
+    </ul>
+}
+
+@code {
+
+    [Parameter]
+    public IDictionary<string, string[]> Model { get; set; }
+}

@@ -1,14 +1,14 @@
 ﻿@using System.Text.Json.Serialization
 @using System.Linq
-@using SSar.BC.MemberMgmt.Application
-@using SSar.BC.MemberMgmt.Application.Members.Queries.GetMemberDetails
 @using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList
 @using SSar.Presentation.BlazorSpaUI.Services
+@using SSar.Presentation.BlazorSpaUI.Utilities
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Data
 @inject ApiClient ApiClient
+@inject ModalService ModalService
 
-@inherits Syncfusion.Blazor.DataAdaptor<SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList.MemberLookupDto>
+@inherits Syncfusion.Blazor.DataAdaptor<MemberLookupDto>
 
 @code {
     [Parameter]
@@ -19,8 +19,11 @@
     public override async Task<object> InsertAsync(DataManager dataManager, object data, string key)
     {
         var memberDto = (MemberLookupDto) data;
-        int insertedId = await ApiClient.CreateAsync(memberDto);
-        memberDto.EntityId = insertedId;
+
+        await ApiTools.WrapApiCallWithValidationModalAsync(
+            async () =>
+                await ApiClient.CreateAsync(memberDto),
+            ModalService);
 
         return memberDto;
     }
@@ -68,9 +71,12 @@
     // Update
     public override async Task<object> UpdateAsync(DataManager dm, object value, string keyField, string key)
     {
-        // TODO: Test case where update fails and see what happens
-        var memberDto = (MemberLookupDto) value;
-        await ApiClient.UpdateAsync(memberDto);
+        var memberDto = (MemberLookupDto)value;
+
+        await ApiTools.WrapApiCallWithValidationModalAsync(
+            async () =>
+            await ApiClient.UpdateAsync(memberDto),
+            ModalService);
 
         return value;
     }
@@ -79,12 +85,12 @@
     public override async Task<object> RemoveAsync(DataManager dm, object value, string keyField, string key)
     {
         int id = int.Parse(value.ToString());
-        // TODO: Test case where delete fails or throws and see what happens
+
         await ApiClient.DeleteAsync(id);
 
         return value;
     }
 
-    // Batch update: Not implemented for this application. See https://blazor.syncfusion.com/documentation/datagrid/custom-binding/#crud-operation
+    // Batch update: Not (yet?) implemented for this application. See https://blazor.syncfusion.com/documentation/datagrid/custom-binding/#crud-operation
     // for an example of how to implement
 }

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using SSar.BC.MemberMgmt.Application;
-using SSar.BC.MemberMgmt.Application.Members.Queries.GetMemberDetails;
 using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList;
 using SSar.Presentation.BlazorSpaUI.Exceptions;
+using SSar.Presentation.BlazorSpaUI.Extensions;
 
 namespace SSar.Presentation.BlazorSpaUI.Services
 {
@@ -42,8 +40,10 @@ namespace SSar.Presentation.BlazorSpaUI.Services
 
         private void VerifyInitialized()
         {
-            // TODO: See if there is a better way to handle DI into the constructor to avoid this initializer
-            // Unable to use a factory because the services aren't yet available?
+            // TODO: See if there is a better way to handle DI into the constructor to avoid
+            // requiring this test with every call.
+
+            // Unable to use a factory because the services aren't yet available at start of Program.cs?
             if (!_initialized)
             {
                 throw new ApiClientNotInitializedException();
@@ -55,12 +55,11 @@ namespace SSar.Presentation.BlazorSpaUI.Services
             VerifyInitialized();
 
             var httpResponse = await _httpClient.PostAsJsonAsync("Members", memberLookupDto);
-            // TODO: Add handler to display error message to user if request fails
-            httpResponse.EnsureSuccessStatusCode();
 
-            // Return new EntityId assigned to the saved Member entity
+            await httpResponse.ThrowIfErrorResponse();
+
+            // Return the new EntityId assigned to the just-saved Member entity
             return await httpResponse.Content.ReadFromJsonAsync<int>();
-
         }
 
         public async Task<MembersListVm> GetAllAsync()
@@ -76,7 +75,7 @@ namespace SSar.Presentation.BlazorSpaUI.Services
 
             var httpResponse = await _httpClient.PutAsJsonAsync($"Members/{memberLookupDto.EntityId}", memberLookupDto);
 
-            httpResponse.EnsureSuccessStatusCode();
+            await httpResponse.ThrowIfErrorResponse();
         }
 
         public async Task DeleteAsync(int entityId)
@@ -85,7 +84,9 @@ namespace SSar.Presentation.BlazorSpaUI.Services
             
             var httpResponse = await _httpClient.DeleteAsync($"Members/{entityId}");
 
-            httpResponse.EnsureSuccessStatusCode();
+            await httpResponse.ThrowIfErrorResponse();
         }
+
+
     }
 }
