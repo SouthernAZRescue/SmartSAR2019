@@ -10,13 +10,3 @@ Welcome to your new app.
 
 <hr />
 
-<button @onclick="ShowModal">Show Modal</button>
-
-
-@functions
-{
-    private void ShowModal()
-    {
-        ModalService.Show("Sample Modal",typeof(TestFragment));
-    }
-}
