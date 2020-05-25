@@ -5,10 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SSar.BC.Common.Application;
+using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
 using SSar.Infrastructure;
 using SSar.Presentation.API.Filters;
-using SSar.Presentation.BlazorSpaUI;
+using SSar.Presentation.API.Services;
 
 namespace SSar.Presentation.API
 {
@@ -26,11 +27,15 @@ namespace SSar.Presentation.API
         // visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // DI and init for this (API) project
+
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+
             // Add DI and init from individual bounded contexts and other projects
 
             services.AddInfrastructure(Configuration);
-            services.AddBoundedContextCommonFeatures();
             services.AddMemberManagement();
+            services.AddBoundedContextCommonFeatures();
 
             // API/web host setup
 
