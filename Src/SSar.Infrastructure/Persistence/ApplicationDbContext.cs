@@ -11,7 +11,7 @@ using SSar.Infrastructure.Persistence.TypeConfigurations;
 
 namespace SSar.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
+    public class ApplicationDbContext : KeyApiAuthorizationDbContext<AppUser, AppRole, int>, IApplicationDbContext
     {
         public ApplicationDbContext(
             DbContextOptions options,
@@ -21,11 +21,11 @@ namespace SSar.Infrastructure.Persistence
 
         public DbSet<Member> Members { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
 
-            base.OnModelCreating(builder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

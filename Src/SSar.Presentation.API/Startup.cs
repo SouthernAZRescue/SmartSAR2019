@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using SSar.BC.Common.Application;
 using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
+using SSar.BC.UserMgmt.Application;
 using SSar.Infrastructure;
 using SSar.Presentation.API.Filters;
 using SSar.Presentation.API.Services;
@@ -35,6 +36,7 @@ namespace SSar.Presentation.API
 
             services.AddInfrastructure(Configuration);
             services.AddMemberManagement();
+            services.AddUserManagement();
             services.AddBoundedContextCommonFeatures();
 
             // API/web host setup
@@ -44,6 +46,8 @@ namespace SSar.Presentation.API
             services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 
             services.AddRazorPages();
+
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +76,9 @@ namespace SSar.Presentation.API
             app.UseIdentityServer();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SSar.Presentation.API</name>
+    </assembly>
+    <members>
+        <member name="M:SSar.Presentation.API.Controllers.MembersController.GetAll">
+            <summary>
+            Get a list of all members with basic properties for a quick reference table.
+            </summary>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+    </members>
+</doc>

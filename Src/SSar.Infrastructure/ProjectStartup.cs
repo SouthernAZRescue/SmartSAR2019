@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SSar.BC.Common.Application.Interfaces;
+using SSar.BC.UserMgmt.Application.Interfaces;
 using SSar.Infrastructure.Identity;
 using SSar.Infrastructure.Persistence;
 
@@ -25,12 +27,18 @@ namespace SSar.Infrastructure
 
             // Identity
 
-            services.AddDefaultIdentity<ApplicationUser>(options =>
+            services.AddDefaultIdentity<AppUser>(options =>
                     options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<AppRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+                .AddApiAuthorization<AppUser, ApplicationDbContext>();
+
+            services.AddScoped<IAppRoleManager>(sp => 
+                new AppRoleManager(
+                    sp.GetRequiredService<RoleManager<AppRole>>()
+            ));
 
             // Authentication
 

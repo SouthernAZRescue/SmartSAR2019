@@ -24,7 +24,13 @@ https://Syncfusion.com
 - Thank you to Syncfusion for offering a free license to small companies and dev teams. It saved
     a great deal of time. I look forward to watching your Blazor library mature.
 
+Edward
+Stack Overflow: Aspnet core Identity custom ApiAuthorizationDbContext
+https://stackoverflow.com/questions/58208894/aspnet-core-identity-custom-apiauthorizationdbcontext
+- Extends the ApiAuthorizationDbContext for use with roles and non-standard key types.
+
+
 --------
 John P. Smith
 Entity Framework videos
-- Thinking about it... TBD.
+- Thinking about it... Not yet used. TBD.

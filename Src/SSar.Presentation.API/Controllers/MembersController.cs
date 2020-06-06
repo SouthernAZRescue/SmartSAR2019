@@ -26,7 +26,11 @@ namespace SSar.Presentation.API.Controllers
             _mediator = mediator;
         }
 
-
+        /// <summary>
+        /// Get a list of all members with basic properties for a quick reference table.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200"></response>
         [HttpGet]
         public async Task<MembersListVm> GetAll()
         {

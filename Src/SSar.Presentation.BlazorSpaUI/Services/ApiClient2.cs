@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -10,10 +11,20 @@ using SSar.Presentation.BlazorSpaUI.Extensions;
 
 namespace SSar.Presentation.BlazorSpaUI.Services
 {
-    public class ApiClient
+    public class ApiClient2
     {
         private HttpClient _httpClient;
         private bool _initialized = false;
+
+        public ApiClient2(NavigationManager navigationManager,
+            IAccessTokenProvider authenticationService, HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri(navigationManager.BaseUri);
+            var task = AddAccessTokenToHeaders(authenticationService, httpClient);
+
+            _initialized = true;
+        }
         
         public async Task InitializeAsync(NavigationManager navigationManager, 
             IAccessTokenProvider authenticationService, HttpClient httpClient)

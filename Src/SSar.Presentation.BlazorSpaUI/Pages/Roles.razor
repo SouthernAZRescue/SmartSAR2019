@@ -1,0 +1,73 @@
+﻿@page "/roles"
+@using System.Net
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using SSar.BC.UserMgmt.Application.Roles.Queries
+@attribute [Authorize]
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IAccessTokenProvider authenticationService 
+
+<h3>Roles</h3>
+
+
+@if (rolesVm == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var role in rolesVm.Roles)
+        {
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private RolesListVm rolesVm;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // TODO: This http setup code causing crash when called a second time (after another HTTP call started).
+        // Leaving it in for now as a new API client is actively being worked on and this code
+        // will be replaced soon.
+        httpClient.BaseAddress = new Uri(navigationManager.BaseUri);
+        await AddAccessTokenToHeaders(authenticationService, httpClient);
+
+        try
+        {
+            rolesVm = await httpClient.GetFromJsonAsync<RolesListVm>("Roles");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
+
+    private async Task AddAccessTokenToHeaders(IAccessTokenProvider authenticationService, HttpClient httpClient)
+    {
+        var tokenResult = await authenticationService.RequestAccessToken();
+
+        if (tokenResult.TryGetToken(out var token))
+        {
+            if (!httpClient.DefaultRequestHeaders.Contains("Authorization"))
+            {
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
+            }
+        }
+    }
+
+}

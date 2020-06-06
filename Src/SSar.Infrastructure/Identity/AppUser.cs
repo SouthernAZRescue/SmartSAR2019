@@ -2,7 +2,7 @@
 
 namespace SSar.Infrastructure.Identity
 {
-    public class ApplicationUser : IdentityUser
+    public class AppUser : IdentityUser<int>
     {
     }
 }
