@@ -44,6 +44,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MemberMgmt", "MemberMgmt", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.UserMgmt.Application", "Src\SSar.BC.UserMgmt.Application\SSar.BC.UserMgmt.Application.csproj", "{7432C403-6B50-4459-814A-4972788FA3A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.Presentation.ApiClient.CSharp", "Src\SSar.Presentation.ApiClient.CSharp\SSar.Presentation.ApiClient.CSharp.csproj", "{FA9A05D1-228E-4222-86AB-E893791BD4A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{7432C403-6B50-4459-814A-4972788FA3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7432C403-6B50-4459-814A-4972788FA3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7432C403-6B50-4459-814A-4972788FA3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9A05D1-228E-4222-86AB-E893791BD4A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9A05D1-228E-4222-86AB-E893791BD4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9A05D1-228E-4222-86AB-E893791BD4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9A05D1-228E-4222-86AB-E893791BD4A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{4DDEA404-4B3C-4FF6-9B0C-488134C9BA98} = {0B441764-8D0E-4D13-A228-3068AC4C193B}
 		{6BF491F5-E133-41E7-94B4-D2520578BD40} = {0B441764-8D0E-4D13-A228-3068AC4C193B}
 		{7432C403-6B50-4459-814A-4972788FA3A9} = {17AB5E5E-8523-4732-BBD9-3BB3EB930E41}
+		{FA9A05D1-228E-4222-86AB-E893791BD4A9} = {6FAAEEC5-2D07-4E34-B348-7ECF3E38233B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10111335-23BD-46AB-9BA0-DFB886C44F68}

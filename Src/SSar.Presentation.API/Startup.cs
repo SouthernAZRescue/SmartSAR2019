@@ -47,7 +47,15 @@ namespace SSar.Presentation.API
 
             services.AddRazorPages();
 
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(settings =>
+            {
+                settings.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "SmartSAR API";
+                    document.Info.Description = "Primarily for use by the SmartSAR UI client, but can be used by other authorized apps as desired.";
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
