@@ -17,7 +17,7 @@ namespace SSar.Presentation.ApiClient.CSharp
     using System = global::System;
     
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.6.0.0 (NJsonSchema v10.1.18.0 (Newtonsoft.Json v12.0.0.0))")]
-    internal partial class MembersClient : ClientBase, IMembersClient
+    public partial class MembersClient : ClientBase, IMembersClient
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -51,16 +51,16 @@ namespace SSar.Presentation.ApiClient.CSharp
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
     
         /// <summary>Get a list of all members with basic properties for a quick reference table.</summary>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<MembersListVm> GetAllAsync()
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<SwaggerResponse<MembersListVm>> GetAllAsync()
         {
             return GetAllAsync(System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get a list of all members with basic properties for a quick reference table.</summary>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<MembersListVm> GetAllAsync(System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SwaggerResponse<MembersListVm>> GetAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/Members");
@@ -94,16 +94,16 @@ namespace SSar.Presentation.ApiClient.CSharp
                         if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<MembersListVm>(response_, headers_).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<MembersListVm>((int)response_.StatusCode, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(MembersListVm);
+                        return new SwaggerResponse<MembersListVm>((int)response_.StatusCode, headers_, default(MembersListVm)); 
                     }
                     finally
                     {
@@ -117,15 +117,15 @@ namespace SSar.Presentation.ApiClient.CSharp
             }
         }
     
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<int> PostAsync(CreateMemberCommand command)
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<SwaggerResponse<int>> PostAsync(CreateMemberCommand command)
         {
             return PostAsync(command, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<int> PostAsync(CreateMemberCommand command, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SwaggerResponse<int>> PostAsync(CreateMemberCommand command, System.Threading.CancellationToken cancellationToken)
         {
             if (command == null)
                 throw new System.ArgumentNullException("command");
@@ -165,16 +165,16 @@ namespace SSar.Presentation.ApiClient.CSharp
                         if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<int>(response_, headers_).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<int>((int)response_.StatusCode, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(int);
+                        return new SwaggerResponse<int>((int)response_.StatusCode, headers_, default(int)); 
                     }
                     finally
                     {
@@ -188,15 +188,15 @@ namespace SSar.Presentation.ApiClient.CSharp
             }
         }
     
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<MemberLookupDto> GetAsync(int id)
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<SwaggerResponse<MemberLookupDto>> GetAsync(int id)
         {
             return GetAsync(id, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<MemberLookupDto> GetAsync(int id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SwaggerResponse<MemberLookupDto>> GetAsync(int id, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -234,16 +234,16 @@ namespace SSar.Presentation.ApiClient.CSharp
                         if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<MemberLookupDto>(response_, headers_).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<MemberLookupDto>((int)response_.StatusCode, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(MemberLookupDto);
+                        return new SwaggerResponse<MemberLookupDto>((int)response_.StatusCode, headers_, default(MemberLookupDto)); 
                     }
                     finally
                     {
@@ -257,14 +257,14 @@ namespace SSar.Presentation.ApiClient.CSharp
             }
         }
     
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<FileResponse> PutAsync(int id, UpdateMemberCommand command)
         {
             return PutAsync(id, command, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<FileResponse> PutAsync(int id, UpdateMemberCommand command, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
@@ -317,7 +317,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FileResponse);
@@ -334,14 +334,14 @@ namespace SSar.Presentation.ApiClient.CSharp
             }
         }
     
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<FileResponse> DeleteAsync(int id)
         {
             return DeleteAsync(id, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<FileResponse> DeleteAsync(int id, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
@@ -388,7 +388,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FileResponse);
@@ -438,7 +438,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new SwaggerException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -457,7 +457,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new SwaggerException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -502,7 +502,7 @@ namespace SSar.Presentation.ApiClient.CSharp
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.6.0.0 (NJsonSchema v10.1.18.0 (Newtonsoft.Json v12.0.0.0))")]
-    internal partial class OidcConfigurationClient : ClientBase, IOidcConfigurationClient
+    public partial class OidcConfigurationClient : ClientBase, IOidcConfigurationClient
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -535,14 +535,14 @@ namespace SSar.Presentation.ApiClient.CSharp
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
     
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<FileResponse> GetClientRequestParametersAsync(string clientId)
         {
             return GetClientRequestParametersAsync(clientId, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<FileResponse> GetClientRequestParametersAsync(string clientId, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
@@ -586,7 +586,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FileResponse);
@@ -636,7 +636,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new SwaggerException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -655,7 +655,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new SwaggerException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -700,7 +700,7 @@ namespace SSar.Presentation.ApiClient.CSharp
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.6.0.0 (NJsonSchema v10.1.18.0 (Newtonsoft.Json v12.0.0.0))")]
-    internal partial class RolesClient : ClientBase, IRolesClient
+    public partial class RolesClient : ClientBase, IRolesClient
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -733,15 +733,15 @@ namespace SSar.Presentation.ApiClient.CSharp
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
     
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RolesListVm> GetAllAsync()
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<SwaggerResponse<RolesListVm>> GetAllAsync()
         {
             return GetAllAsync(System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<RolesListVm> GetAllAsync(System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SwaggerResponse<RolesListVm>> GetAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/Roles");
@@ -775,16 +775,16 @@ namespace SSar.Presentation.ApiClient.CSharp
                         if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<RolesListVm>(response_, headers_).ConfigureAwait(false);
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<RolesListVm>((int)response_.StatusCode, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(RolesListVm);
+                        return new SwaggerResponse<RolesListVm>((int)response_.StatusCode, headers_, default(RolesListVm)); 
                     }
                     finally
                     {
@@ -831,7 +831,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new SwaggerException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -850,7 +850,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new SwaggerException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }

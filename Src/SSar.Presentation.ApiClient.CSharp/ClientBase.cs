@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -7,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace SSar.Presentation.ApiClient.CSharp
 {
-    internal abstract class ClientBase
+    public abstract class ClientBase
     {
-        public Func<Task<string>> RetrieveAuthorizationToken { get; set; }
+        public IAccessTokenProvider AccessTokenProvider { get; set; }
+        public Func<IAccessTokenProvider, Task<string>> RetrieveAuthorizationToken { get; set; }
 
         // Called by implementing swagger client classes
         protected async Task<HttpRequestMessage> CreateHttpRequestMessageAsync(CancellationToken cancellationToken)
@@ -18,7 +21,7 @@ namespace SSar.Presentation.ApiClient.CSharp
 
             if (RetrieveAuthorizationToken != null)
             {
-                var token = await RetrieveAuthorizationToken();
+                string token = await RetrieveAuthorizationToken(AccessTokenProvider);
                 msg.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             }
             return msg;

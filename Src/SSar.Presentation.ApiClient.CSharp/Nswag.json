@@ -1,138 +1,330 @@
 {
-  "runtime": "NetCore31",
-  "defaultVariables": null,
-  "documentGenerator": {
-    "aspNetCoreToOpenApi": {
-      "project": "../SSar.Presentation.API/SSar.Presentation.API.csproj",
-      "msBuildProjectExtensionsPath": null,
-      "configuration": null,
-      "runtime": "",
-      "targetFramework": "netcoreapp3.1",
-      "noBuild": false,
-      "verbose": true,
-      "workingDirectory": null,
-      "requireParametersWithoutDefault": true,
-      "apiGroupNames": null,
-      "defaultPropertyNameHandling": "CamelCase",
-      "defaultReferenceTypeNullHandling": "Null",
-      "defaultDictionaryValueReferenceTypeNullHandling": "NotNull",
-      "defaultResponseReferenceTypeNullHandling": "NotNull",
-      "defaultEnumHandling": "Integer",
-      "flattenInheritanceHierarchy": false,
-      "generateKnownTypes": true,
-      "generateEnumMappingDescription": false,
-      "generateXmlObjects": false,
-      "generateAbstractProperties": true,
-      "generateAbstractSchemas": true,
-      "ignoreObsoleteProperties": false,
-      "allowReferencesWithProperties": false,
-      "excludedTypeNames": [],
-      "serviceHost": null,
-      "serviceBasePath": null,
-      "serviceSchemes": [],
-      "infoTitle": "SmartSAR-API",
-      "infoDescription": null,
-      "infoVersion": "1.0.0",
-      "documentTemplate": null,
-      "documentProcessorTypes": [],
-      "operationProcessorTypes": [],
-      "typeNameGeneratorType": null,
-      "schemaNameGeneratorType": null,
-      "contractResolverType": null,
-      "serializerSettingsType": null,
-      "useDocumentProvider": false,
-      "documentName": "v1",
-      "aspNetCoreEnvironment": null,
-      "createWebHostBuilderMethod": null,
-      "startupType": null,
-      "allowNullableBodyParameters": true,
-      "output": null,
-      "outputType": "OpenApi3",
-      "assemblyPaths": [],
-      "assemblyConfig": null,
-      "referencePaths": [],
-      "useNuGetCache": false
+  "x-generator": "NSwag v13.6.0.0 (NJsonSchema v10.1.18.0 (Newtonsoft.Json v12.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "SmartSAR API",
+    "description": "Primarily for use by the SmartSAR UI client, but can be used by other authorized apps as desired.",
+    "version": "v1"
+  },
+  "paths": {
+    "/Members": {
+      "get": {
+        "tags": [
+          "Members"
+        ],
+        "summary": "Get a list of all members with basic properties for a quick reference table.",
+        "operationId": "Members_GetAll",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MembersListVm"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Members"
+        ],
+        "operationId": "Members_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "command",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateMemberCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      }
+    },
+    "/Members/{id}": {
+      "get": {
+        "tags": [
+          "Members"
+        ],
+        "operationId": "Members_Get",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MemberLookupDto"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Members"
+        ],
+        "operationId": "Members_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "name": "command",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateMemberCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Members"
+        ],
+        "operationId": "Members_Delete",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/_configuration/{clientId}": {
+      "get": {
+        "tags": [
+          "OidcConfiguration"
+        ],
+        "operationId": "OidcConfiguration_GetClientRequestParameters",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/Roles": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "operationId": "Roles_GetAll",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RolesListVm"
+            }
+          }
+        }
+      }
     }
   },
-  "codeGenerators": {
-    "openApiToCSharpClient": {
-      "clientBaseClass": "ClientBase",
-      "configurationClass": null,
-      "generateClientClasses": true,
-      "generateClientInterfaces": true,
-      "injectHttpClient": true,
-      "disposeHttpClient": true,
-      "protectedMethods": [],
-      "generateExceptionClasses": true,
-      "exceptionClass": "SwaggerException",
-      "wrapDtoExceptions": true,
-      "useHttpClientCreationMethod": false,
-      "httpClientType": "System.Net.Http.HttpClient",
-      "useHttpRequestMessageCreationMethod": true,
-      "useBaseUrl": true,
-      "generateBaseUrlProperty": true,
-      "generateSyncMethods": false,
-      "exposeJsonSerializerSettings": false,
-      "clientClassAccessModifier": "internal",
-      "typeAccessModifier": "public",
-      "generateContractsOutput": true,
-      "contractsNamespace": "SSar.Presentation.ApiClient.CSharp.Contracts",
-      "contractsOutputFilePath": "Contracts.g.cs",
-      "parameterDateTimeFormat": "s",
-      "generateUpdateJsonSerializerSettingsMethod": true,
-      "serializeTypeInformation": false,
-      "queryNullValue": "",
-      "className": "{controller}Client",
-      "operationGenerationMode": "MultipleClientsFromOperationId",
-      "additionalNamespaceUsages": [],
-      "additionalContractNamespaceUsages": [],
-      "generateOptionalParameters": false,
-      "generateJsonMethods": true,
-      "enforceFlagEnums": false,
-      "parameterArrayType": "System.Collections.Generic.IEnumerable",
-      "parameterDictionaryType": "System.Collections.Generic.IDictionary",
-      "responseArrayType": "System.Collections.ObjectModel.ObservableCollection",
-      "responseDictionaryType": "System.Collections.Generic.Dictionary",
-      "wrapResponses": false,
-      "wrapResponseMethods": [],
-      "generateResponseClasses": true,
-      "responseClass": "ExampleResponse",
-      "namespace": "SSar.Presentation.ApiClient.CSharp",
-      "requiredPropertiesMustBeDefined": true,
-      "dateType": "System.DateTime",
-      "jsonConverters": null,
-      "anyType": "object",
-      "dateTimeType": "System.DateTime",
-      "timeType": "System.TimeSpan",
-      "timeSpanType": "System.TimeSpan",
-      "arrayType": "System.Collections.ObjectModel.ObservableCollection",
-      "arrayInstanceType": "System.Collections.ObjectModel.Collection",
-      "dictionaryType": "System.Collections.Generic.Dictionary",
-      "dictionaryInstanceType": "System.Collections.Generic.Dictionary",
-      "arrayBaseType": "System.Collections.ObjectModel.ObservableCollection",
-      "dictionaryBaseType": "System.Collections.Generic.Dictionary",
-      "classStyle": "Poco",
-      "generateDefaultValues": true,
-      "generateDataAnnotations": false,
-      "excludedTypeNames": [],
-      "excludedParameterNames": [],
-      "handleReferences": false,
-      "generateImmutableArrayProperties": false,
-      "generateImmutableDictionaryProperties": false,
-      "jsonSerializerSettingsTransformationMethod": null,
-      "inlineNamedArrays": false,
-      "inlineNamedDictionaries": false,
-      "inlineNamedTuples": true,
-      "inlineNamedAny": false,
-      "generateDtoTypes": true,
-      "generateOptionalPropertiesAsNullable": false,
-      "templateDirectory": null,
-      "typeNameGeneratorType": null,
-      "propertyNameGeneratorType": null,
-      "enumNameGeneratorType": null,
-      "serviceHost": null,
-      "serviceSchemes": null,
-      "output": "Client.g.cs"
+  "definitions": {
+    "MembersListVm": {
+      "type": "object",
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MemberLookupDto"
+          }
+        }
+      }
+    },
+    "MemberLookupDto": {
+      "type": "object",
+      "required": [
+        "entityId",
+        "firstName",
+        "lastName"
+      ],
+      "properties": {
+        "entityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "firstName": {
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1
+        },
+        "middleName": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "lastName": {
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1
+        },
+        "nickname": {
+          "type": "string",
+          "maxLength": 50
+        }
+      }
+    },
+    "CreateMemberCommand": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateMemberCommand": {
+      "type": "object",
+      "required": [
+        "entityId"
+      ],
+      "properties": {
+        "entityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        }
+      }
+    },
+    "RolesListVm": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleLookupDto"
+          }
+        }
+      }
+    },
+    "RoleLookupDto": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 40,
+          "minLength": 1
+        }
+      }
     }
   }
 }

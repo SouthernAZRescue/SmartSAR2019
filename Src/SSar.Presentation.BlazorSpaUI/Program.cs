@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using SSar.Presentation.BlazorSpaUI.Services;
 using Syncfusion.Blazor;
+using SSar.Presentation.ApiClient.CSharp;
 
 namespace SSar.Presentation.BlazorSpaUI
 {
@@ -18,19 +19,13 @@ namespace SSar.Presentation.BlazorSpaUI
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddScoped<ApiClient>();
             builder.Services.AddScoped<ModalService>();
             builder.Services.AddApiAuthorization();
+            builder.Services.AddCSharpApiClient();
 
             builder.Services.AddSyncfusionBlazor();
-            var host = builder.Build();
 
-            // Setup API Client serviceB
-            var apiService = host.Services.GetRequiredService<ApiClient>();
-            await apiService.InitializeAsync(
-                host.Services.GetService<NavigationManager>(),
-                host.Services.GetService<IAccessTokenProvider>(),
-                host.Services.GetService<HttpClient>());
+            var host = builder.Build();
 
             await host.RunAsync();
         }

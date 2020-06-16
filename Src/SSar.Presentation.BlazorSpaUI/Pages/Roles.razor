@@ -2,11 +2,12 @@
 @using System.Net
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@using SSar.BC.UserMgmt.Application.Roles.Queries
+@using SSar.Presentation.ApiClient.CSharp.Contracts 
 @attribute [Authorize]
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 @inject IAccessTokenProvider authenticationService 
+@inject IRolesClient rolesClient 
 
 <h3>Roles</h3>
 
@@ -37,37 +38,11 @@ else
 }
 
 @code {
-    private RolesListVm rolesVm;
+    private SSar.Presentation.ApiClient.CSharp.Contracts.RolesListVm rolesVm;
 
     protected override async Task OnInitializedAsync()
     {
-        // TODO: This http setup code causing crash when called a second time (after another HTTP call started).
-        // Leaving it in for now as a new API client is actively being worked on and this code
-        // will be replaced soon.
-        httpClient.BaseAddress = new Uri(navigationManager.BaseUri);
-        await AddAccessTokenToHeaders(authenticationService, httpClient);
+        rolesVm = (await rolesClient.GetAllAsync()).Result;
 
-        try
-        {
-            rolesVm = await httpClient.GetFromJsonAsync<RolesListVm>("Roles");
-        }
-        catch (AccessTokenNotAvailableException exception)
-        {
-            exception.Redirect();
-        }
     }
-
-    private async Task AddAccessTokenToHeaders(IAccessTokenProvider authenticationService, HttpClient httpClient)
-    {
-        var tokenResult = await authenticationService.RequestAccessToken();
-
-        if (tokenResult.TryGetToken(out var token))
-        {
-            if (!httpClient.DefaultRequestHeaders.Contains("Authorization"))
-            {
-                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
-            }
-        }
-    }
-
 }

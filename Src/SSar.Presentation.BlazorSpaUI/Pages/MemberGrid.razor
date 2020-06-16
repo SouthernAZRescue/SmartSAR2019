@@ -1,8 +1,7 @@
-﻿@using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList
-@using Syncfusion.Blazor
+﻿@using Syncfusion.Blazor
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Grids
-
+@using SSar.Presentation.ApiClient.CSharp.Contracts 
 
 <SfGrid TValue="MemberLookupDto" AllowPaging="true" AllowSorting="true" AllowFiltering="true" 
         Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update", "Search" })">

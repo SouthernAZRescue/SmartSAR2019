@@ -1,28 +1,32 @@
 ﻿@using System.Text.Json.Serialization
 @using System.Linq
-@using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList
 @using SSar.Presentation.BlazorSpaUI.Services
 @using SSar.Presentation.BlazorSpaUI.Utilities
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Data
-@inject ApiClient ApiClient
+@using SSar.Presentation.ApiClient.CSharp.Contracts 
+@inject IMembersClient MembersClient
 @inject ModalService ModalService
 
 @inherits Syncfusion.Blazor.DataAdaptor<MemberLookupDto>
 
+
+// TODO: This is a hot mess. Right now I'm in the process of converting to 
+// a new API client. Once that's done almost all api-reliant code is going
+// to be rewritten from the bottom up.
 @code {
-    [Parameter]
-    [JsonIgnore]
-    public RenderFragment ChildContent { get; set; }
+        [Parameter]
+        [JsonIgnore]
+        public RenderFragment ChildContent { get; set; }
 
     // Create
     public override async Task<object> InsertAsync(DataManager dataManager, object data, string key)
     {
-        var memberDto = (MemberLookupDto) data;
+        var memberDto = (CreateMemberCommand) data;
 
         await ApiTools.WrapApiCallWithValidationModalAsync(
             async () =>
-                await ApiClient.CreateAsync(memberDto),
+                await MembersClient.PostAsync(memberDto),
             ModalService);
 
         return memberDto;
@@ -31,8 +35,8 @@
     // Read
     public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
     {
-        var membersListVm = (await ApiClient.GetAllAsync());
-        var memberList = membersListVm.Members;
+        var membersListVm = (await MembersClient.GetAllAsync());
+        var memberList = membersListVm.Result.Members.ToList();
 
         // Searching
         if (dm.Search != null && dm.Search.Count > 0)
@@ -71,12 +75,12 @@
     // Update
     public override async Task<object> UpdateAsync(DataManager dm, object value, string keyField, string key)
     {
-        var memberDto = (MemberLookupDto)value;
+        var memberDto = (UpdateMemberCommand)value;
 
         await ApiTools.WrapApiCallWithValidationModalAsync(
             async () =>
-            await ApiClient.UpdateAsync(memberDto),
-            ModalService);
+            await MembersClient.PutAsync(memberDto.EntityId, memberDto),
+            ModalService) ;
 
         return value;
     }
@@ -86,7 +90,7 @@
     {
         int id = int.Parse(value.ToString());
 
-        await ApiClient.DeleteAsync(id);
+        await MembersClient.DeleteAsync(id);
 
         return value;
     }
