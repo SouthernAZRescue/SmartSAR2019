@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using SSar.Presentation.ApiClient.CSharp.Contracts;
@@ -12,6 +10,9 @@ namespace SSar.Presentation.ApiClient.CSharp
     {
         // TODO: Remove dependency on Microsoft...Authentication
         // Consider my own IAppAccessTokenProvider to inject?
+
+        // CONSIDER: Make this a generic factory, instead of needing to add
+        // a separate static method for each API resource type.
 
         public static IRolesClient CreateRolesClient(
             string baseUrl, 

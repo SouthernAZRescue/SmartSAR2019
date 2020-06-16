@@ -10,10 +10,6 @@
 
 @inherits Syncfusion.Blazor.DataAdaptor<MemberLookupDto>
 
-
-// TODO: This is a hot mess. Right now I'm in the process of converting to 
-// a new API client. Once that's done almost all api-reliant code is going
-// to be rewritten from the bottom up.
 @code {
         [Parameter]
         [JsonIgnore]
@@ -35,6 +31,15 @@
     // Read
     public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
     {
+        // CONSIDER: This code based on the Syncfusion examples is extremely inefficient. For
+        // any type of search, filtering or pagination action it re-loads the entire
+        // list of members. Rewrite it to only request the data needed for each operation.
+
+        // Perhaps use the OnInitialized page event to load data the first time, then sort in in-memory
+        // until more efficient methods of sorting on the server side are implemented?
+
+        // Deferred to future. Optimization not needed for tier-0 minimum viable release.
+
         var membersListVm = (await MembersClient.GetAllAsync());
         var memberList = membersListVm.Result.Members.ToList();
 
