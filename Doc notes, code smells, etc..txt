@@ -1,0 +1,12 @@
+This document contains initial notes, reminders really, of items to be included in the 
+future "Application Overview" document, as well as a list of known code smells.
+
+----
+Why use GUIDs for aggregate root IDs?
+- I'm aware of the side effects of GUIDs, namely the database paging issues, but I 
+    needed a way to generate object IDs for domain events BEFORE the database commit. 
+    Domain events are handled before the database commit to enable saving the side 
+    effects as part of the same transaction, therefore I'm unable to rely on using
+    the int ID assigned by the persistence framework as it is generated later (without
+    alot of working around the ORM). To get around this every aggregate root has a 
+    GUID ID assigned when it is constructed.

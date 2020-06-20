@@ -13,6 +13,11 @@ namespace SSar.Infrastructure.Persistence.TypeConfigurations
         {
             builder.ToTable("Users");
 
+            builder.HasKey(b => b.Id);
+
+            // Aggregate root IDs are assigned on construction
+            builder.Property("Id").ValueGeneratedNever();
+
             // Seeding User data requires an API call after the database has been
             // created, so will be done at a later stage in the app startup.
         }

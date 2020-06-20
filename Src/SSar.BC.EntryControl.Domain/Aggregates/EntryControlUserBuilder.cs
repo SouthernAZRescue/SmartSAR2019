@@ -1,4 +1,5 @@
 ﻿using SSar.BC.Common.Domain.ValueTypes;
+using System;
 
 namespace SSar.BC.EntryControl.Domain.Aggregates
 {
@@ -6,14 +7,14 @@ namespace SSar.BC.EntryControl.Domain.Aggregates
     {
         private string _firstName;
         private string _lastName = "";
-        private int _appUserId = 0;
+        private Guid _appUserId = Guid.NewGuid();
         private EmailAddress _emailAddress = new EmailAddress();
         private PhoneNumber _phoneNumber = new PhoneNumber();
         private string _comments = "";
 
         public string FirstName => _firstName;
         public string LastName => _lastName;
-        public int AppUserId => _appUserId;
+        public Guid AppUserId => _appUserId;
         public EmailAddress EmailAddress => _emailAddress;
         public PhoneNumber PhoneNumber => _phoneNumber;
         public string Comments => _comments;
@@ -27,7 +28,7 @@ namespace SSar.BC.EntryControl.Domain.Aggregates
             return this;
         }
 
-        public EntryControlUserBuilder WithAppUserId(int appUserId)
+        public EntryControlUserBuilder WithAppUserId(Guid appUserId)
         {
             _appUserId = appUserId;
 

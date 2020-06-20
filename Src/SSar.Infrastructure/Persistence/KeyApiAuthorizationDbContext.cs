@@ -19,6 +19,7 @@ namespace SSar.Infrastructure.Persistence
     /// in this app.
     ///
     /// Credit: https://stackoverflow.com/questions/58208894/aspnet-core-identity-custom-apiauthorizationdbcontext
+    /// License: https://stackoverflow.com/help/licensing
     /// </summary>
     /// <typeparam name="TUser"></typeparam>
     /// <typeparam name="TRole"></typeparam>

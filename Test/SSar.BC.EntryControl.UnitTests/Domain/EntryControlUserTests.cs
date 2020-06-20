@@ -2,6 +2,7 @@
 using Shouldly;
 using SSar.BC.EntryControl.Domain.Aggregates;
 using SSar.BC.Common.Domain.ValueTypes;
+using System;
 
 namespace SSar.BC.EntryControl.UnitTests.Domain
 {
@@ -22,7 +23,7 @@ namespace SSar.BC.EntryControl.UnitTests.Domain
 
             var firstName = "First";
             var lastName = "Last";
-            var appUserId = 42;
+            var appUserId = Guid.NewGuid();
             var phoneNumber = new PhoneNumber { Number = "111-222-3333" };
             var emailAddress = new EmailAddress { Address = "sleepy@sietrehombres.com" };
             var comments = "Nothing to see here, move along.";

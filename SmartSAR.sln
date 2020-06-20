@@ -34,6 +34,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{03B698EE-03AE-4334-8986-7D54DB403E1D}"
 	ProjectSection(SolutionItems) = preProject
 		Credits.txt = Credits.txt
+		Doc notes, code smells, etc..txt = Doc notes, code smells, etc..txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserMgmt", "UserMgmt", "{17AB5E5E-8523-4732-BBD9-3BB3EB930E41}"
@@ -50,9 +51,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.EntryControl.UnitTe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntryControl", "EntryControl", "{30F2D151-C786-444E-9EF3-011A1F933611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.EntryControl.Application", "Src\SSar.BC.EntryControl.Application\SSar.BC.EntryControl.Application.csproj", "{AA59EAB4-4540-4EC1-9337-78AEB85DAEAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.EntryControl.Application", "Src\SSar.BC.EntryControl.Application\SSar.BC.EntryControl.Application.csproj", "{AA59EAB4-4540-4EC1-9337-78AEB85DAEAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.EntryControl.Domain", "Src\SSar.BC.EntryControl.Domain\SSar.BC.EntryControl.Domain.csproj", "{6840E445-DA2F-4520-903A-C3997EF0C08B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.EntryControl.Domain", "Src\SSar.BC.EntryControl.Domain\SSar.BC.EntryControl.Domain.csproj", "{6840E445-DA2F-4520-903A-C3997EF0C08B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

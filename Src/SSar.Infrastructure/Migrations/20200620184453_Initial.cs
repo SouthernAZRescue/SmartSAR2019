@@ -61,8 +61,7 @@ namespace SSar.Infrastructure.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true)
@@ -76,8 +75,7 @@ namespace SSar.Infrastructure.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
@@ -104,7 +102,7 @@ namespace SSar.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(nullable: false),
+                    RoleId = table.Column<Guid>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
                 },
@@ -125,7 +123,7 @@ namespace SSar.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
                 },
@@ -147,7 +145,7 @@ namespace SSar.Infrastructure.Migrations
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -164,8 +162,8 @@ namespace SSar.Infrastructure.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false),
-                    RoleId = table.Column<int>(nullable: false)
+                    UserId = table.Column<Guid>(nullable: false),
+                    RoleId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -188,7 +186,7 @@ namespace SSar.Infrastructure.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
                     Name = table.Column<string>(maxLength: 128, nullable: false),
                     Value = table.Column<string>(nullable: true)
@@ -209,12 +207,12 @@ namespace SSar.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "new", "Super Admin", "SUPER ADMIN" },
-                    { 2, "new", "App Security Admin", "APP SECURITY ADMIN" },
-                    { 3, "new", "Member Records Admin", "MEMBER RECORDS ADMIN" },
-                    { 4, "new", "Organization Member", "ORGANIZATION MEMBER" },
-                    { 5, "new", "Affiliate User", "AFFILIATE USER" },
-                    { 6, "new", "Guest User", "GUEST USER" }
+                    { new Guid("685a7efb-c6d1-4578-97ca-c0fd09e0c44d"), "new", "Super Admin", "SUPER ADMIN" },
+                    { new Guid("a114f89e-da47-48cf-ac95-f787cfa60867"), "new", "App Security Admin", "APP SECURITY ADMIN" },
+                    { new Guid("e57f9f62-b1b8-4ceb-b9d1-6eb28a2ee33a"), "new", "Member Data Admin", "MEMBER RECORDS ADMIN" },
+                    { new Guid("d462a06b-c0e3-4c1e-a9bf-32bc2178e737"), "new", "Organization Member", "ORGANIZATION MEMBER" },
+                    { new Guid("54e2e99c-9fe0-4895-a787-586b50ab8582"), "new", "Affiliate User", "AFFILIATE USER" },
+                    { new Guid("097553b3-aa2b-4a9a-92b4-bc40c645c1ab"), "new", "Guest User", "GUEST USER" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,6 +1,7 @@
 ﻿using Shouldly;
 using SSar.BC.Common.Domain.ValueTypes;
 using SSar.BC.EntryControl.Domain.Aggregates;
+using System;
 using Xunit;
 
 namespace SSar.BC.EntryControl.UnitTests.Domain
@@ -15,6 +16,14 @@ namespace SSar.BC.EntryControl.UnitTests.Domain
             EntryControlUser ecUser = builder.CreateEntryControlUser("Bob", "George");
 
             ecUser.ShouldBeOfType<EntryControlUser>();
+        }
+
+        [Fact]
+        public void Ctor_ShouldSetNonEmptyAppUserId()
+        {
+            var builder = new EntryControlUserBuilder();
+
+            builder.AppUserId.ShouldNotBe(Guid.Empty);
         }
 
         [Fact]
@@ -35,7 +44,7 @@ namespace SSar.BC.EntryControl.UnitTests.Domain
         [Fact]
         public void WithAppUserId_ShouldSetProperty()
         {
-            var appUserId = 42;
+            var appUserId = Guid.NewGuid();
 
             var builder = new EntryControlUserBuilder()
                 .WithAppUserId(appUserId);

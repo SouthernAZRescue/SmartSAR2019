@@ -6,7 +6,7 @@ using SSar.BC.UserMgmt.Application.Interfaces;
 
 namespace SSar.Infrastructure.Identity
 {
-    public class AppRole : IdentityRole<int>, IAppRole
+    public class AppRole : IdentityRole<Guid>, IAppRole
     {
     }
 }

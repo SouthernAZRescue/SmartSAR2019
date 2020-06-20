@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SSar.BC.Common.Application\SSar.BC.Common.Application.csproj" />
+    <ProjectReference Include="..\SSar.BC.Common.Domain\SSar.BC.Common.Domain.csproj" />
     <ProjectReference Include="..\SSar.BC.MemberMgmt.Domain\SSar.BC.MemberMgmt.Domain.csproj" />
     <ProjectReference Include="..\SSar.BC.UserMgmt.Application\SSar.BC.UserMgmt.Application.csproj" />
   </ItemGroup>

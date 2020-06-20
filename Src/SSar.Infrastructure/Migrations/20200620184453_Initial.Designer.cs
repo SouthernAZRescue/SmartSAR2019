@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SSar.Infrastructure.Persistence;
 
 namespace SSar.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200620184453_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,6 +223,7 @@ namespace SSar.Infrastructure.Migrations
             modelBuilder.Entity("SSar.Infrastructure.Identity.AppRole", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -247,42 +250,42 @@ namespace SSar.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cf5ff70a-14aa-4f08-83e5-8e8dcb1aa1d3"),
+                            Id = new Guid("685a7efb-c6d1-4578-97ca-c0fd09e0c44d"),
                             ConcurrencyStamp = "new",
                             Name = "Super Admin",
                             NormalizedName = "SUPER ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("e94d1c62-74e0-4230-86f2-e7c03101fd6d"),
+                            Id = new Guid("a114f89e-da47-48cf-ac95-f787cfa60867"),
                             ConcurrencyStamp = "new",
                             Name = "App Security Admin",
                             NormalizedName = "APP SECURITY ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("dc4c6d5a-1b37-46ac-97c7-c587fccc49ee"),
+                            Id = new Guid("e57f9f62-b1b8-4ceb-b9d1-6eb28a2ee33a"),
                             ConcurrencyStamp = "new",
                             Name = "Member Data Admin",
                             NormalizedName = "MEMBER RECORDS ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("088c868e-83d3-4007-b9fb-8da81b0de21e"),
+                            Id = new Guid("d462a06b-c0e3-4c1e-a9bf-32bc2178e737"),
                             ConcurrencyStamp = "new",
                             Name = "Organization Member",
                             NormalizedName = "ORGANIZATION MEMBER"
                         },
                         new
                         {
-                            Id = new Guid("2c7d47f0-9ae8-497a-8204-d8782d4602a2"),
+                            Id = new Guid("54e2e99c-9fe0-4895-a787-586b50ab8582"),
                             ConcurrencyStamp = "new",
                             Name = "Affiliate User",
                             NormalizedName = "AFFILIATE USER"
                         },
                         new
                         {
-                            Id = new Guid("d2cb3c02-b028-4f3f-817c-2aa8561813c1"),
+                            Id = new Guid("097553b3-aa2b-4a9a-92b4-bc40c645c1ab"),
                             ConcurrencyStamp = "new",
                             Name = "Guest User",
                             NormalizedName = "GUEST USER"
@@ -292,6 +295,7 @@ namespace SSar.Infrastructure.Migrations
             modelBuilder.Entity("SSar.Infrastructure.Identity.AppUser", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AccessFailedCount")

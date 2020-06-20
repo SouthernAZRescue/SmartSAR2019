@@ -6,6 +6,6 @@ namespace SSar.BC.Common.Domain.Interfaces
 {
     public interface IEntity
     {
-        int EntityId { get; }
+        Guid Id { get; }
     }
 }

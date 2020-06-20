@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SSar.BC.UserMgmt.Application.Roles.Queries
 {
     public class RoleLookupDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "A role name is required.")]
         [MaxLength(40)]

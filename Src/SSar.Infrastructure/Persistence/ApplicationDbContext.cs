@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
@@ -11,7 +12,7 @@ using SSar.Infrastructure.Persistence.TypeConfigurations;
 
 namespace SSar.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : KeyApiAuthorizationDbContext<AppUser, AppRole, int>, IApplicationDbContext
+    public class ApplicationDbContext : KeyApiAuthorizationDbContext<AppUser, AppRole, Guid>, IApplicationDbContext
     {
         public ApplicationDbContext(
             DbContextOptions options,
