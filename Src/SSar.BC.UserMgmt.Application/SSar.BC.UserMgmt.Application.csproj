@@ -6,13 +6,13 @@
 
   <ItemGroup>
     <Compile Remove="Entities\**" />
-    <Compile Remove="Roles\Commands\**" />
+    <Compile Remove="AppRoles\Commands\**" />
     <Compile Remove="Services\**" />
     <EmbeddedResource Remove="Entities\**" />
-    <EmbeddedResource Remove="Roles\Commands\**" />
+    <EmbeddedResource Remove="AppRoles\Commands\**" />
     <EmbeddedResource Remove="Services\**" />
     <None Remove="Entities\**" />
-    <None Remove="Roles\Commands\**" />
+    <None Remove="AppRoles\Commands\**" />
     <None Remove="Services\**" />
   </ItemGroup>
 

@@ -10,7 +10,7 @@ namespace SSar.BC.UnitTests.Common.Domain.BaseTypes
         [Fact]
         public void Ctor_ShouldSetId()
         {
-            var entity = new EntityBaseTests.ConcreteEntity();
+            var entity = new ConcreteEntity();
 
             entity.Id.ShouldNotBe(Guid.Empty);
         }
