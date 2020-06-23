@@ -15,7 +15,7 @@ namespace SSar.BC.WebCams.Core.Services
             _httpClient = httpClient;
         }
 
-        public async Task<CamImage> GetFromUrl(string url)
+        public async Task<CamImage> GetImageFromUrl(string url)
         {
             return 
                 new CamImage(
