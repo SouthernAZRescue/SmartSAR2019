@@ -25,8 +25,7 @@ namespace SSar.Presentation.API.Controllers
         public async Task<IActionResult> Get([FromQuery] string groupName, [FromQuery] string cameraName)
         {
             var camImage = await _mediator.Send(
-                new GetImageByIdQuery(
-                    @"http://remote.sarci.org:19204/snap.jpeg"));
+                new GetImageByCamNameQuery(groupName, cameraName));
 
             return File(camImage.ByteArray, "image/jpeg");
 

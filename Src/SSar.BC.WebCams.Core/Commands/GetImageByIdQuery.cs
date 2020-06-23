@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -7,29 +8,33 @@ using SSar.BC.WebCams.Core.ValueTypes;
 
 namespace SSar.BC.WebCams.Core.Commands
 {
-    public class GetImageByIdQuery : IRequest<CamImage>
+    public class GetImageByCamNameQuery : IRequest<CamImage>
     {
-        public GetImageByIdQuery(string imageUrl)
+        public GetImageByCamNameQuery(string groupName, string cameraName)
         {
-            ImageUrl = imageUrl ?? throw new ArgumentNullException();
+            GroupName = groupName;
+            CameraName = cameraName;
         }
 
-        public string ImageUrl { get; private set; }
+        public string GroupName { get; private set; }
+        public string CameraName { get; private set; }
 
-        public class GetImageByIdQueryHandler : IRequestHandler<GetImageByIdQuery, CamImage>
+        public class GetImageByCamNameQueryHandler : IRequestHandler<GetImageByCamNameQuery, CamImage>
         {
             private IWebCamImageRetrievalService _camService;
 
-            public GetImageByIdQueryHandler(IWebCamImageRetrievalService camService)
+            public GetImageByCamNameQueryHandler(IWebCamImageRetrievalService camService)
             {
                 _camService = camService;
             }
 
             public async Task<CamImage> Handle(
-                GetImageByIdQuery request, CancellationToken cancellationToken)
+                GetImageByCamNameQuery request, CancellationToken cancellationToken)
             {
+                // TODO!: Remove temporary fixed name for building
+
                 return 
-                    await _camService.GetImageFromUrl(request.ImageUrl);
+                    await _camService.GetImageFromUrl(@"http://remote.sarci.org:19204/snap.jpeg");
             }
         }
     }
