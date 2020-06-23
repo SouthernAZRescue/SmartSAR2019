@@ -19,8 +19,10 @@ namespace SSar.Presentation.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+
+        //webcams/images?groupName=cam-group&cameraName=cam-name
+        [HttpGet()]
+        public async Task<IActionResult> Get([FromQuery] string groupName, [FromQuery] string cameraName)
         {
             var camImage = await _mediator.Send(
                 new GetImageByIdQuery(
