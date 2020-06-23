@@ -210,6 +210,23 @@
           }
         }
       }
+    },
+    "/WebCams": {
+      "get": {
+        "tags": [
+          "WebCams"
+        ],
+        "operationId": "WebCams_Get",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {

@@ -79,6 +79,18 @@ namespace SSar.Presentation.ApiClient.CSharp.Contracts
         System.Threading.Tasks.Task<SwaggerResponse<RolesListVm>> GetAllAsync(System.Threading.CancellationToken cancellationToken);
     
     }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.6.0.0 (NJsonSchema v10.1.18.0 (Newtonsoft.Json v12.0.0.0))")]
+    public partial interface IWebCamsClient : IClientBase
+    {
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetAsync();
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetAsync(System.Threading.CancellationToken cancellationToken);
+    
+    }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.18.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class MembersListVm 
