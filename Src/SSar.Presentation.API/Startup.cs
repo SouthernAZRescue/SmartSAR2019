@@ -1,3 +1,5 @@
+using System;
+using System.Net.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +10,7 @@ using SSar.BC.Common.Application;
 using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
 using SSar.BC.UserMgmt.Application;
+using SSar.BC.WebCams.Core;
 using SSar.Infrastructure;
 using SSar.Presentation.API.Filters;
 using SSar.Presentation.API.Services;
@@ -30,13 +33,14 @@ namespace SSar.Presentation.API
         {
             // DI and init for this (API) project
 
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
-
+            services.AddScoped<ICurrentUserService, CurrentUserService>(); // CONSIDER: Move this to AddInfrastructure
+            
             // Add DI and init from individual bounded contexts and other projects
 
             services.AddInfrastructure(Configuration);
             services.AddMemberManagement();
             services.AddUserManagement();
+            services.AddWebCams();
             services.AddBoundedContextCommonFeatures();
 
             // API/web host setup

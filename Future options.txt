@@ -1,0 +1,4 @@
+Future options to consider implementing:
+
+Use Polly handlers with HTTP client to add retry and circuit breaker policies for resiliency.
+- https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly 

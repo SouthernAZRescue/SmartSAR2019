@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{03B698EE-0
 	ProjectSection(SolutionItems) = preProject
 		Credits.txt = Credits.txt
 		Doc notes, code smells, etc..txt = Doc notes, code smells, etc..txt
+		Features.txt = Features.txt
+		Future options.txt = Future options.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserMgmt", "UserMgmt", "{17AB5E5E-8523-4732-BBD9-3BB3EB930E41}"
@@ -59,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.UserMgmt.Domain", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebCams", "WebCams", "{729C29AA-16F4-43A8-B993-80FB708EA3AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.WebCams.Core", "Src\SSar.BC.WebCams.Core\SSar.BC.WebCams.Core.csproj", "{537FD28A-3447-4150-B3DC-3A98C849D420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.WebCams.Core", "Src\SSar.BC.WebCams.Core\SSar.BC.WebCams.Core.csproj", "{537FD28A-3447-4150-B3DC-3A98C849D420}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

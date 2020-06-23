@@ -1,0 +1,5 @@
+Code features:
+- Startup for each bounded context is isolated in ProjectStartup files.
+- Uses IHttpClientFactory to create properly-managed typed HTTP services and handlers to manage HTTP requests and inject auth tokens in relevent assemblies.
+
+UX features:

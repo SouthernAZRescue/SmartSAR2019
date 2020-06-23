@@ -18,6 +18,8 @@ namespace SSar.Presentation.BlazorSpaUI
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
+            
+
             builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddScoped<ModalService>();
             builder.Services.AddApiAuthorization();
