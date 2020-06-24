@@ -40,7 +40,7 @@ namespace SSar.Presentation.API
             services.AddInfrastructure(Configuration);
             services.AddMemberManagement();
             services.AddUserManagement();
-            services.AddWebCams();
+            services.AddWebCams(Configuration);
             services.AddBoundedContextCommonFeatures();
 
             // API/web host setup

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -21,11 +20,14 @@ namespace SSar.BC.WebCams.Core.Commands
 
         public class GetImageByCamNameQueryHandler : IRequestHandler<GetImageByCamNameQuery, CamImage>
         {
-            private IWebCamImageRetrievalService _camService;
+            private readonly IWebCamCatalog _camCatalog;
+            private readonly IWebCamImageRetrievalService _camImageService;
 
-            public GetImageByCamNameQueryHandler(IWebCamImageRetrievalService camService)
+            public GetImageByCamNameQueryHandler(
+                IWebCamCatalog camCatalog, IWebCamImageRetrievalService camImageService)
             {
-                _camService = camService;
+                _camCatalog = camCatalog;
+                _camImageService = camImageService;
             }
 
             public async Task<CamImage> Handle(
@@ -33,8 +35,14 @@ namespace SSar.BC.WebCams.Core.Commands
             {
                 // TODO!: Remove temporary fixed name for building
 
+                CameraGroup cameraGroup = _camCatalog.CameraGroups
+                        .FirstOrDefault(g => g.UrlName == request.GroupName);
+
+                Camera camera = _camCatalog.Cameras
+                    .FirstOrDefault(c => c.UrlName == request.CameraName);
+
                 return 
-                    await _camService.GetImageFromUrl(@"http://remote.sarci.org:19204/snap.jpeg");
+                    await _camImageService.GetImageFromUrl(@"http://remote.sarci.org:19204/snap.jpeg");
             }
         }
     }
