@@ -9,14 +9,14 @@ namespace SSar.BC.WebCams.Core.Commands
 {
     public class GetImageByCamNameQuery : IRequest<CamImage>
     {
-        public GetImageByCamNameQuery(string groupName, string cameraName)
+        public GetImageByCamNameQuery(string groupUrlName, string cameraUrlName)
         {
-            GroupName = groupName;
-            CameraName = cameraName;
+            GroupUrlName = groupUrlName;
+            CameraUrlName = cameraUrlName;
         }
 
-        public string GroupName { get; private set; }
-        public string CameraName { get; private set; }
+        public string GroupUrlName { get; private set; }
+        public string CameraUrlName { get; private set; }
 
         public class GetImageByCamNameQueryHandler : IRequestHandler<GetImageByCamNameQuery, CamImage>
         {
@@ -35,14 +35,21 @@ namespace SSar.BC.WebCams.Core.Commands
             {
                 // TODO!: Remove temporary fixed name for building
 
-                CameraGroup cameraGroup = _camCatalog.CameraGroups
-                        .FirstOrDefault(g => g.UrlName == request.GroupName);
+                Camera camera = 
+                    _camCatalog.CameraGroups
+                        .FirstOrDefault(g => g.UrlName == request.GroupUrlName)
+                    ?.Cameras
+                        .FirstOrDefault(c => c.UrlName == request.CameraUrlName);
 
-                Camera camera = _camCatalog.Cameras
-                    .FirstOrDefault(c => c.UrlName == request.CameraName);
+                // CONSIDER: Throwing exception if there is an error/null.
+
+                if (camera == null)
+                {
+                    return new CamImage(new byte[0]); // Empty image
+                }
 
                 return 
-                    await _camImageService.GetImageFromUrl(@"http://remote.sarci.org:19204/snap.jpeg");
+                    await _camImageService.GetImageFromUrl(camera.SourceUrl);
             }
         }
     }

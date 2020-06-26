@@ -20,9 +20,23 @@ namespace SSar.Presentation.API.Controllers
         }
 
 
+        ////webcams/images?groupName=cam-group&cameraName=cam-name
+        //[HttpGet()]
+        //public async Task<IActionResult> Get([FromQuery] string groupName, [FromQuery] string cameraName)
+        //{
+        //    var camImage = await _mediator.Send(
+        //        new GetImageByCamNameQuery(groupName, cameraName));
+
+        //    return File(camImage.ByteArray, "image/jpeg");
+
+        //    // TODO!: RESILIENCY - check for relevant errors and return
+        //    // appropriate HTTP codes
+        //}
+
+
         //webcams/images?groupName=cam-group&cameraName=cam-name
-        [HttpGet()]
-        public async Task<IActionResult> Get([FromQuery] string groupName, [FromQuery] string cameraName)
+        [HttpGet("{groupName}/{cameraName}")]
+        public async Task<IActionResult> Get(string groupName, string cameraName)
         {
             var camImage = await _mediator.Send(
                 new GetImageByCamNameQuery(groupName, cameraName));

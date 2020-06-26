@@ -1,0 +1,30 @@
+﻿@page "/webcams2"
+
+<h2>Web Cams</h2>
+
+Web cam test. If you are lucky there will be images below.
+
+<h3>SARA House</h3>
+<div class="webcam-block">
+    <img class="webcam-block" src="https://localhost:44344/webcams?groupName=sara-house&cameraName=roof-south" />
+</div>
+<div class="webcam-block">
+    <img class="webcam-block" src="https://localhost:44344/webcams?groupName=sara-house&cameraName=roof-north" />
+</div>
+<div class="webcam-block">
+    <img class="webcam-block" src="https://localhost:44344/webcams?groupName=sara-house&cameraName=window-west" />
+</div>
+<div class="webcam-block">
+    <img class="webcam-block" src="https://localhost:44344/webcams?groupName=sara-house&cameraName=gate-approach" />
+</div>
+<div class="webcam-block">
+    <img class="webcam-block" src="https://localhost:44344/webcams?groupName=sara-house&cameraName=gate" />
+</div>
+
+<style>
+    webcam-block {
+        width: 100%;
+        z-index: 0;
+        padding-top: 2vh;
+    }
+</style>

@@ -21,7 +21,7 @@ namespace SSar.BC.WebCams.Core.Services
                 new CamImage(
                     await _httpClient
                         .GetByteArrayAsync(
-                            @"http://remote.sarci.org:19204/snap.jpeg"));
+                            url));
         }
     }
 

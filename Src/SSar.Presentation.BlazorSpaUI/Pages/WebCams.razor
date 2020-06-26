@@ -1,20 +1,17 @@
 ﻿@page "/webcams"
 
-<h3>WebCams</h3>
+@using SSar.Presentation.BlazorSpaUI.Components.WebCams 
 
-Web cam test. If you are lucky there will be an image below.
+<h2>Web Cams</h2>
 
-<div>
-    
-    <img src="https://localhost:44344/webcams?group-name=sara-house&cameraName=4-roof-south"/>
+Web cam test. If you are lucky there will be images below.
 
-</div>
+<WebCamGroupImages></WebCamGroupImages>
 
 <style>
-    image-block {
-        width: 100%;
+    webcam-block {
+        max-width: 100%;
         z-index: 0;
         padding-top: 2vh;
     }
-
 </style>

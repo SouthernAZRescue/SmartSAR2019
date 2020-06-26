@@ -17,8 +17,7 @@ namespace SSar.BC.WebCams.Core
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddSingleton<IWebCamCatalog>(new WebCamCatalog(
-                configuration.GetSection("WebCams:CameraGroups").Get<List<CameraGroup>>(),
-                configuration.GetSection("WebCams:Cameras").Get<List<Camera>>()));
+                configuration.GetSection("WebCams:CameraGroups").Get<List<CameraGroup>>()));
 
             return services;
         }
