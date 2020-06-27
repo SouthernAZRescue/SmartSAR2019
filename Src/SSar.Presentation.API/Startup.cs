@@ -1,11 +1,15 @@
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using SSar.BC.Common.Application;
 using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
@@ -13,6 +17,7 @@ using SSar.BC.UserMgmt.Application;
 using SSar.BC.WebCams.Core;
 using SSar.Infrastructure;
 using SSar.Presentation.API.Filters;
+using SSar.Presentation.API.Middleware;
 using SSar.Presentation.API.Services;
 
 namespace SSar.Presentation.API
@@ -92,6 +97,8 @@ namespace SSar.Presentation.API
             app.UseOpenApi();
             app.UseSwaggerUi3();
 
+
+            app.UseEndpointLogging(LogLevel.Debug);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
@@ -100,4 +107,7 @@ namespace SSar.Presentation.API
             });
         }
     }
+
+
+
 }
