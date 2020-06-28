@@ -211,12 +211,163 @@
         }
       }
     },
-    "/WebCams": {
+    "/api/WebCams/groups": {
       "get": {
         "tags": [
           "WebCams"
         ],
-        "operationId": "WebCams_Get",
+        "operationId": "WebCams_GetGroups",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/WebCams/groups/{groupName}": {
+      "get": {
+        "tags": [
+          "WebCams"
+        ],
+        "operationId": "WebCams_GetGroup",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/WebCams/groups/{groupName}/cameras": {
+      "get": {
+        "tags": [
+          "WebCams"
+        ],
+        "operationId": "WebCams_GetCameras",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/WebCams/groups/{groupName}/cameras/{cameraName}": {
+      "get": {
+        "tags": [
+          "WebCams"
+        ],
+        "operationId": "WebCams_GetCamera",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "cameraName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/WebCams/groups/{groupName}/cameras/{cameraName}/thumbnail": {
+      "get": {
+        "tags": [
+          "WebCams"
+        ],
+        "operationId": "WebCams_GetThumbnail",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "cameraName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/WebCams/groups/{groupName}/cameras/{cameraName}/image": {
+      "get": {
+        "tags": [
+          "WebCams"
+        ],
+        "operationId": "WebCams_GetImage",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "cameraName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
         "responses": {
           "200": {
             "x-nullable": true,

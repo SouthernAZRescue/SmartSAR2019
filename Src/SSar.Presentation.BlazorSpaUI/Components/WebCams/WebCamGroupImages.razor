@@ -1,21 +1,35 @@
 ﻿<h3>WebCamGroupImages</h3>
 
 <h3>SARA House</h3>
-<div class="webcam-block">
-    <img class="webcam-block" src="https://localhost:44344/webcams/sara-house/roof-south" />
+<div class="webcam-box">
+    <img class="webcam-image" src="https://localhost:44344/api/webcams/groups/sara-house/cameras/roof-south/image" />
 </div>
-<div class="webcam-block">
-    <img class="webcam-block" src="https://localhost:44344/webcams/sara-house/roof-north" />
+<div class="webcam-box">
+    <img class="webcam-image" src="https://localhost:44344/api/webcams/groups/sara-house/cameras/roof-north/image" />
 </div>
-<div class="webcam-block">
-    <img class="webcam-block" src="https://localhost:44344/webcams/sara-house/west-parking" />
+<div class="webcam-box">
+    <img class="webcam-image" src="https://localhost:44344/api/webcams/groups/sara-house/cameras/west-parking/image" />
 </div>
-<div class="webcam-block">
-    <img class="webcam-block" src="https://localhost:44344/webcams/sara-house/gate-approach" />
+<div class="webcam-box">
+    <img class="webcam-image" src="https://localhost:44344/api/webcams/groups/sara-house/cameras/gate-approach/image" />
 </div>
-<div class="webcam-block">
-    <img class="webcam-block" src="https://localhost:44344/webcams/sara-house/gate-equipment" />
+<div class="webcam-box">
+    <img class="webcam-image" src="https://localhost:44344/api/webcams/groups/sara-house/cameras/gate-equipment/image" />
 </div>
+
+<style>
+
+    .webcam-box {
+        display: grid;
+        height: 100%;
+    }
+
+    .webcam-image {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+    }
+</style>
 
 @code {
     [Parameter]

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SSar.BC.WebCams.Core.Commands;
@@ -9,7 +10,7 @@ using SSar.BC.WebCams.Core.ValueTypes;
 namespace SSar.Presentation.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WebCamsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -19,32 +20,54 @@ namespace SSar.Presentation.API.Controllers
             _mediator = mediator;
         }
 
+        // TODO!: RESILIENCY - check for relevant errors and return correct HTTP codes
 
-        ////webcams/images?groupName=cam-group&cameraName=cam-name
-        //[HttpGet()]
-        //public async Task<IActionResult> Get([FromQuery] string groupName, [FromQuery] string cameraName)
-        //{
-        //    var camImage = await _mediator.Send(
-        //        new GetImageByCamNameQuery(groupName, cameraName));
-
-        //    return File(camImage.ByteArray, "image/jpeg");
-
-        //    // TODO!: RESILIENCY - check for relevant errors and return
-        //    // appropriate HTTP codes
-        //}
-
-
-        //webcams/images?groupName=cam-group&cameraName=cam-name
-        [HttpGet("{groupName}/{cameraName}")]
-        public async Task<IActionResult> Get(string groupName, string cameraName)
+        // GET /api/webcams/groups
+        [HttpGet("groups")]
+        public async Task<IActionResult> GetGroups()
         {
-            var camImage = await _mediator.Send(
-                new GetImageByCamNameQuery(groupName, cameraName));
+            throw new NotImplementedException();
+        }
 
-            return File(camImage.ByteArray, "image/jpeg");
+        // GET /api/webcams/groups/sara-house
+        [HttpGet("groups/{groupName}")]
+        public async Task<IActionResult> GetGroup(string groupName)
+        {
+            throw new NotImplementedException();
+        }
 
-            // TODO!: RESILIENCY - check for relevant errors and return
-            // appropriate HTTP codes
+        // GET /api/webcams/groups/sara-house/cameras
+        [HttpGet("groups/{groupName}/cameras")]
+        public async Task<IActionResult> GetCameras(string groupName)
+        {
+            throw new NotImplementedException();
+        }
+
+        // GET /api/webcams/groups/sara-house/cameras/roof-north
+        [HttpGet("groups/{groupName}/cameras/{cameraName}")]
+        public async Task<IActionResult> GetCamera(string groupName, string cameraName)
+        {
+            throw new NotImplementedException();
+        }
+
+        // GET /api/webcams/groups/sara-house/cameras/roof-north/thumbnail
+        [HttpGet("groups/{groupName}/cameras/{cameraName}/thumbnail")]
+        public async Task<IActionResult> GetThumbnail(string groupName, string cameraName)
+        {
+            throw new NotImplementedException();
+        }
+
+        // GET /api/webcams/groups/sara-house/cameras/roof-north/image
+        [HttpGet("groups/{groupName}/cameras/{cameraName}/image")]
+        public async Task<IActionResult> GetImage([FromRoute] string groupName, [FromRoute] string cameraName)
+        {
+            var camImage = (await _mediator.Send(
+                new GetImageByCamNameQuery(groupName, cameraName)));
+
+            return File(
+                camImage.ByteArray
+                    ?? new byte[0],
+                "image/jpeg");
         }
     }
 }

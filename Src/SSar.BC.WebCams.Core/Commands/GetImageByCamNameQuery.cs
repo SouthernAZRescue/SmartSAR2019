@@ -47,6 +47,8 @@ namespace SSar.BC.WebCams.Core.Commands
                 {
                     return new CamImage(new byte[0]); // Empty image
                 }
+                
+                // TODO!: Handle NULL return
 
                 return 
                     await _camImageService.GetImageFromUrl(camera.SourceUrl);
