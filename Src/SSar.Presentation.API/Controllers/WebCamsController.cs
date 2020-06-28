@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SSar.BC.WebCams.Core.Queries.GetAllCameraGroupsQuery;
-using SSar.BC.WebCams.Core.Queries.GetCamImageQuery;
+using SSar.BC.WebCams.Core.Queries.GetCameraImageQuery;
 using SSar.BC.WebCams.Core.ValueTypes;
 
 // using SSar.BC.WebCams.Core.Commands;
@@ -64,7 +64,7 @@ namespace SSar.Presentation.API.Controllers
         public async Task<IActionResult> GetImage([FromRoute] string groupName, [FromRoute] string cameraName)
         {
             var camImage = (await _mediator.Send(
-                new GetCamImageQuery(groupName, cameraName)));
+                new GetCameraImageQuery(groupName, cameraName)));
 
             return File(
                 camImage.ByteArray

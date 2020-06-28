@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using FluentValidation;
 
-namespace SSar.BC.WebCams.Core.Queries.GetCamImageQuery
+namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
 {
-    public class GetCamImageQueryValidator : AbstractValidator<GetCamImageQuery>
+    public class GetCameraImageQueryValidator : AbstractValidator<GetCameraImageQuery>
     {
-        public GetCamImageQueryValidator()
+        public GetCameraImageQueryValidator()
         {
             RuleFor(r => r.GroupUrlName).NotEmpty();
             RuleFor(r => r.CameraUrlName).NotEmpty();
