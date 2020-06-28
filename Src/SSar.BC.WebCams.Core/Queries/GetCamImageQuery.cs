@@ -5,11 +5,11 @@ using MediatR;
 using SSar.BC.WebCams.Core.Interfaces;
 using SSar.BC.WebCams.Core.ValueTypes;
 
-namespace SSar.BC.WebCams.Core.Commands
+namespace SSar.BC.WebCams.Core.Queries
 {
-    public class GetImageByCamNameQuery : IRequest<CamImage>
+    public class GetCamImageQuery : IRequest<CamImage>
     {
-        public GetImageByCamNameQuery(string groupUrlName, string cameraUrlName)
+        public GetCamImageQuery(string groupUrlName, string cameraUrlName)
         {
             GroupUrlName = groupUrlName;
             CameraUrlName = cameraUrlName;
@@ -18,7 +18,7 @@ namespace SSar.BC.WebCams.Core.Commands
         public string GroupUrlName { get; private set; }
         public string CameraUrlName { get; private set; }
 
-        public class GetImageByCamNameQueryHandler : IRequestHandler<GetImageByCamNameQuery, CamImage>
+        public class GetImageByCamNameQueryHandler : IRequestHandler<GetCamImageQuery, CamImage>
         {
             private readonly IWebCamCatalog _camCatalog;
             private readonly IWebCamImageRetrievalService _camImageService;
@@ -31,7 +31,7 @@ namespace SSar.BC.WebCams.Core.Commands
             }
 
             public async Task<CamImage> Handle(
-                GetImageByCamNameQuery request, CancellationToken cancellationToken)
+                GetCamImageQuery request, CancellationToken cancellationToken)
             {
                 // TODO!: Remove temporary fixed name for building
 
