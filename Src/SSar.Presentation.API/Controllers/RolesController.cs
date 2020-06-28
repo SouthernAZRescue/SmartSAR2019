@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SSar.BC.MemberMgmt.Application.Members.Queries.GetMembersList;
-using SSar.BC.UserMgmt.Application.Roles.Queries;
+using SSar.BC.UserMgmt.Application.AppRoles.Queries;
 
 namespace SSar.Presentation.API.Controllers
 {

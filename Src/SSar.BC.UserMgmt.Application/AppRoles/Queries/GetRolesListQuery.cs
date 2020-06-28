@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using SSar.BC.UserMgmt.Application.Interfaces;
 
-namespace SSar.BC.UserMgmt.Application.Roles.Queries
+namespace SSar.BC.UserMgmt.Application.AppRoles.Queries
 {
     public class GetRolesListQuery : IRequest<RolesListVm>
     {

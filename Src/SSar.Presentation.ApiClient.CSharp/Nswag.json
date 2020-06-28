@@ -217,12 +217,20 @@
           "WebCams"
         ],
         "operationId": "WebCams_GetGroups",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
-            "x-nullable": true,
+            "x-nullable": false,
             "description": "",
             "schema": {
-              "type": "file"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CameraGroup"
+              }
             }
           }
         }
@@ -491,6 +499,57 @@
           "type": "string",
           "maxLength": 40,
           "minLength": 1
+        }
+      }
+    },
+    "CameraGroup": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "urlName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "cameras": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Camera"
+          }
+        }
+      }
+    },
+    "Camera": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "urlName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "sourceUrl": {
+          "type": "string"
         }
       }
     }

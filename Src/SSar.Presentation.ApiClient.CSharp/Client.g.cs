@@ -929,14 +929,14 @@ namespace SSar.Presentation.ApiClient.CSharp
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FileResponse> GetGroupsAsync()
+        public System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CameraGroup>>> GetGroupsAsync()
         {
             return GetGroupsAsync(System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FileResponse> GetGroupsAsync(System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CameraGroup>>> GetGroupsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups");
@@ -947,7 +947,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                 using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
@@ -967,12 +967,10 @@ namespace SSar.Presentation.ApiClient.CSharp
                         ProcessResponse(client_, response_);
     
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200" || status_ == "206") 
+                        if (status_ == "200") 
                         {
-                            var responseStream_ = response_.Content == null ? System.IO.Stream.Null : await response_.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                            var fileResponse_ = new FileResponse((int)response_.StatusCode, headers_, responseStream_, null, response_); 
-                            client_ = null; response_ = null; // response and client are disposed by FileResponse
-                            return fileResponse_;
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<CameraGroup>>(response_, headers_).ConfigureAwait(false);
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<CameraGroup>>((int)response_.StatusCode, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -981,7 +979,7 @@ namespace SSar.Presentation.ApiClient.CSharp
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(FileResponse);
+                        return new SwaggerResponse<System.Collections.Generic.ICollection<CameraGroup>>((int)response_.StatusCode, headers_, default(System.Collections.Generic.ICollection<CameraGroup>)); 
                     }
                     finally
                     {
