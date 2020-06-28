@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SSar.BC.WebCams.Core.Commands;
 using SSar.BC.WebCams.Core.ValueTypes;
 
 // using SSar.BC.WebCams.Core.Commands;
