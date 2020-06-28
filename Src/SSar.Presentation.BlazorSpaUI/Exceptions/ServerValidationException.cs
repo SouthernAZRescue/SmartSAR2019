@@ -9,7 +9,7 @@ namespace SSar.Presentation.BlazorSpaUI.Exceptions
     {
         public IDictionary<string, string[]> ErrorDictionary { get; private set; }
 
-        // Consider: Adding a message string parameter
+        // Consider: Adding a general message string parameter
         public ServerValidationException(IDictionary<string, string[]> errorDictionary)
         {
             ErrorDictionary = errorDictionary;
