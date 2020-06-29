@@ -7,6 +7,7 @@ using SSar.BC.WebCams.Core.Queries.GetAllCameraGroupsQuery;
 using SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroupQuery;
 using SSar.BC.WebCams.Core.Queries.GetCameraGroupQuery;
 using SSar.BC.WebCams.Core.Queries.GetCameraImageQuery;
+using SSar.BC.WebCams.Core.Queries.GetCameraQuery;
 using SSar.BC.WebCams.Core.ValueTypes;
 
 // using SSar.BC.WebCams.Core.Commands;
@@ -49,9 +50,9 @@ namespace SSar.Presentation.API.Controllers
 
         // GET /api/webcams/groups/sara-house/cameras/roof-north
         [HttpGet("groups/{groupUrlName}/cameras/{cameraUrlName}")]
-        public async Task<IActionResult> GetCamera(string groupUrlName, string cameraUrlName)
+        public async Task<Camera> GetCamera(string groupUrlName, string cameraUrlName)
         {
-            throw new NotImplementedException();
+            return await _mediator.Send(new GetCameraQuery(groupUrlName, cameraUrlName));
         }
 
         // GET /api/webcams/groups/sara-house/cameras/roof-north/thumbnail
