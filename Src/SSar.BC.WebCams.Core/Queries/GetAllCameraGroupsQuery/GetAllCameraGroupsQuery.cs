@@ -20,7 +20,9 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCameraGroupsQuery
 
             public async Task<IReadOnlyList<CameraGroup>> Handle(GetAllCameraGroupsQuery request, CancellationToken cancellationToken)
             {
-                return await Task.FromResult(_webCamCatalog.CameraGroups);
+                return await Task.FromResult(
+                    _webCamCatalog.CameraGroups
+                    ?? new CameraGroup[0]);
             }
         }
     }

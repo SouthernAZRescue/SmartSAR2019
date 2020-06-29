@@ -5,6 +5,6 @@ namespace SSar.BC.WebCams.Core.Interfaces
 {
     public interface IWebCamImageRetrievalService
     {
-        Task<CamImage> GetImageFromUrl(string url);
+        Task<CameraImage> GetImageFromUrl(string url);
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SSar.BC.WebCams.Core.ValueTypes
 {
-    public class CamImage
+    public class CameraImage
     {
-        public CamImage(Byte[] imageByteArray)
+        public CameraImage(byte[] imageByteArray)
         {
             ByteArray = imageByteArray;
         }

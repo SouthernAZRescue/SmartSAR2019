@@ -7,9 +7,9 @@ namespace SSar.BC.WebCams.Core.ValueTypes
     public class CameraGroup
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string UrlName { get; set; }
-        public string Description { get; set; }
-        public IReadOnlyList<Camera> Cameras { get; set; }
+        public string Name { get; set; } = "";
+        public string UrlName { get; set; } = "";
+        public string Description { get; set; } = "";
+        public IReadOnlyList<Camera> Cameras { get; set; } = new List<Camera>();
     }
 }

@@ -7,7 +7,7 @@ using SSar.BC.WebCams.Core.ValueTypes;
 
 namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
 {
-    public class GetCameraImageQuery : IRequest<CamImage>
+    public class GetCameraImageQuery : IRequest<CameraImage>
     {
         public GetCameraImageQuery(string groupUrlName, string cameraUrlName)
         {
@@ -18,7 +18,7 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
         public string GroupUrlName { get; private set; }
         public string CameraUrlName { get; private set; }
 
-        public class GetImageByCamNameQueryHandler : IRequestHandler<GetCameraImageQuery, CamImage>
+        public class GetImageByCamNameQueryHandler : IRequestHandler<GetCameraImageQuery, CameraImage>
         {
             private readonly IWebCamCatalog _camCatalog;
             private readonly IWebCamImageRetrievalService _camImageService;
@@ -30,7 +30,7 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
                 _camImageService = camImageService;
             }
 
-            public async Task<CamImage> Handle(
+            public async Task<CameraImage> Handle(
                 GetCameraImageQuery request, CancellationToken cancellationToken)
             {
                 // TODO!: Remove temporary fixed name for building
@@ -45,7 +45,7 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
 
                 if (camera == null)
                 {
-                    return new CamImage(new byte[0]); // Empty image
+                    return new CameraImage(new byte[0]); // Empty image
                 }
                 
                 // TODO!: Handle NULL return

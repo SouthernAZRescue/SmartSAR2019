@@ -34,8 +34,10 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraGroupQuery
                 GetCameraGroupQuery request, CancellationToken cancellationToken)
             {
                 return await Task.FromResult(
-                    _webCamCatalog.CameraGroups
-                        .FirstOrDefault(g => g.UrlName == request.CameraGroupUrlName));
+                    _webCamCatalog
+                        .CameraGroups
+                            .FirstOrDefault(g => g.UrlName == request.CameraGroupUrlName)
+                    ?? new CameraGroup());
             }
         }
     }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SSar.BC.WebCams.Core.Queries.GetAllCameraGroupsQuery;
+using SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroupQuery;
 using SSar.BC.WebCams.Core.Queries.GetCameraGroupQuery;
 using SSar.BC.WebCams.Core.Queries.GetCameraImageQuery;
 using SSar.BC.WebCams.Core.ValueTypes;
@@ -41,9 +42,9 @@ namespace SSar.Presentation.API.Controllers
 
         // GET /api/webcams/groups/sara-house/cameras
         [HttpGet("groups/{groupUrlName}/cameras")]
-        public async Task<IActionResult> GetCameras(string groupUrlName)
+        public async Task<IReadOnlyList<Camera>> GetAllCamerasForGroup(string groupUrlName)
         {
-            throw new NotImplementedException();
+            return await _mediator.Send(new GetAllCamerasForGroupQuery(groupUrlName));
         }
 
         // GET /api/webcams/groups/sara-house/cameras/roof-north
