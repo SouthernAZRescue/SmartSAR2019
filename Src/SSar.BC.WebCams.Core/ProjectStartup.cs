@@ -16,8 +16,10 @@ namespace SSar.BC.WebCams.Core
             services.AddHttpClient<IWebCamImageRetrievalService, WebCamImageRetrievalService>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            services.AddSingleton<IWebCamCatalog>(new WebCamCatalog(
-                configuration.GetSection("WebCams:CameraGroups").Get<List<CameraGroup>>()));
+            var catalogOptions = new WebCamCatalogOptions();
+            configuration.GetSection(WebCamCatalogOptions.WebCams).Bind(catalogOptions);
+
+            services.AddSingleton<IWebCamCatalog>(new WebCamCatalog(catalogOptions));
 
             return services;
         }

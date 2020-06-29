@@ -8,9 +8,9 @@ namespace SSar.BC.WebCams.Core.Services
 {
     public class WebCamCatalog : IWebCamCatalog
     {
-        public WebCamCatalog(IReadOnlyList<CameraGroup> cameraGroups)
+        public WebCamCatalog(WebCamCatalogOptions catalogOptions)
         {
-            CameraGroups = cameraGroups;
+            CameraGroups = catalogOptions.CameraGroups;
         }
 
         public IReadOnlyList<CameraGroup> CameraGroups { get; private set; }

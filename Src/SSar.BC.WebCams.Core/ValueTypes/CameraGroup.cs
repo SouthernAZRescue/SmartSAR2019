@@ -10,6 +10,6 @@ namespace SSar.BC.WebCams.Core.ValueTypes
         public string Name { get; set; } = "";
         public string UrlName { get; set; } = "";
         public string Description { get; set; } = "";
-        public IReadOnlyList<Camera> Cameras { get; set; } = new List<Camera>();
+        public List<Camera> Cameras { get; set; } = new List<Camera>();
     }
 }

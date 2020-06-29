@@ -37,6 +37,7 @@ namespace SSar.Presentation.API
             
             // Add DI and init from individual bounded contexts and other projects
 
+            // TODO: Use options pattern instead of passing in Configuration
             services.AddInfrastructure(Configuration);
             services.AddMemberManagement();
             services.AddUserManagement();
