@@ -10,8 +10,8 @@ using SSar.Infrastructure.Persistence;
 namespace SSar.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200620193321_ValueGeneratedNever")]
-    partial class ValueGeneratedNever
+    [Migration("20200701180327_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -249,42 +249,42 @@ namespace SSar.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cf5ff70a-14aa-4f08-83e5-8e8dcb1aa1d3"),
+                            Id = new Guid("723c6f49-1f1d-47f1-a47f-996de03ee518"),
                             ConcurrencyStamp = "new",
                             Name = "Super Admin",
                             NormalizedName = "SUPER ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("e94d1c62-74e0-4230-86f2-e7c03101fd6d"),
+                            Id = new Guid("ce53b84d-a1bc-498d-8c5d-823b5753046d"),
                             ConcurrencyStamp = "new",
                             Name = "App Security Admin",
                             NormalizedName = "APP SECURITY ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("dc4c6d5a-1b37-46ac-97c7-c587fccc49ee"),
+                            Id = new Guid("f0762838-2e3f-44c7-a141-a85044ee2794"),
                             ConcurrencyStamp = "new",
                             Name = "Member Data Admin",
                             NormalizedName = "MEMBER RECORDS ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("088c868e-83d3-4007-b9fb-8da81b0de21e"),
+                            Id = new Guid("c3bfe270-45d5-4d93-9194-02e526afad23"),
                             ConcurrencyStamp = "new",
                             Name = "Organization Member",
                             NormalizedName = "ORGANIZATION MEMBER"
                         },
                         new
                         {
-                            Id = new Guid("2c7d47f0-9ae8-497a-8204-d8782d4602a2"),
+                            Id = new Guid("059bc4ac-a7dc-465c-bc41-1407f41b533e"),
                             ConcurrencyStamp = "new",
                             Name = "Affiliate User",
                             NormalizedName = "AFFILIATE USER"
                         },
                         new
                         {
-                            Id = new Guid("d2cb3c02-b028-4f3f-817c-2aa8561813c1"),
+                            Id = new Guid("00e383a3-2982-4a68-b190-b6585f6862d5"),
                             ConcurrencyStamp = "new",
                             Name = "Guest User",
                             NormalizedName = "GUEST USER"

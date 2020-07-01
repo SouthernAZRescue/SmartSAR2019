@@ -207,12 +207,12 @@ namespace SSar.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("685a7efb-c6d1-4578-97ca-c0fd09e0c44d"), "new", "Super Admin", "SUPER ADMIN" },
-                    { new Guid("a114f89e-da47-48cf-ac95-f787cfa60867"), "new", "App Security Admin", "APP SECURITY ADMIN" },
-                    { new Guid("e57f9f62-b1b8-4ceb-b9d1-6eb28a2ee33a"), "new", "Member Data Admin", "MEMBER RECORDS ADMIN" },
-                    { new Guid("d462a06b-c0e3-4c1e-a9bf-32bc2178e737"), "new", "Organization Member", "ORGANIZATION MEMBER" },
-                    { new Guid("54e2e99c-9fe0-4895-a787-586b50ab8582"), "new", "Affiliate User", "AFFILIATE USER" },
-                    { new Guid("097553b3-aa2b-4a9a-92b4-bc40c645c1ab"), "new", "Guest User", "GUEST USER" }
+                    { new Guid("723c6f49-1f1d-47f1-a47f-996de03ee518"), "new", "Super Admin", "SUPER ADMIN" },
+                    { new Guid("ce53b84d-a1bc-498d-8c5d-823b5753046d"), "new", "App Security Admin", "APP SECURITY ADMIN" },
+                    { new Guid("f0762838-2e3f-44c7-a141-a85044ee2794"), "new", "Member Data Admin", "MEMBER RECORDS ADMIN" },
+                    { new Guid("c3bfe270-45d5-4d93-9194-02e526afad23"), "new", "Organization Member", "ORGANIZATION MEMBER" },
+                    { new Guid("059bc4ac-a7dc-465c-bc41-1407f41b533e"), "new", "Affiliate User", "AFFILIATE USER" },
+                    { new Guid("00e383a3-2982-4a68-b190-b6585f6862d5"), "new", "Guest User", "GUEST USER" }
                 });
 
             migrationBuilder.CreateIndex(
