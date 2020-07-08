@@ -33,9 +33,11 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroup
 
                 var cameras = _webCameraCatalog
                     .CameraGroups.FirstOrDefault(g => g.GroupId == request.GroupId)
-                    ?.Cameras;
-
-                           return await Task.FromResult(cameras);
+                    ?.Cameras; 
+                
+                return await Task.FromResult(
+                    cameras
+                    ?? new List<Camera>());
             }
         }
     }
