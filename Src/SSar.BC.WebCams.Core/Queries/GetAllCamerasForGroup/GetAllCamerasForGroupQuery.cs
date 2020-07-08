@@ -12,11 +12,11 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroupQuery
 {
     public class GetAllCamerasForGroupQuery : IRequest<IReadOnlyList<Camera>>
     {
-        public string GroupUrlName { get; set; }
+        public int GroupId { get; set; }
 
-        public GetAllCamerasForGroupQuery(string groupUrlName)
+        public GetAllCamerasForGroupQuery(int groupId)
         {
-            GroupUrlName = groupUrlName;
+            GroupId = groupId;
         }
 
         public class GetAllCamerasForGroupQueryHandler : IRequestHandler<GetAllCamerasForGroupQuery, IReadOnlyList<Camera>>
@@ -32,7 +32,7 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroupQuery
             {
 
                 var cameras = _webCameraCatalog
-                    .CameraGroups.FirstOrDefault(g => g.UrlName == request.GroupUrlName)
+                    .CameraGroups.FirstOrDefault(g => g.GroupId == request.GroupId)
                     ?.Cameras;
 
                            return await Task.FromResult(cameras);

@@ -37,9 +37,9 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
 
                 Camera camera = 
                     _camCatalog.CameraGroups
-                        .FirstOrDefault(g => g.Id == request.GroupId)
+                        .FirstOrDefault(g => g.GroupId == request.GroupId)
                     ?.Cameras
-                        .FirstOrDefault(c => c.Id == request.CameraId);
+                        .FirstOrDefault(c => c.CameraId == request.CameraId);
 
                 // CONSIDER: Throwing exception if there is an error/null.
 
@@ -51,7 +51,7 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
                 // TODO!: Handle NULL return
 
                 return 
-                    await _camImageService.GetImageFromUrl(camera.SourceUrl);
+                    await _camImageService.GetImageFromUrl(camera.ImageSourceUrl);
             }
         }
     }

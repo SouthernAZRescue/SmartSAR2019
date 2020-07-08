@@ -14,6 +14,11 @@ using SSar.BC.WebCams.Core.ValueTypes;
 
 namespace SSar.Presentation.API.Controllers
 {
+    // IF THE API ROUTES OR METHOD SIGNATURES ARE MODIFIED THE
+    // API CLIENTS MUST BE REGENERATED TO MATCH THE NEW API.
+    // See the solution documentation for details on how to
+    // enable automatic client generation with builds.
+
     [ApiController]
     [Route("api/[controller]")]
     public class WebCamsController : ControllerBase
@@ -34,35 +39,35 @@ namespace SSar.Presentation.API.Controllers
             return await _mediator.Send(new GetAllCameraGroupsQuery());
         }
 
-        // GET /api/webcams/groups/sara-house
-        [HttpGet("groups/{groupUrlName}")]
-        public async Task<CameraGroup> GetGroup(string groupUrlName)
+        // GET /api/webcams/groups/5
+        [HttpGet("groups/{groupId}")]
+        public async Task<CameraGroup> GetCameraGroup(int groupId)
         {
-            return await _mediator.Send(new GetCameraGroupQuery(groupUrlName));
+            return await _mediator.Send(new GetCameraGroupQuery(groupId));
         }
 
-        // GET /api/webcams/groups/sara-house/cameras
-        [HttpGet("groups/{groupUrlName}/cameras")]
-        public async Task<IReadOnlyList<Camera>> GetAllCamerasForGroup(string groupUrlName)
+        // GET /api/webcams/groups/5/cameras
+        [HttpGet("groups/{groupId}/cameras")]
+        public async Task<IReadOnlyList<Camera>> GetAllCamerasForGroup(int groupId)
         {
-            return await _mediator.Send(new GetAllCamerasForGroupQuery(groupUrlName));
+            return await _mediator.Send(new GetAllCamerasForGroupQuery(groupId));
         }
 
-        // GET /api/webcams/groups/sara-house/cameras/roof-north
+        // GET /api/webcams/groups/5/cameras/3
         [HttpGet("groups/{groupId}/cameras/{cameraId}")]
         public async Task<Camera> GetCamera(int groupId, int cameraId)
         {
             return await _mediator.Send(new GetCameraQuery(groupId, cameraId));
         }
 
-        // GET /api/webcams/groups/sara-house/cameras/roof-north/thumbnail
-        [HttpGet("groups/{groupUrlName}/cameras/{cameraUrlName}/thumbnail")]
-        public async Task<IActionResult> GetThumbnail(string groupUrlName, string cameraUrlName)
+        // GET /api/webcams/groups/5/cameras/3/thumbnail
+        [HttpGet("groups/{groupId}/cameras/{cameraId}/thumbnail")]
+        public async Task<IActionResult> GetThumbnail(int groupId, int cameraId)
         {
             throw new NotImplementedException();
         }
 
-        // GET /api/webcams/groups/sara-house/cameras/roof-north/image
+        // GET /api/webcams/groups/5/cameras/3/image
         [HttpGet("groups/{groupId}/cameras/{cameraId}/image")]
         public async Task<IActionResult> GetImage([FromRoute] int groupId, [FromRoute] int cameraId)
         {

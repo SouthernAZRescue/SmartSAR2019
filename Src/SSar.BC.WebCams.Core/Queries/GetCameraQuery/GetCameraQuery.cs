@@ -35,9 +35,9 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraQuery
                 return await Task.FromResult(
                     _camCatalog
                         .CameraGroups
-                        .FirstOrDefault(g => g.Id == request.GroupId)
+                        .FirstOrDefault(g => g.GroupId == request.GroupId)
                         ?.Cameras
-                        .FirstOrDefault(c => c.Id == request.CameraId)
+                        .FirstOrDefault(c => c.CameraId == request.CameraId)
                     ?? new Camera());
             }
         }

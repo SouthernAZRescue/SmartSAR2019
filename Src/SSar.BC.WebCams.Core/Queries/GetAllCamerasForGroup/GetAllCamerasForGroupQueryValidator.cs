@@ -9,7 +9,7 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroupQuery
     {
         public GetAllCamerasForGroupQueryValidator()
         {
-            RuleFor(r => r.GroupUrlName).NotEmpty();
+            RuleFor(r => r.GroupId).NotEmpty();
         }
     }
 }
