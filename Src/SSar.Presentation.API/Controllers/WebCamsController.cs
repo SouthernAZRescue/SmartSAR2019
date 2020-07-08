@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SSar.BC.WebCams.Core.Queries.GetAllCameraGroupsQuery;
-using SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroupQuery;
-using SSar.BC.WebCams.Core.Queries.GetCameraGroupQuery;
-using SSar.BC.WebCams.Core.Queries.GetCameraImageQuery;
-using SSar.BC.WebCams.Core.Queries.GetCameraQuery;
+using SSar.BC.WebCams.Core.Queries.GetAllCameraGroups;
+using SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroup;
+using SSar.BC.WebCams.Core.Queries.GetCameraGroup;
+using SSar.BC.WebCams.Core.Queries.GetCameraImage;
+using SSar.BC.WebCams.Core.Queries.GetCamera;
 using SSar.BC.WebCams.Core.ValueTypes;
 
 // using SSar.BC.WebCams.Core.Commands;

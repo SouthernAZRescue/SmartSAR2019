@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using FluentValidation;
 
-namespace SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroupQuery
+namespace SSar.BC.WebCams.Core.Queries.GetAllCamerasForGroup
 {
     public class GetAllCamerasForGroupQueryValidator : AbstractValidator<GetAllCamerasForGroupQuery>
     {

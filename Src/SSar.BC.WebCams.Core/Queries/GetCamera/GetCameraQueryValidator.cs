@@ -4,7 +4,7 @@ using System.Text;
 using FluentValidation;
 using FluentValidation.Validators;
 
-namespace SSar.BC.WebCams.Core.Queries.GetCameraQuery
+namespace SSar.BC.WebCams.Core.Queries.GetCamera
 {
     public class GetCameraQueryValidator : AbstractValidator<GetCameraQuery>
     {

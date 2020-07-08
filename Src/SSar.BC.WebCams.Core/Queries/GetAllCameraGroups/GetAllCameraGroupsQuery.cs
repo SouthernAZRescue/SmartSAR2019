@@ -5,7 +5,7 @@ using MediatR;
 using SSar.BC.WebCams.Core.Interfaces;
 using SSar.BC.WebCams.Core.ValueTypes;
 
-namespace SSar.BC.WebCams.Core.Queries.GetAllCameraGroupsQuery
+namespace SSar.BC.WebCams.Core.Queries.GetAllCameraGroups
 {
     public class GetAllCameraGroupsQuery : IRequest<IReadOnlyList<CameraGroup>>
     {
