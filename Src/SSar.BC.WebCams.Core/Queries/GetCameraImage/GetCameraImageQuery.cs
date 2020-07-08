@@ -18,12 +18,12 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImage
         public int GroupId { get; private set; }
         public int CameraId { get; private set; }
 
-        public class GetImageByCamNameQueryHandler : IRequestHandler<GetCameraImageQuery, CameraImage>
+        public class GetCameraImageQueryHandler : IRequestHandler<GetCameraImageQuery, CameraImage>
         {
             private readonly IWebCamCatalog _camCatalog;
             private readonly IWebCamImageRetrievalService _camImageService;
 
-            public GetImageByCamNameQueryHandler(
+            public GetCameraImageQueryHandler(
                 IWebCamCatalog camCatalog, IWebCamImageRetrievalService camImageService)
             {
                 _camCatalog = camCatalog;
@@ -41,7 +41,7 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImage
                     ?.Cameras
                         .FirstOrDefault(c => c.CameraId == request.CameraId);
 
-                // CONSIDER: Throwing exception if there is an error/null.
+                // TODO!: Throw CameraNotFoundException if appropriate
 
                 if (camera == null)
                 {
@@ -51,7 +51,8 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImage
                 // TODO!: Handle NULL return
 
                 return 
-                    await _camImageService.GetImageFromUrl(camera.ImageSourceUrl);
+                    await _camImageService.GetImageFromUrl(camera.ImageSourceUrl)
+                    ?? new CameraImage(new byte[0]);
             }
         }
     }
