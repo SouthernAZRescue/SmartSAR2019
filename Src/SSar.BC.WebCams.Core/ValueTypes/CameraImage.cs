@@ -8,7 +8,8 @@ namespace SSar.BC.WebCams.Core.ValueTypes
     {
         public CameraImage(byte[] imageByteArray)
         {
-            ByteArray = imageByteArray;
+            ByteArray = imageByteArray
+                ?? throw new ArgumentNullException(nameof(imageByteArray));
         }
         public byte[] ByteArray { get; private set; }
     }

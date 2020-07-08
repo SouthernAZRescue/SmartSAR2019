@@ -10,5 +10,6 @@ namespace SSar.BC.WebCams.Core.Services
         public const string WebCams = "WebCams";
 
         public IReadOnlyList<CameraGroup> CameraGroups { get; set; }
+            = new List<CameraGroup>();
     }
 }

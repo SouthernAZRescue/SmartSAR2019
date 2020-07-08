@@ -20,8 +20,8 @@ namespace SSar.BC.WebCams.Core.Services
             return 
                 new CameraImage(
                     await _httpClient
-                        .GetByteArrayAsync(
-                            url));
+                        .GetByteArrayAsync(url)
+                    ?? new byte[0]);
         }
     }
 
