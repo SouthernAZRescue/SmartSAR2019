@@ -22,7 +22,6 @@ namespace SSar.Presentation.BlazorSpaUI
             builder.Services.AddScoped<ModalService>();
             builder.Services.AddApiAuthorization();
             builder.Services.AddCSharpApiClient();
-
             builder.Services.AddSyncfusionBlazor();
 
             var host = builder.Build();

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SSar.BC.UserMgmt.Application.Roles.Queries
+namespace SSar.BC.UserMgmt.Application.AppRoles.Queries
 {
     public class RoleLookupDto
     {

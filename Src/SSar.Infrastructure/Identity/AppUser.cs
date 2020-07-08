@@ -8,7 +8,7 @@ namespace SSar.Infrastructure.Identity
     {
         public AppUser()
         {
-
+            base.Id = Guid.NewGuid();
         }
     }
 }

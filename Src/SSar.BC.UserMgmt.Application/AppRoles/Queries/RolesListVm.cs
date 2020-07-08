@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SSar.BC.UserMgmt.Application.Roles.Queries
+namespace SSar.BC.UserMgmt.Application.AppRoles.Queries
 {
     public class RolesListVm
     {

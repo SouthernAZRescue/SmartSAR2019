@@ -1,0 +1,35 @@
+﻿<h3>SARA House</h3>
+<div class="webcam-box">
+    <img class="webcam-image" src="api/webcams/groups/1/cameras/3/image" />
+</div>
+<div class="webcam-box">
+    <img class="webcam-image" src="api/webcams/groups/1/cameras/4/image" />
+</div>
+<div class="webcam-box">
+    <img class="webcam-image" src="api/webcams/groups/1/cameras/5/image" />
+</div>
+<div class="webcam-box">
+    <img class="webcam-image" src="api/webcams/groups/1/cameras/1/image" />
+</div>
+<div class="webcam-box">
+    <img class="webcam-image" src="api/webcams/groups/1/cameras/2/image" />
+</div>
+
+<style>
+
+    .webcam-box {
+        display: grid;
+        height: 100%;
+    }
+
+    .webcam-image {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public string GroupName { get; set; }
+}

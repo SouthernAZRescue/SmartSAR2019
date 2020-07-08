@@ -247,42 +247,42 @@ namespace SSar.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cf5ff70a-14aa-4f08-83e5-8e8dcb1aa1d3"),
+                            Id = new Guid("dc27d4e2-467c-4e20-803e-70e05d5a4485"),
                             ConcurrencyStamp = "new",
                             Name = "Super Admin",
                             NormalizedName = "SUPER ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("e94d1c62-74e0-4230-86f2-e7c03101fd6d"),
+                            Id = new Guid("c6e1da81-80ce-4095-8eeb-4f95b11cad9f"),
                             ConcurrencyStamp = "new",
                             Name = "App Security Admin",
                             NormalizedName = "APP SECURITY ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("dc4c6d5a-1b37-46ac-97c7-c587fccc49ee"),
+                            Id = new Guid("13e59d00-9a50-40f4-986c-d9546f41adb1"),
                             ConcurrencyStamp = "new",
                             Name = "Member Data Admin",
                             NormalizedName = "MEMBER RECORDS ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("088c868e-83d3-4007-b9fb-8da81b0de21e"),
+                            Id = new Guid("4247db7f-5e6c-467b-813a-a4e0c7d5c22a"),
                             ConcurrencyStamp = "new",
                             Name = "Organization Member",
                             NormalizedName = "ORGANIZATION MEMBER"
                         },
                         new
                         {
-                            Id = new Guid("2c7d47f0-9ae8-497a-8204-d8782d4602a2"),
+                            Id = new Guid("fee13b34-09fb-4b5e-a798-35c40a3d72b5"),
                             ConcurrencyStamp = "new",
                             Name = "Affiliate User",
                             NormalizedName = "AFFILIATE USER"
                         },
                         new
                         {
-                            Id = new Guid("d2cb3c02-b028-4f3f-817c-2aa8561813c1"),
+                            Id = new Guid("c5f82ecb-8b08-49fe-9203-8a9e057f8819"),
                             ConcurrencyStamp = "new",
                             Name = "Guest User",
                             NormalizedName = "GUEST USER"

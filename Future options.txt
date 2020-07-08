@@ -1,0 +1,13 @@
+Future options to consider implementing:
+
+Use Polly handlers with HTTP client to add retry and circuit breaker policies for resiliency.
+- https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly 
+
+
+------------
+Web Cams
+
+Higher res images
+- For cameras that don't have hi-res snapshot ability, take an image from an RTSP stream. Look at
+    https://github.com/BogdanovKirill/RtspClientSharp/tree/master/Examples/MjpegSnapshotsMaker 
+    for an example how.

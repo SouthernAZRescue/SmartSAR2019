@@ -4,12 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using SSar.BC.Common.Application;
 using SSar.BC.Common.Application.Interfaces;
 using SSar.BC.MemberMgmt.Application;
 using SSar.BC.UserMgmt.Application;
+using SSar.BC.WebCams.Core;
 using SSar.Infrastructure;
 using SSar.Presentation.API.Filters;
+using SSar.Presentation.API.Middleware;
 using SSar.Presentation.API.Services;
 
 namespace SSar.Presentation.API
@@ -30,13 +33,15 @@ namespace SSar.Presentation.API
         {
             // DI and init for this (API) project
 
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
-
+            services.AddScoped<ICurrentUserService, CurrentUserService>(); // CONSIDER: Move this to AddInfrastructure
+            
             // Add DI and init from individual bounded contexts and other projects
 
+            // TODO: Use options pattern instead of passing in Configuration
             services.AddInfrastructure(Configuration);
             services.AddMemberManagement();
             services.AddUserManagement();
+            services.AddWebCams(Configuration);
             services.AddBoundedContextCommonFeatures();
 
             // API/web host setup
@@ -88,6 +93,8 @@ namespace SSar.Presentation.API
             app.UseOpenApi();
             app.UseSwaggerUi3();
 
+
+            app.UseEndpointLogging(LogLevel.Debug);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
