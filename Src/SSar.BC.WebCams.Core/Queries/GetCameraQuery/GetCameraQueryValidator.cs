@@ -10,8 +10,8 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraQuery
     {
         public GetCameraQueryValidator()
         {
-            RuleFor(r => r.GroupUrlName).NotEmpty();
-            RuleFor(r => r.CameraUrlName).NotEmpty();
+            RuleFor(r => r.GroupId).NotEmpty();
+            RuleFor(r => r.CameraId).NotEmpty();
         }
     }
 }

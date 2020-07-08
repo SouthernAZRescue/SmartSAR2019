@@ -91,39 +91,39 @@ namespace SSar.Presentation.ApiClient.CSharp.Contracts
         System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CameraGroup>>> GetGroupsAsync(System.Threading.CancellationToken cancellationToken);
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetGroupAsync(string groupName);
+        System.Threading.Tasks.Task<SwaggerResponse<CameraGroup>> GetGroupAsync(string groupUrlName);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetGroupAsync(string groupName, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CameraGroup>> GetGroupAsync(string groupUrlName, System.Threading.CancellationToken cancellationToken);
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetCamerasAsync(string groupName);
-    
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetCamerasAsync(string groupName, System.Threading.CancellationToken cancellationToken);
-    
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetCameraAsync(string groupName, string cameraName);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<Camera>>> GetAllCamerasForGroupAsync(string groupUrlName);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetCameraAsync(string groupName, string cameraName, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<Camera>>> GetAllCamerasForGroupAsync(string groupUrlName, System.Threading.CancellationToken cancellationToken);
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(string groupName, string cameraName);
-    
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(string groupName, string cameraName, System.Threading.CancellationToken cancellationToken);
-    
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetImageAsync(string groupName, string cameraName);
+        System.Threading.Tasks.Task<SwaggerResponse<Camera>> GetCameraAsync(string groupUrlName, string cameraUrlName);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> GetImageAsync(string groupName, string cameraName, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<Camera>> GetCameraAsync(string groupUrlName, string cameraUrlName, System.Threading.CancellationToken cancellationToken);
+    
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(string groupUrlName, string cameraUrlName);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(string groupUrlName, string cameraUrlName, System.Threading.CancellationToken cancellationToken);
+    
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetImageAsync(string groupUrlName, string cameraUrlName);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetImageAsync(string groupUrlName, string cameraUrlName, System.Threading.CancellationToken cancellationToken);
     
     }
 

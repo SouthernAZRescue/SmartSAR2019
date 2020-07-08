@@ -49,10 +49,10 @@ namespace SSar.Presentation.API.Controllers
         }
 
         // GET /api/webcams/groups/sara-house/cameras/roof-north
-        [HttpGet("groups/{groupUrlName}/cameras/{cameraUrlName}")]
-        public async Task<Camera> GetCamera(string groupUrlName, string cameraUrlName)
+        [HttpGet("groups/{groupId}/cameras/{cameraId}")]
+        public async Task<Camera> GetCamera(int groupId, int cameraId)
         {
-            return await _mediator.Send(new GetCameraQuery(groupUrlName, cameraUrlName));
+            return await _mediator.Send(new GetCameraQuery(groupId, cameraId));
         }
 
         // GET /api/webcams/groups/sara-house/cameras/roof-north/thumbnail
@@ -63,11 +63,11 @@ namespace SSar.Presentation.API.Controllers
         }
 
         // GET /api/webcams/groups/sara-house/cameras/roof-north/image
-        [HttpGet("groups/{groupUrlName}/cameras/{cameraUrlName}/image")]
-        public async Task<IActionResult> GetImage([FromRoute] string groupUrlName, [FromRoute] string cameraUrlName)
+        [HttpGet("groups/{groupId}/cameras/{cameraId}/image")]
+        public async Task<IActionResult> GetImage([FromRoute] int groupId, [FromRoute] int cameraId)
         {
             var camImage = (await _mediator.Send(
-                new GetCameraImageQuery(groupUrlName, cameraUrlName)));
+                new GetCameraImageQuery(groupId, cameraId)));
 
             return File(
                 camImage.ByteArray

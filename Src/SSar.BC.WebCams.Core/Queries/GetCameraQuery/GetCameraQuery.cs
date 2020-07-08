@@ -12,13 +12,13 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraQuery
 {
     public class GetCameraQuery : IRequest<Camera>
     {
-        public string GroupUrlName { get; private set; }
-        public string CameraUrlName { get; private set; }
+        public int GroupId { get; private set; }
+        public int CameraId { get; private set; }
 
-        public GetCameraQuery(string groupUrlName, string cameraUrlName)
+        public GetCameraQuery(int groupId, int cameraId)
         {
-            GroupUrlName = groupUrlName;
-            CameraUrlName = cameraUrlName;
+            GroupId = groupId;
+            CameraId = cameraId;
         }
 
         public class GetCameraQueryHandler : IRequestHandler<GetCameraQuery, Camera>
@@ -35,9 +35,9 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraQuery
                 return await Task.FromResult(
                     _camCatalog
                         .CameraGroups
-                        .FirstOrDefault(g => g.UrlName == request.GroupUrlName)
+                        .FirstOrDefault(g => g.Id == request.GroupId)
                         ?.Cameras
-                        .FirstOrDefault(c => c.UrlName == request.CameraUrlName)
+                        .FirstOrDefault(c => c.Id == request.CameraId)
                     ?? new Camera());
             }
         }

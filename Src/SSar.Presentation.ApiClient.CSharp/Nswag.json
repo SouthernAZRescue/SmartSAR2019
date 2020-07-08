@@ -236,16 +236,21 @@
         }
       }
     },
-    "/api/WebCams/groups/{groupName}": {
+    "/api/WebCams/groups/{groupUrlName}": {
       "get": {
         "tags": [
           "WebCams"
         ],
         "operationId": "WebCams_GetGroup",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "type": "string",
-            "name": "groupName",
+            "name": "groupUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true
@@ -253,25 +258,30 @@
         ],
         "responses": {
           "200": {
-            "x-nullable": true,
+            "x-nullable": false,
             "description": "",
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/CameraGroup"
             }
           }
         }
       }
     },
-    "/api/WebCams/groups/{groupName}/cameras": {
+    "/api/WebCams/groups/{groupUrlName}/cameras": {
       "get": {
         "tags": [
           "WebCams"
         ],
-        "operationId": "WebCams_GetCameras",
+        "operationId": "WebCams_GetAllCamerasForGroup",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "type": "string",
-            "name": "groupName",
+            "name": "groupUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true
@@ -279,32 +289,40 @@
         ],
         "responses": {
           "200": {
-            "x-nullable": true,
+            "x-nullable": false,
             "description": "",
             "schema": {
-              "type": "file"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Camera"
+              }
             }
           }
         }
       }
     },
-    "/api/WebCams/groups/{groupName}/cameras/{cameraName}": {
+    "/api/WebCams/groups/{groupUrlName}/cameras/{cameraUrlName}": {
       "get": {
         "tags": [
           "WebCams"
         ],
         "operationId": "WebCams_GetCamera",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "type": "string",
-            "name": "groupName",
+            "name": "groupUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true
           },
           {
             "type": "string",
-            "name": "cameraName",
+            "name": "cameraUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true
@@ -312,16 +330,16 @@
         ],
         "responses": {
           "200": {
-            "x-nullable": true,
+            "x-nullable": false,
             "description": "",
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/Camera"
             }
           }
         }
       }
     },
-    "/api/WebCams/groups/{groupName}/cameras/{cameraName}/thumbnail": {
+    "/api/WebCams/groups/{groupUrlName}/cameras/{cameraUrlName}/thumbnail": {
       "get": {
         "tags": [
           "WebCams"
@@ -330,14 +348,14 @@
         "parameters": [
           {
             "type": "string",
-            "name": "groupName",
+            "name": "groupUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true
           },
           {
             "type": "string",
-            "name": "cameraName",
+            "name": "cameraUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true
@@ -354,7 +372,7 @@
         }
       }
     },
-    "/api/WebCams/groups/{groupName}/cameras/{cameraName}/image": {
+    "/api/WebCams/groups/{groupUrlName}/cameras/{cameraUrlName}/image": {
       "get": {
         "tags": [
           "WebCams"
@@ -363,14 +381,14 @@
         "parameters": [
           {
             "type": "string",
-            "name": "groupName",
+            "name": "groupUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true
           },
           {
             "type": "string",
-            "name": "cameraName",
+            "name": "cameraUrlName",
             "in": "path",
             "required": true,
             "x-nullable": true

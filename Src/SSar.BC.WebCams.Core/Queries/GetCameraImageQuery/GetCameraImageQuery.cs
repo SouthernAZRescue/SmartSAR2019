@@ -9,14 +9,14 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
 {
     public class GetCameraImageQuery : IRequest<CameraImage>
     {
-        public GetCameraImageQuery(string groupUrlName, string cameraUrlName)
+        public GetCameraImageQuery(int groupId, int cameraId)
         {
-            GroupUrlName = groupUrlName;
-            CameraUrlName = cameraUrlName;
+            GroupId = groupId;
+            CameraId = cameraId;
         }
 
-        public string GroupUrlName { get; private set; }
-        public string CameraUrlName { get; private set; }
+        public int GroupId { get; private set; }
+        public int CameraId { get; private set; }
 
         public class GetImageByCamNameQueryHandler : IRequestHandler<GetCameraImageQuery, CameraImage>
         {
@@ -37,9 +37,9 @@ namespace SSar.BC.WebCams.Core.Queries.GetCameraImageQuery
 
                 Camera camera = 
                     _camCatalog.CameraGroups
-                        .FirstOrDefault(g => g.UrlName == request.GroupUrlName)
+                        .FirstOrDefault(g => g.Id == request.GroupId)
                     ?.Cameras
-                        .FirstOrDefault(c => c.UrlName == request.CameraUrlName);
+                        .FirstOrDefault(c => c.Id == request.CameraId);
 
                 // CONSIDER: Throwing exception if there is an error/null.
 
