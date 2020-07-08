@@ -21,7 +21,7 @@ namespace SSar.Infrastructure
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    configuration.GetConnectionString("SaraSharedSqlDb")));
+                    configuration.GetConnectionString("SmartSarSaraSql")));
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 

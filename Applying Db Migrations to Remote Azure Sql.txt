@@ -1,0 +1,51 @@
+To apply a migration to the remote Azure SQL server, a PowerShell window needs to be used and the connection string needs to be assigned to an environment variable before running the 'dotnet ef database update' command.
+
+Steps:
+
+1. In admin PowerShell set execution policy to allow unsigned scripts
+    - get-executionpolicy
+        - NOTE: Save this value. You will need to restore it when these steps are complete.
+    - set-executionpolicy unrestricted
+2. Set the environment variable with the connection string:
+    - $env:ConnectionStrings:SmartSarSaraSql="Server=tcp:sara.database.windows.net,1433;Initial Catalog=SSarSaraSql-Production;Persist Security Info=False;User ID=<YOUR_DB_NAME>;Password=<YOUR_SQL_PASSWORD>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    - NOTE: I may have hade the string name set to "MyDbConnection" instead of "SmartSarSaraSql" the last time this worked?
+3. From the project root directory run the dotnet command:
+    - dotnet ef database update --context SSar.Infrastructure.Persistence.ApplicationDbContext --project SSar.Infrastructure --startup-project SSar.Presentation.API --verbose --prefix-output --no-build
+    - NOTE: Only include the --no-build if the build is up to date.
+4. Look at the target database and confirm the update was successful.
+5. Reset the execution policy:
+    - set-executionpolicy default
+        - NOTE: or, use set-executionpolicy <ORIGINAL_EXECUTIONPOLICY_VALUE>
+
+Question: Can I do all this from an administrative shell? While prepping these instructions I used an admin shell to set the execution policy, but used a non-admin shell for everything else.
+
+=====================================================
+Script to delete tables from remote database:
+
+/* This script clears foreign key constraints then tables */
+/* Credit: https://stackoverflow.com/questions/34967878/how-to-drop-all-tables-and-reset-an-azure-sql-database */
+
+while(exists(select 1 from INFORMATION_SCHEMA.TABLE_CONSTRAINTS where CONSTRAINT_TYPE='FOREIGN KEY'))
+begin
+ declare @sql nvarchar(2000)
+ SELECT TOP 1 @sql=('ALTER TABLE ' + TABLE_SCHEMA + '.[' + TABLE_NAME
+ + '] DROP CONSTRAINT [' + CONSTRAINT_NAME + ']')
+ FROM information_schema.table_constraints
+ WHERE CONSTRAINT_TYPE = 'FOREIGN KEY'
+ exec (@sql)
+ PRINT @sql
+end
+
+
+while(exists(select 1 from INFORMATION_SCHEMA.TABLES 
+             where TABLE_NAME != '__MigrationHistory' 
+             AND TABLE_TYPE = 'BASE TABLE'))
+begin
+ SELECT TOP 1 @sql=('DROP TABLE ' + TABLE_SCHEMA + '.[' + TABLE_NAME
+ + ']')
+ FROM INFORMATION_SCHEMA.TABLES
+ WHERE TABLE_NAME != '__MigrationHistory' AND TABLE_TYPE = 'BASE TABLE'
+exec (@sql)
+ /* you dont need this line, it just shows what was executed */
+ PRINT @sql
+end

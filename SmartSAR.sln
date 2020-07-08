@@ -33,6 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.Common.Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{03B698EE-03AE-4334-8986-7D54DB403E1D}"
 	ProjectSection(SolutionItems) = preProject
+		Applying Db Migrations to Remote Azure Sql.txt = Applying Db Migrations to Remote Azure Sql.txt
 		Credits.txt = Credits.txt
 		Doc notes, code smells, etc..txt = Doc notes, code smells, etc..txt
 		Features.txt = Features.txt
