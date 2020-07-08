@@ -7,9 +7,8 @@ namespace SSar.BC.WebCams.Core.Services
 {
     public class WebCamCatalogOptions
     {
-        public const string WebCams = "WebCams";
+        public const string WebCams = "WebCams"; // Configuration key to bind
 
         public IReadOnlyList<CameraGroup> CameraGroups { get; set; }
-            = new List<CameraGroup>();
     }
 }
