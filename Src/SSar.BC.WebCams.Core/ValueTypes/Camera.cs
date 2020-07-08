@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SSar.BC.WebCams.Core.ValueTypes
+﻿namespace SSar.BC.WebCams.Core.ValueTypes
 {
     public class Camera
     {

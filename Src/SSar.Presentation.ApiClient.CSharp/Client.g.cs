@@ -994,18 +994,21 @@ namespace SSar.Presentation.ApiClient.CSharp
         }
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SwaggerResponse<CameraGroup>> GetGroupAsync(string groupUrlName)
+        public System.Threading.Tasks.Task<SwaggerResponse<CameraGroup>> GetCameraGroupAsync(int groupId)
         {
-            return GetGroupAsync(groupUrlName, System.Threading.CancellationToken.None);
+            return GetCameraGroupAsync(groupId, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SwaggerResponse<CameraGroup>> GetGroupAsync(string groupUrlName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SwaggerResponse<CameraGroup>> GetCameraGroupAsync(int groupId, System.Threading.CancellationToken cancellationToken)
         {
+            if (groupId == null)
+                throw new System.ArgumentNullException("groupId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupUrlName}");
-            urlBuilder_.Replace("{groupUrlName}", System.Uri.EscapeDataString(ConvertToString(groupUrlName, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupId}");
+            urlBuilder_.Replace("{groupId}", System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = _httpClient;
             try
@@ -1060,18 +1063,21 @@ namespace SSar.Presentation.ApiClient.CSharp
         }
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<Camera>>> GetAllCamerasForGroupAsync(string groupUrlName)
+        public System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<Camera>>> GetAllCamerasForGroupAsync(int groupId)
         {
-            return GetAllCamerasForGroupAsync(groupUrlName, System.Threading.CancellationToken.None);
+            return GetAllCamerasForGroupAsync(groupId, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<Camera>>> GetAllCamerasForGroupAsync(string groupUrlName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<Camera>>> GetAllCamerasForGroupAsync(int groupId, System.Threading.CancellationToken cancellationToken)
         {
+            if (groupId == null)
+                throw new System.ArgumentNullException("groupId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupUrlName}/cameras");
-            urlBuilder_.Replace("{groupUrlName}", System.Uri.EscapeDataString(ConvertToString(groupUrlName, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupId}/cameras");
+            urlBuilder_.Replace("{groupId}", System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = _httpClient;
             try
@@ -1126,19 +1132,25 @@ namespace SSar.Presentation.ApiClient.CSharp
         }
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SwaggerResponse<Camera>> GetCameraAsync(string groupUrlName, string cameraUrlName)
+        public System.Threading.Tasks.Task<SwaggerResponse<Camera>> GetCameraAsync(int groupId, int cameraId)
         {
-            return GetCameraAsync(groupUrlName, cameraUrlName, System.Threading.CancellationToken.None);
+            return GetCameraAsync(groupId, cameraId, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SwaggerResponse<Camera>> GetCameraAsync(string groupUrlName, string cameraUrlName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SwaggerResponse<Camera>> GetCameraAsync(int groupId, int cameraId, System.Threading.CancellationToken cancellationToken)
         {
+            if (groupId == null)
+                throw new System.ArgumentNullException("groupId");
+    
+            if (cameraId == null)
+                throw new System.ArgumentNullException("cameraId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupUrlName}/cameras/{cameraUrlName}");
-            urlBuilder_.Replace("{groupUrlName}", System.Uri.EscapeDataString(ConvertToString(groupUrlName, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{cameraUrlName}", System.Uri.EscapeDataString(ConvertToString(cameraUrlName, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupId}/cameras/{cameraId}");
+            urlBuilder_.Replace("{groupId}", System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{cameraId}", System.Uri.EscapeDataString(ConvertToString(cameraId, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = _httpClient;
             try
@@ -1193,19 +1205,25 @@ namespace SSar.Presentation.ApiClient.CSharp
         }
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(string groupUrlName, string cameraUrlName)
+        public System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(int groupId, int cameraId)
         {
-            return GetThumbnailAsync(groupUrlName, cameraUrlName, System.Threading.CancellationToken.None);
+            return GetThumbnailAsync(groupId, cameraId, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(string groupUrlName, string cameraUrlName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<FileResponse> GetThumbnailAsync(int groupId, int cameraId, System.Threading.CancellationToken cancellationToken)
         {
+            if (groupId == null)
+                throw new System.ArgumentNullException("groupId");
+    
+            if (cameraId == null)
+                throw new System.ArgumentNullException("cameraId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupUrlName}/cameras/{cameraUrlName}/thumbnail");
-            urlBuilder_.Replace("{groupUrlName}", System.Uri.EscapeDataString(ConvertToString(groupUrlName, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{cameraUrlName}", System.Uri.EscapeDataString(ConvertToString(cameraUrlName, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupId}/cameras/{cameraId}/thumbnail");
+            urlBuilder_.Replace("{groupId}", System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{cameraId}", System.Uri.EscapeDataString(ConvertToString(cameraId, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = _httpClient;
             try
@@ -1262,19 +1280,25 @@ namespace SSar.Presentation.ApiClient.CSharp
         }
     
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FileResponse> GetImageAsync(string groupUrlName, string cameraUrlName)
+        public System.Threading.Tasks.Task<FileResponse> GetImageAsync(int groupId, int cameraId)
         {
-            return GetImageAsync(groupUrlName, cameraUrlName, System.Threading.CancellationToken.None);
+            return GetImageAsync(groupId, cameraId, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FileResponse> GetImageAsync(string groupUrlName, string cameraUrlName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<FileResponse> GetImageAsync(int groupId, int cameraId, System.Threading.CancellationToken cancellationToken)
         {
+            if (groupId == null)
+                throw new System.ArgumentNullException("groupId");
+    
+            if (cameraId == null)
+                throw new System.ArgumentNullException("cameraId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupUrlName}/cameras/{cameraUrlName}/image");
-            urlBuilder_.Replace("{groupUrlName}", System.Uri.EscapeDataString(ConvertToString(groupUrlName, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{cameraUrlName}", System.Uri.EscapeDataString(ConvertToString(cameraUrlName, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WebCams/groups/{groupId}/cameras/{cameraId}/image");
+            urlBuilder_.Replace("{groupId}", System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{cameraId}", System.Uri.EscapeDataString(ConvertToString(cameraId, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = _httpClient;
             try
