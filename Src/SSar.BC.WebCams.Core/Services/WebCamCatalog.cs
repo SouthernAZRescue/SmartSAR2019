@@ -10,7 +10,8 @@ namespace SSar.BC.WebCams.Core.Services
     {
         public WebCamCatalog(WebCamCatalogOptions catalogOptions)
         {
-            CameraGroups = catalogOptions.CameraGroups;
+            CameraGroups = catalogOptions.CameraGroups
+                ?? throw new ArgumentNullException(nameof(catalogOptions));
         }
 
         public IReadOnlyList<CameraGroup> CameraGroups { get; private set; }
