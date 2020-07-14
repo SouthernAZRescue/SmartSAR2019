@@ -39,5 +39,18 @@ namespace SSar.Presentation.ApiClient.CSharp
                 RetrieveAuthorizationToken = retrieveAuthorizationToken
             };
         }
+
+        public static IWebCamsClient CreateWebCamsClient(
+            string baseUrl,
+            HttpClient http,
+            IAccessTokenProvider tokenProvider,
+            Func<IAccessTokenProvider, Task<string>> retrieveAuthorizationToken)
+        {
+            return new WebCamsClient(baseUrl, http)
+            {
+                AccessTokenProvider = tokenProvider,
+                RetrieveAuthorizationToken = retrieveAuthorizationToken
+            };
+        }
     }
 }

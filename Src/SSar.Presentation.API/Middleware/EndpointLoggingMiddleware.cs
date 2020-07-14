@@ -27,7 +27,7 @@ namespace SSar.Presentation.API.Middleware
                 await _next(context);
             }
 
-            _logger.Log(_logLevel, $"Endpoint: {endpoint.DisplayName}");
+            _logger.Log(_logLevel, $"Endpoint: {endpoint?.DisplayName ?? "Null DisplayName"}");
 
             if (endpoint is RouteEndpoint routeEndpoint)
             {

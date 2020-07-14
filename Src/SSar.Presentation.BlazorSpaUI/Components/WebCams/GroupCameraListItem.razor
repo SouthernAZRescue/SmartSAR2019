@@ -1,0 +1,10 @@
+﻿@using SSar.Presentation.ApiClient.CSharp.Contracts
+
+    <div>
+        @Camera.Name: @Camera.Description
+    </div>
+
+@code {
+        [Parameter]
+        public Camera Camera { get; set; }
+}

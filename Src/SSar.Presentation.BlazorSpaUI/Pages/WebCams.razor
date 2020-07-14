@@ -1,15 +1,36 @@
 ﻿@page "/webcams"
+@inject IWebCamsClient WebCamsClient
 
 @using SSar.Presentation.BlazorSpaUI.Components.WebCams 
+@using SSar.Presentation.ApiClient.CSharp.Contracts
+@using System.Collections
 
 <h1>Web Cams</h1>
 
-<WebCamGroupImages></WebCamGroupImages>
+@if (_cameraGroups == null)
+{
+    <div>
+        Loading camera groups...
+    </div>
+}
+else
+{
+    <div>
+            @foreach (var group in _cameraGroups)
+            {
+                <GroupCameraList CameraGroup=@group></GroupCameraList>
+            }
+    </div>
+}
 
-<style>
-    webcam-block {
-        max-width: 100%;
-        z-index: 0;
-        padding-top: 2vh;
+@code
+{
+    ICollection<CameraGroup> _cameraGroups;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        _cameraGroups = (await WebCamsClient.GetGroupsAsync()).Result;
     }
-</style>
+}
+

@@ -1,0 +1,35 @@
+﻿@using SSar.Presentation.ApiClient.CSharp.Contracts
+
+
+<div>
+
+    <h4>@Title</h4>
+    @foreach (var camera in CameraGroup.Cameras)
+    {
+
+        link = $"/webcams/groups/{CameraGroup.GroupId}/cameras/{camera.CameraId}";
+        
+        <NavLink href=@link>
+            <GroupCameraListItem Camera=@camera></GroupCameraListItem>
+        </NavLink>
+    }
+
+</div>
+
+@code {
+    private string link = "";
+
+    [Parameter]
+    public CameraGroup CameraGroup { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Title = Title ?? CameraGroup.Name;
+    }
+
+}

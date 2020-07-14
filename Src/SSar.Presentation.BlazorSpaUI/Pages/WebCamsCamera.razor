@@ -1,0 +1,74 @@
+﻿@page "/webcams/groups/{GroupId:int}/cameras/{CameraId:int}"
+@using SSar.Presentation.ApiClient.CSharp.Contracts
+@using SSar.Presentation.BlazorSpaUI.Components.WebCams
+@inject IWebCamsClient WebCamsClient
+
+
+<div class="webcam-box">
+    @if (Camera != null)
+    {
+        <div>
+            <h3>@Camera.Name</h3>
+
+            <p>@Camera.Description</p>
+
+            <div>
+                <NavLink href=@_imageLink target="_blank">
+                    <img class="webcam-image" src=@_imageLink />
+                </NavLink>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="webcam-group-box">
+    @if (CameraGroup != null)
+    {
+        <GroupCameraList CameraGroup=@CameraGroup Title ="Additional cameras in this group:"></GroupCameraList>
+    }
+</div>
+
+<style>
+
+    .webcam-box {
+        display: grid;
+        height: 100%;
+    }
+
+    .webcam-image {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+    }
+
+    .webcam-group-box {
+        margin-top: 20px;
+        }
+</style>
+
+
+@code {
+
+    private string _imageLink;
+
+    [Parameter]
+    public int GroupId { get; set; }
+
+    [Parameter]
+    public int CameraId { get; set; }
+
+    public Camera Camera { get; set; }
+    public CameraGroup CameraGroup { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Camera = (await WebCamsClient.GetCameraAsync(
+            GroupId, CameraId))
+            .Result;
+
+        CameraGroup = (await WebCamsClient.GetCameraGroupAsync(GroupId)).Result;
+
+        _imageLink = $"/api/webcams/groups/{GroupId}/cameras/{CameraId}/image";
+    }
+
+}

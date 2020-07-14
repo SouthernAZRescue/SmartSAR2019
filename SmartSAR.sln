@@ -67,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.WebCams.Core", "Src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BoundedContexts", "BoundedContexts", "{4D534756-8EB2-436F-BCC0-6BA2FCF8D336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSar.BC.WebCams.UnitTests", "Test\SSar.BC.WebCams.UnitTests\SSar.BC.WebCams.UnitTests.csproj", "{9209657D-0915-415D-86FE-EFD04C62B66C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSar.BC.WebCams.UnitTests", "Test\SSar.BC.WebCams.UnitTests\SSar.BC.WebCams.UnitTests.csproj", "{9209657D-0915-415D-86FE-EFD04C62B66C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E1B34BC6-00D4-4A02-92BB-B6C4FE53B4B1}"
 EndProject

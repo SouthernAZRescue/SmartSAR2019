@@ -34,6 +34,13 @@ namespace SSar.Presentation.ApiClient.CSharp
                     httpClient,
                     accessTokenProvider,
                     RetrieveAuthorizationToken));
+
+            services.AddSingleton<IWebCamsClient>(
+                ClientFactory.CreateWebCamsClient(
+                    navigationManager.BaseUri,
+                    httpClient,
+                    accessTokenProvider,
+                    RetrieveAuthorizationToken));
         }
 
         // TODO: Move this method out of the ApiClient project to allow consumers to
