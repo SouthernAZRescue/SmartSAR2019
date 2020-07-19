@@ -40,16 +40,16 @@ namespace SSar.BC.WebCams.UnitTests.Core.Queries
             A.CallTo(() => webCamCatalog.CameraGroups)
                 .Returns(null);
 
-            var handler = new GetAllCameraGroupsQuery.GetAllCameraGroupsQueryHandler(webCamCatalog);
+            var sut = new GetAllCameraGroupsQuery.GetAllCameraGroupsQueryHandler(webCamCatalog);
 
-            var sut = await handler.Handle(
+            var result = await sut.Handle(
                 new GetAllCameraGroupsQuery(), new CancellationToken());
 
-            sut.ShouldNotBeNull();
+            result.ShouldNotBeNull();
         }
 
         [Fact]
-        public async Task Null_WebCamCatalog_triggers_argument_null_exception()
+        public void Null_WebCamCatalog_triggers_argument_null_exception()
         {
             Should.Throw<ArgumentNullException>(
                 () => new GetAllCameraGroupsQuery
