@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -15,7 +16,8 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCameraGroups
 
             public GetAllCameraGroupsQueryHandler(IWebCamCatalog webCamCatalog)
             {
-                _webCamCatalog = webCamCatalog;
+                _webCamCatalog = webCamCatalog 
+                                 ?? throw new ArgumentNullException(nameof(webCamCatalog));
             }
 
             public async Task<IReadOnlyList<CameraGroup>> Handle(GetAllCameraGroupsQuery request, CancellationToken cancellationToken)
