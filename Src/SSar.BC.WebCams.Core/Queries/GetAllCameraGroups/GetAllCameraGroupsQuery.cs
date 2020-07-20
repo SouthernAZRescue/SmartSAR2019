@@ -10,7 +10,8 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCameraGroups
 {
     public class GetAllCameraGroupsQuery : IRequest<IReadOnlyList<CameraGroup>>
     {
-        public class GetAllCameraGroupsQueryHandler : IRequestHandler<GetAllCameraGroupsQuery, IReadOnlyList<CameraGroup>>
+        public class GetAllCameraGroupsQueryHandler 
+            : IRequestHandler<GetAllCameraGroupsQuery, IReadOnlyList<CameraGroup>>
         {
             private readonly IWebCamCatalog _webCamCatalog;
 
@@ -20,7 +21,8 @@ namespace SSar.BC.WebCams.Core.Queries.GetAllCameraGroups
                                  ?? throw new ArgumentNullException(nameof(webCamCatalog));
             }
 
-            public async Task<IReadOnlyList<CameraGroup>> Handle(GetAllCameraGroupsQuery request, CancellationToken cancellationToken)
+            public async Task<IReadOnlyList<CameraGroup>> Handle(
+                GetAllCameraGroupsQuery request, CancellationToken cancellationToken)
             {
                 return await Task.FromResult(
                     _webCamCatalog.CameraGroups
