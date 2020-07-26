@@ -18,5 +18,4 @@
   <ItemGroup>
     <ProjectReference Include="..\SSar.Presentation.ApiClient.CSharp\SSar.Presentation.ApiClient.CSharp.csproj" />
   </ItemGroup>
-
 </Project>

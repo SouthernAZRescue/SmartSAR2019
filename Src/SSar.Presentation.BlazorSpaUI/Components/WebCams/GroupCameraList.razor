@@ -1,12 +1,11 @@
 ﻿@using SSar.Presentation.ApiClient.CSharp.Contracts
 
-
 <div>
 
     <h4>@Title</h4>
     @foreach (var camera in CameraGroup.Cameras)
     {
-
+        //TODO: Fix this hard-coded link
         link = $"/webcams/groups/{CameraGroup.GroupId}/cameras/{camera.CameraId}";
         
         <NavLink href=@link>

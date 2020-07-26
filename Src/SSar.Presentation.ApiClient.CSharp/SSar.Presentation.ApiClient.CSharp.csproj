@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <GenerateCode>False</GenerateCode>
+    <GenerateCode>True</GenerateCode>
   </PropertyGroup>
 
   <ItemGroup>

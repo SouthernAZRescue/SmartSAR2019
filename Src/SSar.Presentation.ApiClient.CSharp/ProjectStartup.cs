@@ -2,11 +2,7 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using SSar.Presentation.ApiClient.CSharp.Contracts;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SSar.Presentation.ApiClient.CSharp
@@ -51,7 +47,7 @@ namespace SSar.Presentation.ApiClient.CSharp
             var tokenResult = await accessTokenProvider.RequestAccessToken();
             tokenResult.TryGetToken(out var token);
 
-            return token.Value;
+            return token?.Value;
         }
     }
 }
